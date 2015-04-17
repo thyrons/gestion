@@ -25,6 +25,7 @@ function mostrar(input) {///funcion para mostrar la hora se necesita un nombre d
 }
 function comprobarCamposRequired(form){
     var correcto=true;
+
     var campos_text=$('#'+form+' input:required');        
     $(campos_text).each(function() {        
         var pattern = new RegExp("^" + $(this)[0].pattern + "$");                  
@@ -50,7 +51,7 @@ function actualizar_form(){
     
 }
 function limpiar_form(e){
-    if(e != undefined){
+    if(e != undefined){        
         var form;
         if(e.type == "click"){///mediante el click del boton
             $("#"+e.currentTarget.form.id+" input").val("");
@@ -61,12 +62,17 @@ function limpiar_form(e){
                 $("#"+e.target.id+" input").val("");
                 comprobarCamposRequired(e.target.id);       
                 form = e.target.id
-            }else{///id directo del form
+            }else{///id directo del form                
                 $("#"+e+" input").val("");
                 comprobarCamposRequired(e);     
                 form = e;
             }
-        }       
+        }
+        if(form == "form_pais"){            
+            $("#btn_1").html('');
+            $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+        }else{       
+        }
         $("input:not([readonly='readonly']):text:visible:first").focus();   
     }
 }

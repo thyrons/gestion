@@ -63,16 +63,57 @@
 	return $resp;
 	}
 
+	function repetidos($conexion, $campo, $valor, $tabla, $tipo, $id, $id_campo) {///conexion,campo a comparar,valor campo,tabla,tipo g o m id si tiene, id campo si tiene
+	    $repetidos = 'true';
+	    if ($tipo == "g") {
+	        $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "'";
+	        if (pg_num_rows(pg_query($conexion, $sql))) {
+	            $repetidos = 'true';
+	        } else {
+	            $repetidos = 'false';
+	        }
+	    } else {
+	        if ($tipo == "m") {
+	            $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "' and " . $id_campo . " not in ('$id') ";
+	            if (pg_num_rows(pg_query($conexion, $sql))) {
+	                $repetidos = 'true';
+	            } else {
+	                $repetidos = 'false';
+	            }
+	        } else {
+	            if ($tipo == "gr") {
+	                $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "' and codigo_barras != ''";
+	                if (pg_num_rows(pg_query($conexion, $sql))) {
+	                    $repetidos = 'true';
+	                } else {
+	                    $repetidos = 'false';
+	                }
+	            }else{
+	                if ($tipo == "mr") {
+	                    $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "' and codigo_barras != '' and " . $id_campo . " not in ('$id') " ;
+	                    
+	                    if (pg_num_rows(pg_query($conexion, $sql))) {
+	                        $repetidos = 'true';
+	                    } else {
+	                        $repetidos = 'false';
+	                    }
+	                }
+	            }    
+	        }
+	    }
+	    return $repetidos;
+	}
+
 	function auditoria_sistema($conexion,$tabla,$id_user,$proceso,$id_registro,$fecha_larga,$fecha,$sql_nuevo,$sql_anterior,$comentario){
 	    $cliente = $_SERVER['REMOTE_ADDR'];
 	    $server = $_SERVER['SERVER_ADDR'];
 	    $id_tabla = id($conexion,'auditoria_sistema','id_sistema');///
 	    if($proceso == 'Insert'){                
-	        $consulta = "insert into auditoria values ('$id_tabla','$tabla','$id_registro',array[''],$sql_nuevo::text[],'$proceso','$id_user','$cliente','$server','0','$fecha')";                       
+	    	$consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',array[''],$sql_nuevo::text[],'".$id_registro."','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            			        	        
 	        pg_query($consulta);               
 	    }else{
-	        if($proceso == 'Update'){        
-	            $consulta = "insert into auditoria values ('$id_tabla','$tabla','$id_registro',$sql_anterior::text[],$sql_nuevo::text[],'$proceso','$id_user','$cliente','$server','0','$fecha')";                       
+	        if($proceso == 'Update'){      
+		        $consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',$sql_anterior::text[],$sql_nuevo::text[],'".$id_registro."','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            			        	          	            
 	            pg_query($consulta);       
 	        }else{            
 	            if($proceso == 'Backup'){        
@@ -84,5 +125,14 @@
 	            }               
 	        }
 	    }
+	}
+	function maxCaracter($texto, $cant){        
+    	$texto = substr($texto, 0,$cant);
+    	return $texto;
+	}
+	function sql_array($conexion,$sql){        
+	    $sql = pg_fetch_row(pg_query($sql));                                 
+	    $sql = "array['".implode("', '", $sql)."']";   
+	    return $sql;     
 	}
 ?>
