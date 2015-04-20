@@ -6,16 +6,17 @@ function inicio(){
 		var data = $("#tabla_pais").dataTable().fnGetData(this);                
         $("#txt_0").val(data[0]);        
         $("#txt_1").val(data[1]);
-        $("#txt_2").val(data[2]);             
+        $("#txt_2").val(data[2]);                     
         $("#btn_1").html("");
         $("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
         $("#btn_1").attr("disabled", false);
+        comprobarCamposRequired("form_pais");
 	});
 	///////////
 	$("#btn_2").on('click',function(){
 		limpiar_form('form_pais');
 	});
-	$("input").on("keyup click",function (e){//campos requeridos		
+	$("#form_pais :input").on("keyup click",function (e){//campos requeridos		
 		comprobarCamposRequired(e.currentTarget.form.id)
 	});	
 	//////////////////
@@ -25,7 +26,7 @@ function cargar_tabla(){
 	var dataTable = $('#tabla_pais').dataTable();
 	$.ajax({
         type: "POST",
-        url: "carga_pais.php",          
+        url: "../varios.php?tipo=0&fun=2&tam=3",          
         dataType: 'json',
         success: function(response) {         
         	dataTable.fnClearTable();
@@ -81,10 +82,12 @@ function datos_pais(valores,tipo,p){
 	    				$("#txt_2").focus();	    			
 	    			}else{
 	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				//actualizar_form();	
+	    				actualizar_form();	
 	    			}	    			
 	    		}
 	    	}
 		}
 	}); 
 }
+
+ 

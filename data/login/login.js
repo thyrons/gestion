@@ -24,8 +24,8 @@ function datos_login(valores,tipo,p){
 		url: "login.php",			
 	    success: function(data) {	
 	    	if( data == 0 ){
-	    		alert('Bienvenido');			
-	    		//limpiar_form(p);		    		
+	    		location.href='../../data/inicio/';
+	    		
 	    	}else{
 	    		if( data == 1 ){
 	    			alert("El usuario no existe...")

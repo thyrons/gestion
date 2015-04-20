@@ -3,8 +3,8 @@
 	$fecha = date('Y-m-d H:i:s', time());   
 	$fecha_larga = date('His', time());
 
-	function sesion_activa(){
-	    session_start();        
+	function sesion_activa(){	  
+		session_start();          
 	    return $_SESSION['id_gestion'];
 	}
 	function guardarSql($conexion, $sql) {
@@ -16,6 +16,21 @@
 	    }
 	    return $resp;
 	}
+	function cargarSelect($conexion, $sql, $tam) {
+	    $lista = array();
+	    $data = 0;
+	    $sql = pg_query($conexion, $sql);
+	    if ($sql) {
+	        while ($row = pg_fetch_row($sql)) {
+	            for($i = 0; $i < $tam; $i++){
+	            	$lista[] = $row[$i];	            
+	            }
+	        }
+	        echo $lista = json_encode($lista);
+	    }
+	}
+
+
 	function id ($conexion,$tabla,$id){
 		$contador = 0;
 		$sql = "select max(".$id.") from ".$tabla."";		
@@ -50,6 +65,7 @@
 			}			
 			if(md5($clave) == $pass){
 				$resp = '0'; ////ingreso				
+				//session_start();        
 				$_SESSION['id_gestion'] = $id_user;
 				$_SESSION['nombres'] = $nombres;
 				$_SESSION['usuario'] = $user;				
@@ -63,7 +79,7 @@
 	return $resp;
 	}
 
-	function repetidos($conexion, $campo, $valor, $tabla, $tipo, $id, $id_campo) {///conexion,campo a comparar,valor campo,tabla,tipo g o m id si tiene, id campo si tiene
+	function repetidos($conexion, $campo, $valor, $tabla, $tipo, $id, $id_campo, $id_extra) {///conexion,campo a comparar,valor campo,tabla,tipo g o m id si tiene, id campo si tiene
 	    $repetidos = 'true';
 	    if ($tipo == "g") {
 	        $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "'";
@@ -81,7 +97,7 @@
 	                $repetidos = 'false';
 	            }
 	        } else {
-	            if ($tipo == "gr") {
+	            if ($tipo == "gr") {///comparar con campo especifico
 	                $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "' and codigo_barras != ''";
 	                if (pg_num_rows(pg_query($conexion, $sql))) {
 	                    $repetidos = 'true';
