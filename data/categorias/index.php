@@ -17,7 +17,6 @@
     <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />    
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />      
-    <link href="../../plugins/jchosen/chosen.min.css" rel="stylesheet" type="text/css" />    
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -30,12 +29,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">          
           <h1>
-            Ingreso Provincias            
+            Ingreso de Países            
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Ingresos</li>
-            <li class="active">Provincias</li>
+            <li class="active">País</li>
           </ol>
         </section>
 
@@ -47,24 +46,22 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Formularios Provincias</h3>
+                  <h3 class="box-title">Formularios Categorías</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_provincia" class="form-horizontal" method="POST" action="">                
-                  <div class="box-body col-md-12">                                                                             
+                <form role="form" id="form_pais" class="form-horizontal" method="POST" action="">                
+                  <div class="box-body col-md-12">                                                            
+                    <div class="form-group">                      
+                      <label for="txt_1" class="col-md-3">Código País</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="txt_1"  name="txt_1" placeholder="Código Postal" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 +()]{1,}">
+                        <input type="hidden" class="form-control" id="txt_0"  name="txt_0">
+                      </div>
+                    </div>                                                                              
                     <div class="form-group">                            
                       <label for="txt_2" class="col-md-3">Nombre País</label>
                       <div class="col-md-9">
-                        <select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="Seleccione un país">
-                          
-                        </select>   
-                        <input type="hidden" id="txt_0" name="txt_0" />        
-                      </div>
-                    </div>        
-                    <div class="form-group">                            
-                      <label for="txt_2" class="col-md-3">Provincia</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre Provincia" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre País" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 () ]{1,}">
                       </div>
                     </div>                                                                                                  
                   </div><!-- /.box-body -->
@@ -85,15 +82,14 @@
               <!-- general form elements disabled -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Tabla Provincias</h3>
+                  <h3 class="box-title">Tabla de Países</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="tabla_provincia" class="table table-bordered table-hover">
+                  <table id="tabla_pais" class="table table-bordered table-hover">
                     <thead>
                       <th>ID</th>
-                      <th>Provincia/Estado</th>
-                      <th>id_pais</th>
-                      <th>País</th>                      
+                      <th>Código</th>
+                      <th>Nombre</th>                      
                     </thead>
                     <tbody>                      
                     </tbody>
@@ -129,10 +125,21 @@
     <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
-    <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
-    <script src="provincia.js" type="text/javascript"></script>
+    <script src="categorias.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
-    
+    <script type="text/javascript">
+      $(function () {        
+        $('#tabla_pais').dataTable({
+          "bPaginate": true,
+          "bLengthChange": true,
+          "bFilter": true,
+          "bSort": true,
+          "bInfo": true,
+          "bAutoWidth": true,
+          'iDisplayLength': 5,          
+        });
+      });
+    </script>
   </body>
 </html>

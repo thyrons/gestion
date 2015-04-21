@@ -24,8 +24,7 @@ function mostrar(input) {///funcion para mostrar la hora se necesita un nombre d
     setTimeout("mostrar('"+input+"')", 1000);    
 }
 function comprobarCamposRequired(form){
-    var correcto=true;    
-
+    var correcto=true;   
     var campos_text=$('#'+form+' input:required');        
     $(campos_text).each(function() {        
         var pattern = new RegExp("^" + $(this)[0].pattern + "$");                          
@@ -35,7 +34,7 @@ function comprobarCamposRequired(form){
             correcto=false;
             $(this).parent().addClass('has-error');
         }   
-    });
+    });    
     if(correcto == true){
         $("#btn_1").attr("disabled", false);
     }else{
@@ -72,6 +71,17 @@ function limpiar_form(e){
             $("#btn_1").html('');
             $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
         }else{       
+            if(form == "form_provincia"){            
+                $("#btn_1").html('');
+                $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+            }else{       
+                if(form == "form_ciudad"){            
+                    $("#btn_1").html('');
+                    $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                }else{       
+
+                }
+            }
         }
         $("input:not([readonly='readonly']):text:visible:first").focus();   
     }

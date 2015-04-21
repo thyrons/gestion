@@ -21,6 +21,7 @@ function inicio(){
 	});	
 	//////////////////
 	$("#btn_1").on("click",guardar_pais);
+	$("#btn_2").on("click",limpiar_form);
 }
 function cargar_tabla(){
 	var dataTable = $('#tabla_pais').dataTable();

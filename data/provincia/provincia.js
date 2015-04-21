@@ -44,7 +44,7 @@ function inicio(){
         $("#btn_1").html("");
         $("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
         $("#btn_1").attr("disabled", false);
-        comprobarCamposRequired("form_provincia");
+        comprobarCamposRequired("form_provincia");        
 	});
 	///////////
 	$("#btn_2").on('click',function(){
@@ -55,6 +55,7 @@ function inicio(){
 	});	
 	///////
 	$("#btn_1").on("click",guardar_provincia);
+	$("#btn_2").on("click",limpiar_form);
 
 }
 function cargar_tabla(){	

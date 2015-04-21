@@ -11,7 +11,7 @@ $sql = "";
 $id = id($conexion,'pais','id_pais');
 $id_user = sesion_activa();
 if ($_POST['tipo'] == "g") {    
-    $repetidos = repetidos($conexion, "nombre_pais", ucwords(strtolower($_POST['txt_2'])), "pais", "g", "", "", "");
+    $repetidos = repetidos($conexion, "nombre_pais", ucwords(strtolower($_POST['txt_2'])), "pais", "g", "", "", "","");
     if ($repetidos == 'true') {
         $data = "2"; /// este nombre ya existe;
     } else {
@@ -29,7 +29,7 @@ if ($_POST['tipo'] == "g") {
     }            
 } else {
     if ($_POST['tipo'] == "m") {        
-        $repetidos = repetidos($conexion, "nombre_pais", ucwords(strtolower($_POST['txt_2'])), "pais", "m", $_POST['txt_0'], 'id_pais', "");                    
+        $repetidos = repetidos($conexion, "nombre_pais", ucwords(strtolower($_POST['txt_2'])), "pais", "m", $_POST['txt_0'], 'id_pais', "", "");                    
         if ($repetidos == 'true') {
             $data = "2"; /// este dato ya existe;
         } else {            

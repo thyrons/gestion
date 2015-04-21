@@ -30,12 +30,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">          
           <h1>
-            Ingreso Provincias            
+            Ingreso de Ciudades            
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Ingresos</li>
-            <li class="active">Provincias</li>
+            <li class="active">Ciudades</li>
           </ol>
         </section>
 
@@ -47,13 +47,13 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Formularios Provincias</h3>
+                  <h3 class="box-title">Formularios Ciudades</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_provincia" class="form-horizontal" method="POST" action="">                
+                <form role="form" id="form_ciudad" class="form-horizontal" method="POST" action="">                
                   <div class="box-body col-md-12">                                                                             
                     <div class="form-group">                            
-                      <label for="txt_2" class="col-md-3">Nombre País</label>
+                      <label for="txt_1" class="col-md-3">Nombre País</label>
                       <div class="col-md-9">
                         <select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="Seleccione un país">
                           
@@ -62,9 +62,17 @@
                       </div>
                     </div>        
                     <div class="form-group">                            
-                      <label for="txt_2" class="col-md-3">Provincia</label>
+                      <label for="txt_2" class="col-md-3"> Provincia</label>
                       <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre Provincia" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                        <select class="chosen-select form-control" id="txt_2" name="txt_2" data-placeholder="Seleccione un país">
+                          
+                        </select>                           
+                      </div>
+                    </div>        
+                    <div class="form-group">                            
+                      <label for="txt_3" class="col-md-3">Ciudad</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="txt_3" name="txt_3" placeholder="Nombre Ciudad" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
                       </div>
                     </div>                                                                                                  
                   </div><!-- /.box-body -->
@@ -85,12 +93,14 @@
               <!-- general form elements disabled -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Tabla Provincias</h3>
+                  <h3 class="box-title">Tabla Ciudades</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="tabla_provincia" class="table table-bordered table-hover">
+                  <table id="tabla_ciudad" class="table table-bordered table-hover">
                     <thead>
                       <th>ID</th>
+                      <th>Ciudad</th>
+                      <th>id_provincia</th>
                       <th>Provincia/Estado</th>
                       <th>id_pais</th>
                       <th>País</th>                      
@@ -130,7 +140,7 @@
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
     <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
-    <script src="provincia.js" type="text/javascript"></script>
+    <script src="ciudad.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
     
