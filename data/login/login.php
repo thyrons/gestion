@@ -11,7 +11,7 @@
 	$data = existe($conexion,strtolower($_POST['txt_1']), strtolower($_POST['txt_2']));	
 	if( $data == '0'){				
 		$id_session = sesion_activa();
-    	auditoria_sistema($conexion,'usuario',$id_session,'Login','',$fecha_larga,$fecha,'','',"Ingreso al sistema por el usuario ".$_SESSION['usuario']."");		    	
+    	auditoria_sistema($conexion,'usuario',$id_session,'Login','',$fecha_larga,$fecha,'','',"Ingreso al sistema por el usuario ".$_SESSION['usuario_gestion']."");		    	
 	}	
 	echo $data;
 ?>

@@ -2,32 +2,32 @@ $(document).on("ready",inicio);
 function inicio(){	
 	cargar_tabla();
 	$("#btn_1").attr("disabled", true);
-	$('#tabla_categoria tbody').on( 'dblclick', 'tr', function () {  		
-		var data = $("#tabla_categoria").dataTable().fnGetData(this);                
+	$('#tabla_tipo_documento tbody').on( 'dblclick', 'tr', function () {  		
+		var data = $("#tabla_tipo_documento").dataTable().fnGetData(this);                
         $("#txt_0").val(data[0]);        
         $("#txt_1").val(data[1]);
         $("#txt_2").val(data[2]);                     
         $("#btn_1").html("");
         $("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
         $("#btn_1").attr("disabled", false);
-        comprobarCamposRequired("form_categoria");
+        comprobarCamposRequired("form_tipo_documento");
 	});
 	///////////
 	$("#btn_2").on('click',function(){
-		limpiar_form('form_categoria');
+		limpiar_form('form_tipo_documento');
 	});
-	$("#form_categoria :input").on("keyup click",function (e){//campos requeridos		
+	$("#form_tipo_documento :input").on("keyup click",function (e){//campos requeridos		
 		comprobarCamposRequired(e.currentTarget.form.id)
 	});	
 	//////////////////
-	$("#btn_1").on("click",guardar_categoria);
+	$("#btn_1").on("click",guardar_tipo_documento);
 	$("#btn_2").on("click",limpiar_form);
 }
 function cargar_tabla(){
-	var dataTable = $('#tabla_categoria').dataTable();
+	var dataTable = $('#tabla_tipo_documento').dataTable();
 	$.ajax({
         type: "POST",
-        url: "../varios.php?tipo=0&fun=6&tam=3",          
+        url: "../varios.php?tipo=0&fun=8&tam=3",          
         dataType: 'json',
         success: function(response) {         
         	dataTable.fnClearTable();
@@ -41,17 +41,17 @@ function cargar_tabla(){
         }        
     });        
 }
-function guardar_categoria(){
-	var resp=comprobarCamposRequired("form_categoria");
+function guardar_tipo_documento(){
+	var resp=comprobarCamposRequired("form_tipo_documento");
 	console.log(resp)
 	if(resp==true){
-		$("#form_categoria").on("submit",function (e){				
-			var valores = $("#form_categoria").serialize();
+		$("#form_tipo_documento").on("submit",function (e){				
+			var valores = $("#form_tipo_documento").serialize();
 			var texto=($("#btn_1").text()).trim();	
 			if(texto=="Guardar"){						
-				datos_categoria(valores,"g",e);					
+				datos_tipo_documento(valores,"g",e);					
 			}else{				
-				datos_categoria(valores,"m",e);					
+				datos_tipo_documento(valores,"m",e);					
 			}
 			e.preventDefault();
     		$(this).unbind("submit")
@@ -60,12 +60,12 @@ function guardar_categoria(){
 }
 
 
-function datos_categoria(valores,tipo,p){	
+function datos_tipo_documento(valores,tipo,p){	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo,
 		//contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
-		url: "categorias.php",			
+		url: "tipo_documento.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
 	    		alert('Datos Agregados Correctamente');			
@@ -73,12 +73,12 @@ function datos_categoria(valores,tipo,p){
 	    		limpiar_form(p);		    		
 	    	}else{
 	    		if( data == 1 ){
-	    			alert('Este código de de categoría ya existe ingrese otra');	
+	    			alert('Este código de documento ya existe ingrese otro');	
 	    			$("#txt_1").val("");
 	    			$("#txt_1").focus();	    			
 	    		}else{
 	    			if( data == 2){
-	    				alert('Este nombre de categoría ya existe ingrese otra');	
+	    				alert('Este nombre de documento ya existe ingrese otro');	
 	    				$("#txt_2").val("");
 	    				$("#txt_2").focus();	    			
 	    			}else{

@@ -67,9 +67,9 @@
 				$resp = '0'; ////ingreso				
 				//session_start();        
 				$_SESSION['id_gestion'] = $id_user;
-				$_SESSION['nombres'] = $nombres;
-				$_SESSION['usuario'] = $user;				
-				$_SESSION['fecha'] = $fecha_login;	
+				$_SESSION['nombres_gestion'] = $nombres;
+				$_SESSION['usuario_gestion'] = $user;				
+				$_SESSION['fecha_gestion'] = $fecha_login;	
 			}else{
 				$resp = '2'; ///clave incorrecta
 			}

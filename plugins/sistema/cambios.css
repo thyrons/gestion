@@ -1,0 +1,6 @@
+#form_usuarios .form-group{
+	margin-bottom: 10px;
+}
+#form_usuarios .chosen-container-single .chosen-single{
+	height: 30px;	
+}

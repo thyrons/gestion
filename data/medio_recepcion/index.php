@@ -29,12 +29,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">          
           <h1>
-            Ingreso Categorías            
+            Ingreso Medios de Recepción
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Ingresos</li>
-            <li class="active">Categorías</li>
+            <li class="active">Medios de Recepción</li>
           </ol>
         </section>
 
@@ -46,22 +46,22 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Formularios Categorías</h3>
+                  <h3 class="box-title">Formularios Medios de Recepción</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_categoria" class="form-horizontal" method="POST" action="">                
+                <form role="form" id="form_medio_recepcion" class="form-horizontal" method="POST" action="">                
                   <div class="box-body col-md-12">                                                            
                     <div class="form-group">                      
-                      <label for="txt_1" class="col-md-3">Cod. Categoría</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_1"  name="txt_1" placeholder="Código Categoría" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 +()]{1,}" style="text-transform: uppercase;">
+                      <label for="txt_1" class="col-md-4">Cod. Medio Recepción</label>
+                      <div class="col-md-8">
+                        <input type="text" class="form-control" id="txt_1"  name="txt_1" placeholder="Código Medio Recepción" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 +()]{1,}" style="text-transform: uppercase;">
                         <input type="hidden" class="form-control" id="txt_0"  name="txt_0">
                       </div>
                     </div>                                                                              
                     <div class="form-group">                            
-                      <label for="txt_2" class="col-md-3">Nom. Categoría</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre Categoría" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 () ]{1,}">
+                      <label for="txt_2" class="col-md-4">Medio Recepción</label>
+                      <div class="col-md-8">
+                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre Medio Recepción" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 () ]{1,}">
                       </div>
                     </div>                                                                                                  
                   </div><!-- /.box-body -->
@@ -82,10 +82,10 @@
               <!-- general form elements disabled -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Tabla Categorías</h3>
+                  <h3 class="box-title">Tabla Medios de Recepción</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="tabla_categoria" class="table table-bordered table-hover">
+                  <table id="tabla_medio_recepcion" class="table table-bordered table-hover">
                     <thead>
                       <th>ID</th>
                       <th>Código</th>
@@ -125,12 +125,12 @@
     <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
-    <script src="categorias.js" type="text/javascript"></script>
+    <script src="medio_recepcion.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       $(function () {        
-        $('#tabla_categoria').dataTable({
+        $('#tabla_medio_recepcion').dataTable({
           "bPaginate": true,
           "bLengthChange": true,
           "bFilter": true,

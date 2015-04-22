@@ -29,12 +29,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">          
           <h1>
-            Ingreso Categorías            
+            Tipos de Usuario           
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Ingresos</li>
-            <li class="active">Categorías</li>
+            <li class="active">Tipos de Usuario</li>
           </ol>
         </section>
 
@@ -46,24 +46,18 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Formularios Categorías</h3>
+                  <h3 class="box-title">Tipos de Usuarios</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_categoria" class="form-horizontal" method="POST" action="">                
+                <form role="form" id="form_tipo_usuario" class="form-horizontal" method="POST" action="">                
                   <div class="box-body col-md-12">                                                            
                     <div class="form-group">                      
-                      <label for="txt_1" class="col-md-3">Cod. Categoría</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_1"  name="txt_1" placeholder="Código Categoría" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 +()]{1,}" style="text-transform: uppercase;">
+                      <label for="txt_1" class="col-md-4">Tipo Usuario</label>
+                      <div class="col-md-8">
+                        <input type="text" class="form-control" id="txt_1"  name="txt_1" placeholder="Tipo Usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 +()]{1,}">
                         <input type="hidden" class="form-control" id="txt_0"  name="txt_0">
                       </div>
-                    </div>                                                                              
-                    <div class="form-group">                            
-                      <label for="txt_2" class="col-md-3">Nom. Categoría</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre Categoría" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9 () ]{1,}">
-                      </div>
-                    </div>                                                                                                  
+                    </div>                                                                                                          
                   </div><!-- /.box-body -->
                   <div class="box-footer">                    
                     <button type="submit" class="btn btn-primary"  id="btn_1">
@@ -82,13 +76,12 @@
               <!-- general form elements disabled -->
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Tabla Categorías</h3>
+                  <h3 class="box-title">Tabla Tipos de Usuario</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="tabla_categoria" class="table table-bordered table-hover">
+                  <table id="tabla_tipo_usuario" class="table table-bordered table-hover">
                     <thead>
-                      <th>ID</th>
-                      <th>Código</th>
+                      <th>ID</th>                      
                       <th>Nombre</th>                      
                     </thead>
                     <tbody>                      
@@ -125,12 +118,12 @@
     <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
-    <script src="categorias.js" type="text/javascript"></script>
+    <script src="tipo_usuario.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
     <script type="text/javascript">
       $(function () {        
-        $('#tabla_categoria').dataTable({
+        $('#tabla_tipo_usuario').dataTable({
           "bPaginate": true,
           "bLengthChange": true,
           "bFilter": true,

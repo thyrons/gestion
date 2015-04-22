@@ -27,15 +27,15 @@ function banner(){
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="../../dist/img/avatar5.png" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">'.$_SESSION['nombres'].'</span>
+                  <span class="hidden-xs">'.$_SESSION['nombres_gestion'].'</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image" />
                     <p>
-                      '.$_SESSION['nombres'].'
-                      <small>Miembro desde '.$_SESSION['fecha'].'</small>
+                      '.$_SESSION['nombres_gestion'].'
+                      <small>Miembro desde '.$_SESSION['fecha_gestion'].'</small>
                     </p>
                   </li>                  
                   <!-- Menu Footer-->

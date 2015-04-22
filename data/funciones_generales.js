@@ -79,8 +79,33 @@ function limpiar_form(e){
                     $("#btn_1").html('');
                     $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
                 }else{       
-
-                }
+                    if(form == "form_categoria"){            
+                        $("#btn_1").html('');
+                        $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                    }else{       
+                        if(form == "form_departamentos"){            
+                            $("#btn_1").html('');
+                            $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                        }else{       
+                            if(form == "form_tipo_documento"){            
+                                $("#btn_1").html('');
+                                $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                            }else{       
+                                if(form == "form_medio_recepcion"){            
+                                    $("#btn_1").html('');
+                                    $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                                }else{       
+                                    if(form == "form_tipo_usuario"){            
+                                        $("#btn_1").html('');
+                                        $("#btn_1").append("<span class='glyphicon glyphicon-save'></span> Guardar");                        
+                                    }else{       
+                                        
+                                    }       
+                                }    
+                            }        
+                        }    
+                    }
+                }                
             }
         }
         $("input:not([readonly='readonly']):text:visible:first").focus();   
@@ -164,6 +189,88 @@ function adelante(id,carpeta,archivo){
 
 
 
+function carga_ubicaciones(pais,provincia,ciudad){
+    $.ajax({        
+        type: "POST",
+        dataType: 'json',        
+        url: "../varios.php?tipo=0&id=0&fun=1&tam=2",        
+        success: function(response) {         
+            for (var i = 0; i < response.length; i=i+2) {       
+                if(response[i+1] == 'Ecuador'){
+                    $("#"+pais).append("<option value ="+response[i]+" selected>"+response[i+1]+"</option>");                                                                                                                                           
+                }
+                else{
+                    $("#"+pais).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                            
+                }                        
+            }   
+            $("#"+pais).trigger("chosen:updated");                              
+            $.ajax({       /*cargar el select provincia*/        
+                type: "POST",
+                dataType: 'json',        
+                url: "../varios.php?tipo=0&id="+$("#"+pais).val()+"&fun=5&tam=2",        
+                success: function(response) {         
+                    for (var i = 0; i < response.length; i=i+2) {               
+                        $("#"+provincia).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                           
+                    }   
+                    $("#"+provincia).trigger("chosen:updated");      
+                    $.ajax({      /*cargar el select ciudades*/         
+                        type: "POST",
+                        dataType: 'json',        
+                        url: "../varios.php?tipo=0&id="+$("#"+provincia).val()+"&fun=11&tam=2",        
+                        success: function(response) {         
+                            for (var i = 0; i < response.length; i=i+2) {               
+                                $("#"+ciudad).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                           
+                            }   
+                            $("#"+ciudad).trigger("chosen:updated");                              
+                        }                   
+                    });                        
+                }                   
+            });
+        }                   
+    }); 
+}
+function change_pais(pais,provincia,ciudad){    
+    $.ajax({       /*cargar el select provincia*/        
+        type: "POST",
+        dataType: 'json',        
+        url: "../varios.php?tipo=0&id="+$("#"+pais).val()+"&fun=5&tam=2",        
+        success: function(response) {         
+            $("#"+provincia).html("");            
+            $("#"+ciudad).html("");            
+            $("#"+ciudad).trigger("chosen:updated");      
+            for (var i = 0; i < response.length; i=i+2) {               
+                $("#"+provincia).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                           
+            }   
+            $("#"+provincia).trigger("chosen:updated");      
+            $.ajax({      /*cargar el select ciudades*/         
+                type: "POST",
+                dataType: 'json',        
+                url: "../varios.php?tipo=0&id="+$("#"+provincia).val()+"&fun=11&tam=2",        
+                success: function(response) {  
+                    $("#"+ciudad).html("");       
+                    for (var i = 0; i < response.length; i=i+2) {               
+                        $("#"+ciudad).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                           
+                    }   
+                    $("#"+ciudad).trigger("chosen:updated");                              
+                }                   
+            });                        
+        }                   
+    });    
+}
+function change_provincia(pais,provincia,ciudad){    
+    $.ajax({       /*cargar el select provincia*/        
+        type: "POST",
+        dataType: 'json',        
+        url: "../varios.php?tipo=0&id="+$("#"+provincia).val()+"&fun=11&tam=2",        
+        success: function(response) {         
+            $("#"+ciudad).html("");
+            for (var i = 0; i < response.length; i=i+2) {               
+                $("#"+ciudad).append("<option value ="+response[i]+">"+response[i+1]+"</option>");                                                                                                                                           
+            }   
+            $("#"+ciudad).trigger("chosen:updated");                                      
+        }                   
+    });
+}
 
 
 function documentos(fun,txt_1,txt_2){
