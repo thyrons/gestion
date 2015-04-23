@@ -19,7 +19,7 @@ if ($_POST['tipo'] == "g") {
         if ($repetidos == 'true') {
             $data = "2"; /// este nombre ya existe;
         } else {
-            $sql = "insert into categorias values ('".$id."','" . ucwords(strtolower($_POST['txt_2'])) . "','" . strtoupper($_POST['txt_1']) . "','0')";
+            $sql = "insert into categorias values ('".$id."','" . ucwords(strtolower($_POST['txt_2'])) . "','" . strtoupper($_POST['txt_1']) . "','1')";
             $guardar = guardarSql($conexion, $sql);
             if($guardar == 'true'){                
                 $sql_nuevo = "select (id_categoria,nombre_categoria,codigo_categoria,estado) from categorias where id_categoria = '$id'";        

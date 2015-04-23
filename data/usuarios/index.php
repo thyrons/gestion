@@ -69,58 +69,59 @@
                     <div class="form-group col-md-4">
                       <label for="txt_3" class="">Nombres Completos</label>                      
                       <input type="text" class="form-control" id="txt_3" name="txt_3" placeholder="Nombres Completos" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">                      
-                    </div>                              
+                    </div>     
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_4" class="">País</label>                      
+                      <select class="chosen-select form-control" id="txt_4" name="txt_4" data-placeholder="Seleccione un País">
+                      </select>                      
+                    </div>              
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_5" class="">Provincia/Estado</label>                      
+                      <select class="chosen-select form-control" id="txt_5" name="txt_5" data-placeholder="Seleccione una Provincia">
+                      </select>                      
+                    </div>              
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_6" class="">Ciudades</label>                      
+                      <select class="chosen-select form-control" id="txt_6" name="txt_6" data-placeholder="Seleccione una ciudad">
+                      </select>                      
+                    </div>                            
                     <div class="form-group col-md-4">
-                      <label  class="" for="txt_4">Nro. Teléfono</label>                      
+                      <label  class="" for="txt_7">Nro. Teléfono</label>                      
                       <div class="input-group">
                         <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                         </div>
-                        <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-999"' data-mask id="txt_4" name="txt_4" />
+                        <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-999"' data-mask id="txt_7" name="txt_7" />
                       </div><!-- /.input group -->                      
                     </div><!-- /.form group -->  
                     <div class="form-group col-md-4">
-                      <label  class="" for="txt_5">Nro. Celular</label>                      
+                      <label  class="" for="txt_8">Nro. Celular</label>                      
                       <div class="input-group">
                         <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                         </div>
-                        <input type="text" class="form-control" data-inputmask='"mask": "(99) 99999999"' data-mask id="txt_5" name="txt_5" />
+                        <input type="text" class="form-control" data-inputmask='"mask": "(99) 99999999"' data-mask id="txt_8" name="txt_8" />
                       </div><!-- /.input group -->                      
                     </div><!-- /.form group -->  
                     <div class="form-group col-md-4">                            
-                      <label for="txt_6" class="">Dirección</label>                      
-                      <input type="text" class="form-control" id="txt_6" name="txt_6" placeholder="Dirección del usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
-                    </div>  
+                      <label for="txt_9" class="">Dirección</label>                      
+                      <input type="text" class="form-control" id="txt_9" name="txt_9" placeholder="Dirección del usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                    </div>                                                                                                         
                     <div class="form-group col-md-4">                            
-                      <label for="txt_7" class="">País</label>                      
-                      <select class="chosen-select form-control" id="txt_7" name="txt_7" data-placeholder="Seleccione un País">
-                      </select>                      
-                    </div>              
-                    <div class="form-group col-md-4">                            
-                      <label for="txt_8" class="">Provincia/Estado</label>                      
-                      <select class="chosen-select form-control" id="txt_8" name="txt_8" data-placeholder="Seleccione una Provincia">
-                      </select>                      
-                    </div>              
-                    <div class="form-group col-md-4">                            
-                      <label for="txt_9" class="">Ciudades</label>                      
-                      <select class="chosen-select form-control" id="txt_9" name="txt_9" data-placeholder="Seleccione una ciudad">
-                      </select>                      
-                    </div>              
-                    <div class="form-group col-md-4">                            
-                      <label for="txt_10" class="">E-mail</label>                      
-                      <input type="text" class="form-control" id="txt_10" name="txt_10" placeholder="Cuenta de correo electróncio">
-                    </div>              
-                    <div class="form-group col-md-4">                            
-                      <label for="txt_11" class="">Tipo Usuario</label>                      
-                      <select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Seleccione un Tipo de Usuario">
+                      <label for="txt_10" class="">Tipo Usuario</label>                      
+                      <select class="chosen-select form-control" id="txt_10" name="txt_10" data-placeholder="Seleccione un Tipo de Usuario">
                       </select>                      
                     </div>     
                     <div class="form-group col-md-4">                            
-                      <label for="txt_12" class="">Categoría Usuario</label>                      
-                      <select class="chosen-select form-control" id="txt_12" name="txt_12" data-placeholder="Seleccione una categoría de Usuario">
+                      <label for="txt_11" class="">Categoría Usuario</label>                      
+                      <select class="chosen-select form-control" id="txt_11" name="txt_11" data-placeholder="Seleccione una categoría de Usuario">
                       </select>                      
-                    </div>              
+                    </div>                                                       
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_12" class="">Departamento</label>                      
+                      <select class="chosen-select form-control" id="txt_12" name="txt_12" data-placeholder="Seleccione una Departamento Administrativo">
+                      </select>                      
+                    </div>  
                     <div class="form-group col-md-4">                            
                       <label for="txt_13" class="">Nombre Usuario</label>                      
                       <input type="text" class="form-control" id="txt_13" name="txt_13" placeholder="Nombre del Usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
@@ -133,10 +134,14 @@
                       <label for="txt_15" class="">Repetir Clave</label>                      
                       <input type="password" class="form-control" id="txt_15" name="txt_15" placeholder="Repetir clave del usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
                     </div>
-                    <div class="form-group col-md-12">                            
+                    <div class="form-group col-md-8">                            
                       <label for="txt_16" class="">Institución</label>                      
                       <input type="text" class="form-control" id="txt_16" name="txt_16" placeholder="Institución a la que pertenece" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}" value="Uniandes Ibarra">
-                    </div>                      
+                    </div>  
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_17" class="">E-mail</label>                      
+                      <input type="text" class="form-control" id="txt_17" name="txt_17" placeholder="Cuenta de correo electróncio">
+                    </div>  
                   </div>                  
                   <div class="box-footer">                       
                     <button type="submit" class="btn btn-primary "  id="btn_1">
@@ -150,8 +155,8 @@
                     </button>                    
                     <button type="button" class="btn btn-primary" id="btn_4">
                       <span class="glyphicon glyphicon-arrow-right"></span> Adelante
-                    </button>                    
-                    <button type="button" class="btn btn-primary" id="btn_5">
+                    </button>                                                            
+                    <button type="button" class="btn btn-primary" id="btn_5" data-toggle="modal" data-target="#modal_usuarios">
                       <span class="glyphicon glyphicon-search"></span> Buscar
                     </button>                                        
                   </div>                  
@@ -162,6 +167,56 @@
             <!-- right column -->            
           </div>   <!-- /.row -->
         </section>
+        <div class="modal fade" id="modal_usuarios">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Búsqueda de Usuarios</h4>
+              </div>
+              <div class="modal-body">
+              <div class="row">              
+              <div class="col-mx-12">
+                <table id="tabla_usuarios" class="table table-bordered table-hover"  >
+                  <thead>
+                    <th>ID</th>
+                    <th>COD. USUARIO</th>
+                    <th>NOMBRES COMPLETOS</th>
+                    <th>DIRECCIÓN</th>
+                    <th>id_ciudad</th>                     
+                    <th>CIUDAD</th>
+                    <th>id_provincia</th>                     
+                    <th>PROVINCIA</th>
+                    <th>id_pais</th>                     
+                    <th>PAIS</th>
+                    <th>TELÉFONO</th>                     
+                    <th>CELULAR</th>
+                    <th>E-MAIL</th>                     
+                    <th>id_tipo_user</th>
+                    <th>TIPO USUARIO</th>                     
+                    <th>USUARIO</th>
+                    <th>INSTITUCIÓN</th>                     
+                    <th>id_categoria</th>
+                    <th>CATEGORÍA</th>                     
+                    <th>id_departamento</th>
+                    <th>DEPARTAMENTO</th>                     
+                    <th>FECHA</th>
+                    <th>T. DOC.</th>                     
+                    <th>DOCUMENTO</th>
+                  </thead>
+                  <tbody>                      
+                  </tbody>
+                </table>                          
+              </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Agregar Datos</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
         <!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php footer(); ?>
@@ -189,6 +244,11 @@
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
     <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
+
+    <script src="../../plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+    
     <script src="usuarios.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     

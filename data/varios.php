@@ -77,7 +77,13 @@
 									}else{
 										if($_GET['fun'] == "10"){//para ususarios general
 											if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
-												$sql = "select id_tipo_usuario,nombre_tipo from tipo_usuario order by id_tipo_usuario asc";
+												if($_SESSION['tipo_user'] == '1'){
+													$sql = "select id_tipo_usuario,nombre_tipo from tipo_usuario order by id_tipo_usuario asc";	
+												}else{
+													$sql = "select id_tipo_usuario,nombre_tipo from tipo_usuario where estado = '1' order by id_tipo_usuario asc";													
+													
+												}
+												
 												cargarSelect($conexion,$sql,$_GET['tam']);
 											}else{
 												
@@ -93,13 +99,35 @@
 											}else{
 												if($_GET['fun'] == "12"){//para ciudad con id
 													if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
-														$sql = "select id_categoria,nombre_categoria from categorias order by id_categoria asc";
+														if($_SESSION['tipo_user'] == '1'){
+															$sql = "select id_categoria,nombre_categoria from categorias order by id_categoria asc";
+														}else{
+															$sql = "select id_categoria,nombre_categoria where estado = '1' from categorias order by id_categoria asc";
+														}
 														cargarSelect($conexion,$sql,$_GET['tam']);
 													}else{
 														
 													}
 												}else{
+													if($_GET['fun'] == "13"){//para ciudad con id
+														if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
+															$sql = "select id_departamento,nombre_departamento from departamento order by id_departamento asc";
+															cargarSelect($conexion,$sql,$_GET['tam']);
+														}else{
+															
+														}
+													}else{
+														if($_GET['fun'] == "14"){//para ciudad con id
+															if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
+																$sql = "select id_usuario,cod_usuario,nombres_usuario,direccion_usuario,usuario.id_ciudad, nombre_ciudad, provincias.id_provincia, nombre_provincia, pais.id_pais, nombre_pais,telefono_usuario,celular_usuario,email_usuario,usuario.id_tipo_user,nombre_tipo,usuario,institucion,usuario.id_categoria,nombre_categoria,usuario.id_departamento,nombre_departamento,fecha,tipo_documento,nro_documento from usuario,ciudad,provincias,pais,tipo_usuario,categorias,departamento where usuario.id_ciudad = ciudad.id_ciudad and provincias.id_provincia = ciudad.id_provincia and provincias.id_pais = pais.id_pais and tipo_usuario.id_tipo_usuario = usuario.id_tipo_user and usuario.id_categoria = categorias.id_categoria and departamento.id_departamento = usuario.id_departamento";
+																cargarSelect($conexion,$sql,$_GET['tam']);
+															}else{
+																
+															}
+														}else{
 
+														}
+													}
 												}
 											}
 										}

@@ -15,10 +15,10 @@ if ($_POST['tipo'] == "g") {
     if ($repetidos == 'true') {
         $data = "2"; /// este nombre ya existe;
     } else {
-        $sql = "insert into tipo_usuario values ('".$id."','" . ucwords(strtolower($_POST['txt_1'])) . "')";
+        $sql = "insert into tipo_usuario values ('".$id."','" . ucwords(strtolower($_POST['txt_1'])) . "','1')";
         $guardar = guardarSql($conexion, $sql);
         if($guardar == 'true'){                
-            $sql_nuevo = "select (id_tipo_usuario,nombre_tipo) from tipo_usuario where id_tipo_usuario = '$id'";        
+            $sql_nuevo = "select (id_tipo_usuario,nombre_tipo,estado) from tipo_usuario where id_tipo_usuario = '$id'";        
             $sql_nuevo = sql_array($conexion,$sql_nuevo);                                  
             auditoria_sistema($conexion,'tipo_usuario',$id_user,'Insert',$id,$fecha_larga,$fecha,$sql_nuevo,'','Inserción de datos en la tabla tipo_usuario');
             $data = "3";//guardado    
@@ -32,12 +32,12 @@ if ($_POST['tipo'] == "g") {
         if ($repetidos == 'true') {
             $data = "2"; /// este dato ya existe;
         } else {            
-            $sql_anterior = "select (id_tipo_usuario,nombre_tipo) from tipo_usuario where id_tipo_usuario = '".$_POST['txt_0']."'";        
+            $sql_anterior = "select (id_tipo_usuario,nombre_tipo,estado) from tipo_usuario where id_tipo_usuario = '".$_POST['txt_0']."'";        
             $sql_anterior = sql_array($conexion,$sql_anterior);
             $sql = "update tipo_usuario set nombre_tipo= '" . ucwords(strtolower($_POST['txt_1'])) . "' where id_tipo_usuario = '".$_POST['txt_0']."'";            
             $guardar = guardarSql($conexion, $sql);            
             if($guardar == 'true'){                
-                $sql_nuevo = "select (id_tipo_usuario,nombre_tipo) from tipo_usuario where id_tipo_usuario = '".$_POST['txt_0']."'";      
+                $sql_nuevo = "select (id_tipo_usuario,nombre_tipo,estado) from tipo_usuario where id_tipo_usuario = '".$_POST['txt_0']."'";      
                 $sql_nuevo = sql_array($conexion,$sql_nuevo); 
                 auditoria_sistema($conexion,'tipo_usuario',$id_user,'Update',$id,$fecha_larga,$fecha,$sql_nuevo,$sql_anterior,"Modificación del registro ".$_POST['txt_0']." la tabla tipo_usuario");                        
                 $data = "3";

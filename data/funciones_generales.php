@@ -48,7 +48,7 @@
 		$nombres = '';
 		$pass = '';
 		$fecha_login = '';
-		$sql = "select id_usuario,nombres_usuario,usuario,fecha from usuario where usuario = '".$usuario."'";
+		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user from usuario where usuario = '".$usuario."'";
 		$sql = pg_query($conexion,$sql);
 		if(pg_num_rows($sql)){			
 			while($row = pg_fetch_row($sql)){
@@ -56,6 +56,7 @@
 				$nombres = $row[1];
 				$user = $row[2];
 				$fecha_login = $row[3];
+				$tipo_user = $row[4];
 			}
 			$sql_1 = "select id_clave,clave from clave where usuario = '".$id_user."'";			
 			$sql_1 = pg_query($conexion,$sql_1);			
@@ -70,6 +71,7 @@
 				$_SESSION['nombres_gestion'] = $nombres;
 				$_SESSION['usuario_gestion'] = $user;				
 				$_SESSION['fecha_gestion'] = $fecha_login;	
+				$_SESSION['tipo_user'] = $tipo_user;	
 			}else{
 				$resp = '2'; ///clave incorrecta
 			}
@@ -83,6 +85,7 @@
 	    $repetidos = 'true';
 	    if ($tipo == "g") {
 	        $sql = "select " . $campo . " from " . $tabla . " where " . $campo . " = '" . $valor . "'";
+	        //echo $sql;
 	        if (pg_num_rows(pg_query($conexion, $sql))) {
 	            $repetidos = 'true';
 	        } else {
