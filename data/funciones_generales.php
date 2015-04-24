@@ -64,7 +64,7 @@
 				$pass = $row_1[1];
 				$id_clave = $row_1[0];				
 			}			
-			if(md5($clave) == $pass){
+			if(base64_encode($clave) == $pass){
 				$resp = '0'; ////ingreso				
 				//session_start();        
 				$_SESSION['id_gestion'] = $id_user;
@@ -154,5 +154,18 @@
 	    $sql = pg_fetch_row(pg_query($sql));                                 
 	    $sql = "array['".implode("', '", $sql)."']";   
 	    return $sql;     
+	}
+	function is_base64($s){    
+	    if (!preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s)) 
+	        return false;
+	    
+	    $decoded = base64_decode($s, true);
+	    if(false === $decoded) 
+	        return false;
+	    
+	    if(base64_encode($decoded) != $s) 
+	        return false;
+
+	    return true;
 	}
 ?>

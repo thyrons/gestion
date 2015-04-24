@@ -128,11 +128,11 @@
                     </div>  
                     <div class="form-group col-md-4">                            
                       <label for="txt_14" class="">Clave</label>                      
-                      <input type="password" class="form-control" id="txt_14" name="txt_14" placeholder="Nombre del Usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                      <input type="password" class="form-control" id="txt_14" name="txt_14" placeholder="Clave del usuario" required pattern="[=/*+A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
                     </div>  
                     <div class="form-group col-md-4">                            
                       <label for="txt_15" class="">Repetir Clave</label>                      
-                      <input type="password" class="form-control" id="txt_15" name="txt_15" placeholder="Repetir clave del usuario" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                      <input type="password" class="form-control" id="txt_15" name="txt_15" placeholder="Repetir clave del usuario" required pattern="[=/*+A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
                     </div>
                     <div class="form-group col-md-8">                            
                       <label for="txt_16" class="">Institución</label>                      
@@ -151,10 +151,10 @@
                       <span class="glyphicon glyphicon-paperclip"></span> Limpiar
                     </button>                    
                     <button type="button" class="btn btn-primary" id="btn_3">
-                      <span class="glyphicon glyphicon-arrow-left"></span> Atras
+                      <span class="glyphicon glyphicon-arrow-left"></span> Atras 
                     </button>                    
                     <button type="button" class="btn btn-primary" id="btn_4">
-                      <span class="glyphicon glyphicon-arrow-right"></span> Adelante
+                      Adelante <span class="glyphicon glyphicon-arrow-right"></span>
                     </button>                                                            
                     <button type="button" class="btn btn-primary" id="btn_5" data-toggle="modal" data-target="#modal_usuarios">
                       <span class="glyphicon glyphicon-search"></span> Buscar
@@ -174,14 +174,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Búsqueda de Usuarios</h4>
               </div>
-              <div class="modal-body">
-              <div class="row">              
-              <div class="col-mx-12">
-                <table id="tabla_usuarios" class="table table-bordered table-hover"  >
+              <div class="modal-body">              
+                  
+                  <table id="tabla_usuarios" class="table table-striped table-bordered" cellspacing="0" width="100%">
                   <thead>
                     <th>ID</th>
-                    <th>COD. USUARIO</th>
-                    <th>NOMBRES COMPLETOS</th>
+                    <th>CODÍGO</th>
+                    <th>NOMBRES</th>
                     <th>DIRECCIÓN</th>
                     <th>id_ciudad</th>                     
                     <th>CIUDAD</th>
@@ -203,16 +202,15 @@
                     <th>FECHA</th>
                     <th>T. DOC.</th>                     
                     <th>DOCUMENTO</th>
+                    <th>CLAVE</th>
                   </thead>
                   <tbody>                      
                   </tbody>
-                </table>                          
-              </div>
-              </div>
-              </div>
+                  </table>                                        
+                </div>
+              
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Agregar Datos</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>                
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->

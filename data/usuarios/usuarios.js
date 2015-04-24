@@ -1,8 +1,42 @@
 $(document).on("ready",inicio);
     var dataTable = jQuery('#tabla_usuarios').DataTable({
-            "scrollX": true
-	        });         
-function inicio(){			
+    "bAutoWidth": false,	
+    "scrollY": "200px",
+    "scrollX": "100%",
+    "sScrollXInner": "200%",
+    "paging": false,
+    "aoColumnDefs": [
+        { "bSearchable": false, "bVisible": true, "aTargets": [ 0 ], },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 4 ] },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 6 ] },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 8 ] },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 13 ] },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 17 ] },        
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 19 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 3 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 7 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 9 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 10 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 11 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 21 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 22 ] },                
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 12 ] }, 
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 15 ] }, 
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 16 ] }, 
+       	{ "bSearchable": false, "bVisible": false, "aTargets": [ 14 ] }, 
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 18 ] }, 
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 23 ] }, 
+        { "bSearchable": false, "bVisible": false, "aTargets": [ 24 ] }, 
+    ],      	   			
+  	"bPaginate": true,
+  	"bLengthChange": true,
+  	"bFilter": true,
+  	"bSort": true,
+  	"bInfo": true,
+  	
+  	'iDisplayLength': 5,             
+});         
+function inicio(){				
 	$("[data-mask]").inputmask();	
 	$('.chosen-select').chosen({
 		allow_single_deselect:true,
@@ -17,8 +51,7 @@ function inicio(){
 			 $this.next().css({'width': $this.parent().width()});			 
 		})
 	}).trigger('resize.chosen');
-	/////////////
-	cargar_tabla();
+	/////////////	
 	carga_ubicaciones("txt_4","txt_5","txt_6");//pais provincia ciudad			
 	$("#txt_4").change(function(){
 		change_pais("txt_4","txt_5","txt_6");
@@ -48,6 +81,72 @@ function inicio(){
 	});	
 	/////////////
 	$("#btn_1").on('click',guardar_usuario);
+	/////////
+	$("#btn_5").on('click',function(){
+		cargar_tabla();
+	});
+	////////////
+	$('#tabla_usuarios tbody').on( 'dblclick', 'tr', function () {  		
+		var data = $("#tabla_usuarios").dataTable().fnGetData(this);                        
+        $("#txt_0").val(data[0]);        
+        $("#txt_3").val(data[2]);                        
+        $("#txt_9").val(data[3]);
+		
+		$("#txt_4").val(data[8]);
+		$("#txt_4").trigger("chosen:updated"); 
+		
+		$.ajax({        
+		    type: "POST",
+		    dataType: 'json',        
+		    url: "../varios.php?tipo=0&fun=5&tam=2&id="+$("#txt_4").val(),          
+		    success: function(response) {         			        	
+		    	$("#txt_5").html("");
+		        for (var i = 0; i < response.length; i=i+2) {            				            			        	
+					$("#txt_5").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+		        }   
+		        $("#txt_5").val(data[6]);
+		        $("#txt_5").trigger("chosen:updated"); 	                                     
+
+		        $.ajax({        
+				    type: "POST",
+				    dataType: 'json',        
+				    url: "../varios.php?tipo=0&fun=11&tam=2&id="+$("#txt_5").val(),          
+				    success: function(response) {         			        	
+				    	$("#txt_6").html("");
+				        for (var i = 0; i < response.length; i=i+2) {            				            			        	
+							$("#txt_6").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+				        }   
+				        $("#txt_6").val(data[4]);
+				        $("#txt_6").trigger("chosen:updated"); 	 				         
+				        $('#modal_usuarios').modal('hide');                                  				        
+				    }
+				});
+		    }
+		});	   				
+		$("#txt_1").val(data[22]);   
+		$("#txt_1").trigger("chosen:updated"); 
+		documentos('0',"txt_1","txt_2");
+		$("#txt_2").val(data[23]);   		
+		$("#txt_7").val(data[10]);   				
+		$("#txt_8").val(data[11]);
+		$("#txt_10").val(data[13]);
+		$("#txt_10").trigger("chosen:updated"); 	 				         
+		$("#txt_11").val(data[17]);
+		$("#txt_11").trigger("chosen:updated"); 	 				         
+		$("#txt_12").val(data[19]);
+		$("#txt_12").trigger("chosen:updated"); 	 				         
+		$("#txt_13").val(data[15]);
+		$("#txt_14").val(data[24]);
+		$("#txt_15").val(data[24]);
+
+		$("#txt_16").val(data[16]);
+		$("#txt_17").val(data[12]);
+
+        $("#btn_1").html("");
+        $("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
+        $("#btn_1").attr("disabled", false);
+        comprobarCamposRequired("form_usuarios");        
+	});
 }
 
 function cargar_tipo_usuario(){
@@ -158,12 +257,12 @@ function datos_usuarios(valores,tipo,p){
 function cargar_tabla(){
 	$.ajax({
         type: "POST",
-        url: "../varios.php?tipo=0&fun=14&tam=24",          
+        url: "../varios.php?tipo=0&fun=14&tam=25",          
         dataType: 'json',
         success: function(response) {
     
         	dataTable.fnClearTable();
-        	for (var i = 0; i < response.length; i=i+24) {            	        		
+        	for (var i = 0; i < response.length; i=i+25) {            	        		
         		dataTable.fnAddData([
 	            response[i+0],
 	            response[i+1],
@@ -189,6 +288,7 @@ function cargar_tabla(){
 	            response[i+21],
 	            response[i+22],
 	            response[i+23],
+	            response[i+24],
 	           	]);                    
             }                            
         }        
