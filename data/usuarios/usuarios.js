@@ -147,6 +147,157 @@ function inicio(){
         $("#btn_1").attr("disabled", false);
         comprobarCamposRequired("form_usuarios");        
 	});
+	////////////////
+	$("#btn_3").on("click",function (){   
+	    var resp = "";    
+	    resp =atras($("#txt_0").val(),"usuarios","secuencia.php");   
+	    console.log(resp)
+	    if(resp[0] != false){	    	
+	    	$("#txt_0").val(resp[0][0]);
+	    	$("#txt_3").val(resp[0][2]);
+	    	$("#txt_9").val(resp[0][3]);
+	    	$("#txt_7").val(resp[0][10]);
+	    	$("#txt_8").val(resp[0][11]);
+	    	$("#txt_17").val(resp[0][12]);
+	    	$("#txt_13").val(resp[0][15]);
+	    	$("#txt_16").val(resp[0][16]);	    	
+
+	    	$("#txt_4").val(resp[0][8]);
+			$("#txt_4").trigger("chosen:updated"); 			
+			$.ajax({        
+			    type: "POST",
+			    dataType: 'json',        
+			    url: "../varios.php?tipo=0&fun=5&tam=2&id="+$("#txt_4").val(),          
+			    success: function(response) {         			        				    	
+			    	$("#txt_5").html("");
+			        for (var i = 0; i < response.length; i=i+2) {            			        	
+						$("#txt_5").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+			        }   
+			        $("#txt_5").val(resp[0][6]);
+			        $("#txt_5").trigger("chosen:updated"); 	                                     
+
+			        $.ajax({        
+					    type: "POST",
+					    dataType: 'json',        
+					    url: "../varios.php?tipo=0&fun=11&tam=2&id="+resp[0][6],          
+					    success: function(response) {         			        	
+					    	$("#txt_6").html("");
+					        for (var i = 0; i < response.length; i=i+2) {            				            			        	
+								$("#txt_6").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+					        }   
+					        $("#txt_6").val(resp[0][4]);
+					        $("#txt_6").trigger("chosen:updated"); 	 				         
+					        $('#modal_usuarios').modal('hide');                                  				        
+					    }
+					});
+			    }
+			});	   			    	
+
+	    	$("#txt_10").val(resp[0][13]);
+			$("#txt_10").trigger("chosen:updated"); 	 				         
+			$("#txt_11").val(resp[0][17]);
+			$("#txt_11").trigger("chosen:updated"); 	 				         
+			$("#txt_12").val(resp[0][19]);
+			$("#txt_12").trigger("chosen:updated"); 	 				         
+
+	    	$("#txt_1").trigger("chosen:updated"); 
+	    	$("#txt_1").val(resp[0][22]);
+	    	documentos('0',"txt_1","txt_2");
+	    	$("#txt_2").val(resp[0][23]);
+	    	$("#txt_14").val(resp[0][24]);
+			$("#txt_15").val(resp[0][24]);
+
+			$("#btn_1").html("");
+        	$("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
+        	$("#btn_1").attr("disabled", false);
+        	comprobarCamposRequired("form_usuarios");        
+
+	    }else{
+	    	$.gritter.add({                         
+                title: 'Datos Enviados..!',                         
+                text: 'No existen mas registros.',
+                image: '../../img/confirm.png',                           
+                sticky: false,                          
+                time: 1000,                                 
+                class_name: 'light',                                                                
+            });      
+	    }         	    
+	}); 	
+	$("#btn_4").on("click",function (){   
+		    var resp = "";    
+		    resp =adelante($("#txt_0").val(),"usuarios","secuencia.php");   
+		    console.log(resp)
+		    if(resp[0] != false){	    	
+		    	$("#txt_0").val(resp[0][0]);
+		    	$("#txt_3").val(resp[0][2]);
+		    	$("#txt_9").val(resp[0][3]);
+		    	$("#txt_7").val(resp[0][10]);
+		    	$("#txt_8").val(resp[0][11]);
+		    	$("#txt_17").val(resp[0][12]);
+		    	$("#txt_13").val(resp[0][15]);
+		    	$("#txt_16").val(resp[0][16]);	    	
+
+		    	$("#txt_4").val(resp[0][8]);
+				$("#txt_4").trigger("chosen:updated"); 			
+				$.ajax({        
+				    type: "POST",
+				    dataType: 'json',        
+				    url: "../varios.php?tipo=0&fun=5&tam=2&id="+$("#txt_4").val(),          
+				    success: function(response) {         			        				    	
+				    	$("#txt_5").html("");
+				        for (var i = 0; i < response.length; i=i+2) {            			        	
+							$("#txt_5").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+				        }   
+				        $("#txt_5").val(resp[0][6]);
+				        $("#txt_5").trigger("chosen:updated"); 	                                     
+
+				        $.ajax({        
+						    type: "POST",
+						    dataType: 'json',        
+						    url: "../varios.php?tipo=0&fun=11&tam=2&id="+resp[0][6],          
+						    success: function(response) {         			        	
+						    	$("#txt_6").html("");
+						        for (var i = 0; i < response.length; i=i+2) {            				            			        	
+									$("#txt_6").append("<option value ="+response[i]+">"+response[i+1]+"</option>");
+						        }   
+						        $("#txt_6").val(resp[0][4]);
+						        $("#txt_6").trigger("chosen:updated"); 	 				         
+						        $('#modal_usuarios').modal('hide');                                  				        
+						    }
+						});
+				    }
+				});	   			    	
+
+		    	$("#txt_10").val(resp[0][13]);
+				$("#txt_10").trigger("chosen:updated"); 	 				         
+				$("#txt_11").val(resp[0][17]);
+				$("#txt_11").trigger("chosen:updated"); 	 				         
+				$("#txt_12").val(resp[0][19]);
+				$("#txt_12").trigger("chosen:updated"); 	 				         
+
+		    	$("#txt_1").trigger("chosen:updated"); 
+		    	$("#txt_1").val(resp[0][22]);
+		    	documentos('0',"txt_1","txt_2");
+		    	$("#txt_2").val(resp[0][23]);
+		    	$("#txt_14").val(resp[0][24]);
+				$("#txt_15").val(resp[0][24]);
+
+				$("#btn_1").html("");
+	        	$("#btn_1").append("<span class='glyphicon glyphicon-edit'></span> Modificar");   
+	        	$("#btn_1").attr("disabled", false);
+	        	comprobarCamposRequired("form_usuarios");        
+
+		    }else{
+		    	$.gritter.add({                         
+	                title: 'Datos Enviados..!',                         
+	                text: 'No existen mas registros.',
+	                image: '../../img/confirm.png',                           
+	                sticky: false,                          
+	                time: 1000,                                 
+	                class_name: 'light',                                                                
+	            });      
+		    }         	    
+		}); 	
 }
 
 function cargar_tipo_usuario(){
@@ -204,27 +355,63 @@ function guardar_usuario(){
 					if($("#txt_14").val() == $("#txt_15").val()){
 						datos_usuarios(valores,"g",e);						
 					}else{
-						alert("Las claves no coinciden vuelva a ingresarlas");
-						$("#txt_15").val("");
-						$("#txt_15").focus();
+						$.gritter.add({							
+							title: 'Error..!',							
+							text: "Las claves no coinciden vuelva a ingresarlas",														
+							image: '../../img/error.png',							
+							sticky: false, 							
+							time: 500,									
+							class_name: 'light',						        
+							after_close: function(){
+								$("#txt_15").val("");
+								$("#txt_15").focus();
+							},							
+						});						
 					}
 				}else{
-					alert("Seleccione una cuidad antes de continuar");
-					$('#txt_6_chosen').trigger('mousedown');
+					$.gritter.add({							
+						title: 'Error..!',							
+						text: "Seleccione una cuidad antes de continuar",														
+						image: '../../img/error.png',							
+						sticky: false, 							
+						time: 500,									
+						class_name: 'light',						        
+						after_close: function(){
+							$('#txt_6_chosen').trigger('mousedown');
+						},							
+					});																
 				}								
 				
 			}else{
 				if($("#txt_6").val() != null){				
 					if($("#txt_14").val() == $("#txt_15").val()){
 						datos_usuarios(valores,"m",e);						
-					}else{
-						alert("Las claves no coinciden vuelva a ingresarlas");
-						$("#txt_15").val("");
-						$("#txt_15").focus();
+					}else{						
+						$.gritter.add({							
+							title: 'Error..!',							
+							text: "Las claves no coinciden vuelva a ingresarlas",														
+							image: '../../img/error.png',							
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								$("#txt_15").val("");
+								$("#txt_15").focus();
+							},							
+						});						
 					}
 				}else{
-					alert("Seleccione una cuidad antes de continuar");
-					$('#txt_6_chosen').trigger('mousedown');
+					$.gritter.add({							
+						title: 'Error..!',							
+						text: "Seleccione una cuidad antes de continuar",														
+						image: '../../img/error.png',							
+						sticky: false, 							
+						time: 1000,									
+						class_name: 'light',						        
+						after_close: function(){
+							$('#txt_6_chosen').trigger('mousedown');
+						},							
+					});											
 				}
 			}
 			e.preventDefault();
@@ -242,21 +429,57 @@ function datos_usuarios(valores,tipo,p){
 		url: "usuarios.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
-	    		alert('Datos Agregados Correctamente');				    		
-	    		limpiar_form(p);		    		
+	    		$.gritter.add({							
+					title: 'Datos Enviados..!',							
+					text: 'Datos Agregados Correctamente',
+					image: '../../img/confirm.png',							
+					sticky: false, 							
+					time: 1000,									
+					class_name: 'light',						        
+					after_close: function(){
+						limpiar_form(p);		    		
+					},							
+				});		    				    			    		
 	    	}else{
 	    		if( data == 1 ){
-	    			alert('Este código de documento ya existe ingrese otro');	
-	    			$("#txt_1").val("");
-	    			$("#txt_1").focus();	    			
+	    			$.gritter.add({							
+						title: 'Datos Enviados..!',							
+						text: 'Este código de documento ya existe ingrese otro',	
+						image: '../../img/error.png',							
+						sticky: false, 							
+						time: 1000,									
+						class_name: 'light',						        
+						after_close: function(){
+							$("#txt_1").val("");
+	    					$("#txt_1").focus();	    			
+						},							
+					});		    				    			    			    				    			
 	    		}else{
 	    			if( data == 2){
-	    				alert('Este nombre de documento ya existe ingrese otro');	
-	    				$("#txt_2").val("");
-	    				$("#txt_2").focus();	    			
+	    				$.gritter.add({							
+							title: 'Datos Enviados..!',							
+							text: 'Este nombre de documento ya existe ingrese otro',		    				
+							image: '../../img/error.png',							
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								$("#txt_2").val("");
+	    						$("#txt_2").focus();	    			
+							},							
+						});		    				
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				//actualizar_form();	
+	    				$.gritter.add({							
+							title: 'Datos Enviados..!',							
+							text: "Error al momento de enviar los datos la página se recargara",
+							image: '../../img/error.png',							
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								actualizar_form();	
+							},							
+						});		    					    					    				
 	    			}	    			
 	    		}
 	    	}

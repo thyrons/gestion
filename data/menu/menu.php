@@ -40,10 +40,13 @@ function banner(){
                   </li>                  
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    <div class="pull-left">
+                    <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
                       <a href="#" id="mod_perfil" class="btn btn-default btn-flat">Perfil</a>
                     </div>
-                    <div class="pull-right">
+                    <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
+                      <a href="#" id="cambiar_clave" class="btn btn-default btn-flat">C. Clave</a>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
                       <a href="#" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>

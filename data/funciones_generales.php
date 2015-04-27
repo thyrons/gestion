@@ -155,6 +155,11 @@
 	    $sql = "array['".implode("', '", $sql)."']";   
 	    return $sql;     
 	}
+	function atras_adelente($conexion,$sql){     
+	    $sql = pg_query($sql);
+	    $sql = pg_fetch_row($sql);
+	    return $sql;
+	}
 	function is_base64($s){    
 	    if (!preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s)) 
 	        return false;
@@ -167,5 +172,13 @@
 	        return false;
 
 	    return true;
+	}
+	function obtener_id($conexion, $sql) { //retorna el id de una consulta con solo un parametro de retorno en el sql
+	    $id = 0;
+	    $sql = pg_query($conexion, $sql);
+	    while ($row = pg_fetch_row($sql)) {
+	        $id = $row[0];
+	    }
+	    return $id;
 	}
 ?>

@@ -38,6 +38,7 @@
 					if($_GET['fun'] == "5"){//para provincas con pais id
 						if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
 							$sql = "select id_provincia, nombre_provincia from provincias where id_pais = '".$_GET['id']."' order by id_provincia asc";
+							
 							cargarSelect($conexion,$sql,$_GET['tam']);
 						}else{
 							

@@ -1,3 +1,42 @@
+var keyStr = "ABCDEFGHIJKLMNOP" +
+   "QRSTUVWXYZabcdef" +
+   "ghijklmnopqrstuv" +
+   "wxyz0123456789+/" +
+   "=";
+
+function encode64(input) {
+    input = escape(input);
+    var output = "";
+    var chr1, chr2, chr3 = "";
+    var enc1, enc2, enc3, enc4 = "";
+    var i = 0;
+    do {
+        chr1 = input.charCodeAt(i++);
+        chr2 = input.charCodeAt(i++);
+        chr3 = input.charCodeAt(i++);
+
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+
+        if (isNaN(chr2)) {
+           enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+           enc4 = 64;
+        }
+
+        output = output +
+        keyStr.charAt(enc1) +
+        keyStr.charAt(enc2) +
+        keyStr.charAt(enc3) +
+        keyStr.charAt(enc4);
+        chr1 = chr2 = chr3 = "";
+        enc1 = enc2 = enc3 = enc4 = "";
+    } while (i < input.length);
+    return output;
+}
+
 function fecha_actual (input){
     var d = new Date();
     var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
@@ -374,10 +413,29 @@ function ci_ruc_pass(campo,valor,documento){
         if (numero.length === 10) {
             if(nat == true){
                 if (digitoVerificador != d10){                          
-                    alert('El número de cédula es incorrecto.');
-                    $("#"+campo).val("");
-                }else{
-                    alert('El número de cédula es correcto.');
+                    $.gritter.add({                         
+                        title: 'Datos Enviados..!',                         
+                        text: 'El número de cédula es incorrecto.',
+                        image: '../../img/error.png',                           
+                        sticky: false,                          
+                        time: 1000,                                 
+                        class_name: 'light',                                
+                         
+                        after_open: function(){
+                            $("#"+campo).val("");
+                        },         
+
+                    });                     
+                    
+                }else{                    
+                    $.gritter.add({                         
+                        title: 'Datos Enviados..!',                         
+                        text: 'El número de cédula es correcto.',
+                        image: '../../img/confirm.png',                           
+                        sticky: false,                          
+                        time: 1000,                                 
+                        class_name: 'light',                                                        
+                    });                                         
                 }
             }
         }
@@ -388,31 +446,80 @@ function ci_ruc_pass(campo,valor,documento){
             if(ruc == "001" ){
                 if(digito3 < 6){ 
                     if(nat == true){
-                     if (digitoVerificador != d10){                          
-                      alert('El ruc persona natural es incorrecto.');
-                      $("#"+campo).val("");
-                      }else{
-                       alert('El ruc persona natural es correcto.');    
-                      } 
+                        if (digitoVerificador != d10){  
+                            $.gritter.add({                         
+                                title: 'Datos Enviados..!',                         
+                                text: 'El ruc persona natural es incorrecto.',
+                                image: '../../img/error.png',                           
+                                sticky: false,                          
+                                time: 1000,                                 
+                                class_name: 'light',                                
+                                after_close: function(){
+                                    $("#"+campo).val("");
+                                },                          
+                            });                                                     
+                        }else{
+                            $.gritter.add({                         
+                                title: 'Datos Enviados..!',                         
+                                text: 'El ruc persona natural es correcto.',
+                                image: '../../img/confirm.png',                           
+                                sticky: false,                          
+                                time: 1000,                                 
+                                class_name: 'light',                                                                
+                            });                                                                                 
+                        } 
                     }
                 }else{
                     if(digito3 == 6){ 
                         if (pub==true){  
-                            if (digitoVerificador != d9){                          
-                                alert('El ruc público es incorrecto.');
-                                $("#"+campo).val("");
+                            if (digitoVerificador != d9){             
+                                $.gritter.add({                         
+                                    title: 'Datos Enviados..!',                         
+                                    text: 'El ruc público es incorrecto.',
+                                    image: '../../img/error.png',                           
+                                    sticky: false,                          
+                                    time: 1000,                                 
+                                    class_name: 'light',                                
+                                    after_close: function(){
+                                        $("#"+campo).val("");
+                                    },                          
+                                });                                             
+                                
                             }else{
-                                alert('El ruc público es correcto.'); 
+                                $.gritter.add({                         
+                                    title: 'Datos Enviados..!',                         
+                                    text: 'El ruc público es correcto.',
+                                    image: '../../img/confirm.png',                           
+                                    sticky: false,                          
+                                    time: 1000,                                 
+                                    class_name: 'light',                                                                
+                                });                                       
                             } 
                         }
                     }else{
                         if(digito3 == 9){
                             if(pri == true){
                                 if (digitoVerificador != d10){                          
-                                    alert('El ruc privado es incorrecto.');
-                                    $("#"+campo).val("");
+                                    $.gritter.add({                         
+                                        title: 'Datos Enviados..!',                         
+                                        text: 'El ruc privado es incorrecto.',
+                                        image: '../../img/error.png',                           
+                                        sticky: false,                          
+                                        time: 1000,                                 
+                                        class_name: 'light',                                
+                                        after_close: function(){
+                                            $("#"+campo).val("");
+                                        },                          
+                                    });                                       
                                 }else{
-                                    alert('El ruc privado es correcto.');      
+                                    $.gritter.add({                         
+                                        title: 'Datos Enviados..!',                         
+                                        text: 'El ruc privado es correcto.',
+                                        image: '../../img/confirm.png',                           
+                                        sticky: false,                          
+                                        time: 1000,                                 
+                                        class_name: 'light',                                                                
+                                    });                                        
                                 } 
                             }
                         } 
@@ -420,8 +527,17 @@ function ci_ruc_pass(campo,valor,documento){
                 }
             }else{
                 if(numero.length === 13){
-                    alert('El ruc es incorrecto.'); 
-                    $("#"+campo).val("");
+                    $.gritter.add({                         
+                        title: 'Datos Enviados..!',                         
+                        text: 'El ruc es incorrecto.',
+                        image: '../../img/error.png',                           
+                        sticky: false,                          
+                        time: 1000,                                 
+                        class_name: 'light',                                
+                        after_close: function(){
+                            $("#"+campo).val("");
+                        },                          
+                    });                                         
                 }
             }
         }else{
