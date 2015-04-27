@@ -18,7 +18,8 @@
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />      
     <link href="../../plugins/jchosen/chosen.min.css" rel="stylesheet" type="text/css" />    
-    <link href="../../plugins/sistema/cambios.css" rel="stylesheet" type="text/css" />    
+    <link href="../../plugins/sistema/cambios.css" rel="stylesheet" type="text/css" /> 
+    <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">   
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -53,7 +54,7 @@
                 <!-- form start -->
                 <form role="form" id="form_usuarios" class="" method="POST" action="">                
                   <div class="box-body">                                         
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-4">                    
                       <label for="txt_1" class="">T. Documento</label>                      
                       <select class="chosen-select form-control" id="txt_1" name="txt_1" data-placeholder="Seleccione un tipo de documento">
                         <option value="Cédula">Cédula</option>
@@ -207,7 +208,7 @@
                   <tbody>                      
                   </tbody>
                   </table>                                        
-                </div>
+              </div>
               
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>                
@@ -246,8 +247,11 @@
     <script src="../../plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
     <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
     <script src="../../plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+
     
+    <script src="../../plugins/bootstrap-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>    
     <script src="usuarios.js" type="text/javascript"></script>
+    <script src="../mod_user.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
     

@@ -199,22 +199,32 @@ function guardar_usuario(){
 		$("#form_usuarios").on("submit",function (e){				
 			var valores = $("#form_usuarios").serialize();
 			var texto=($("#btn_1").text()).trim();	
-			if(texto=="Guardar"){						
-				if($("#txt_14").val() == $("#txt_15").val()){
-					datos_usuarios(valores,"g",e);						
+			if(texto=="Guardar"){				
+				if($("#txt_6").val() != null){
+					if($("#txt_14").val() == $("#txt_15").val()){
+						datos_usuarios(valores,"g",e);						
+					}else{
+						alert("Las claves no coinciden vuelva a ingresarlas");
+						$("#txt_15").val("");
+						$("#txt_15").focus();
+					}
 				}else{
-					alert("Las claves no coinciden vuelva a ingresarlas");
-					$("#txt_15").val("");
-					$("#txt_15").focus();
-				}
+					alert("Seleccione una cuidad antes de continuar");
+					$('#txt_6_chosen').trigger('mousedown');
+				}								
 				
-			}else{				
-				if($("#txt_14").val() == $("#txt_15").val()){
-					datos_usuarios(valores,"m",e);						
+			}else{
+				if($("#txt_6").val() != null){				
+					if($("#txt_14").val() == $("#txt_15").val()){
+						datos_usuarios(valores,"m",e);						
+					}else{
+						alert("Las claves no coinciden vuelva a ingresarlas");
+						$("#txt_15").val("");
+						$("#txt_15").focus();
+					}
 				}else{
-					alert("Las claves no coinciden vuelva a ingresarlas");
-					$("#txt_15").val("");
-					$("#txt_15").focus();
+					alert("Seleccione una cuidad antes de continuar");
+					$('#txt_6_chosen').trigger('mousedown');
 				}
 			}
 			e.preventDefault();
