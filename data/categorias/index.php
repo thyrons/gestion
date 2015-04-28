@@ -17,6 +17,12 @@
     <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />    
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />      
+
+    <link href="../../plugins/jchosen/chosen.min.css" rel="stylesheet" type="text/css" />    
+    <link href="../../plugins/sistema/cambios.css" rel="stylesheet" type="text/css" /> 
+    <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">   
+    <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/address.css" rel="stylesheet">   
+    <link href="../../plugins/gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />    
   </head>
   <body class="skin-blue">
     <div class="wrapper">
@@ -125,6 +131,13 @@
     <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>    
 
+    <script src="../../plugins/bootstrap-editable/bootstrap3-editable/js/bootstrap-editable.min.js"></script>    
+    <script src="../../plugins/bootstrap-editable/bootstrap3-editable/js/address.js"></script>    
+    <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
+    <script src="../../plugins/gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
+
+    
+    <script src="../mod_user.js" type="text/javascript"></script>
     <script src="categorias.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
