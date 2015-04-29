@@ -50,17 +50,54 @@
             <div class="col-md-12">
               <!-- general form elements -->
               <div class="box box-primary">
-                <div class="box-header">
-                  <h3 class="box-title">Envío de Documentos</h3>
+                <div class="box-header">                  
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_usuarios" class="" method="POST" action="">                
+                <form role="form" id="form_envio" class="" method="POST" action="">                
                   <div class="box-body">
                     <div class="form-group col-md-12">                      
+                      <label for="txt_1" class="">Para: </label>                      
                       <select class="chosen-select form-control" id="txt_1" name="txt_1" multiple="" data-placeholder="Indique los usuarios a enviar ">                        
                       </select>     
                     </div>                    
-                  </div>                  
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_2" class="">Nombre Documento</label>                      
+                      <input type="text" class="form-control" id="txt_2" name="txt_2" placeholder="Nombre del documento" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                    </div>                                    
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_3" class="">Asunto</label>                      
+                      <input type="text" class="form-control" id="txt_3" name="txt_3" placeholder="Asunto" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
+                    </div>                
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_4" class="">Fecha Envió</label>                      
+                      <input type="text" class="form-control" id="txt_4" name="txt_4">
+                    </div>                                                                                                         
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_5" class="">Medio de Recepción</label>                      
+                      <select class="chosen-select form-control" id="txt_5" name="txt_5" data-placeholder="Medio de Recepción del documento"></select>
+                    </div>                                                                                                         
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_6" class="">Tipo de documento</label>                      
+                      <select class="chosen-select form-control" id="txt_6" name="txt_6" data-placeholder="Tipo de Documento"></select>
+                    </div>                                                                                                         
+                    <div class="form-group col-md-4">                            
+                      <label for="txt_7" class="">Estado</label>                      
+                      <select class="chosen-select form-control" id="txt_7" name="txt_7" data-placeholder="Estado del Documento">
+                        <option value="0">En Revisón</option>
+                        <option value="1">Finalizado</option>
+                      </select>
+                    </div>                          
+                    <div class="form-group col-md-12">                            
+                      <label for="txt_9" class="">Archivo</label>                      
+                      <input type="file" class="form-control" id="txt_9" name="txt_9">
+                      <p class="help-block">Seleccione el archivo a enviar.</p>
+                    </div>  
+                    <div class="form-group col-md-12 ">
+                      <label for="txt_8" class="">Observaciones</label>                                            
+                      <textarea id="txt_8" name="txt_8" rows="50" cols="50">                                            
+                      </textarea>                      
+                    </div>                                                                                                         
+                  </div>                                    
                   <div class="box-footer">                       
                     <button type="submit" class="btn btn-primary "  id="btn_1">
                       <span class="glyphicon glyphicon-save"></span> Enviar Documento
@@ -94,6 +131,7 @@
     <script src="../../plugins/knob/jquery.knob.js" type="text/javascript"></script>
     <script src="../../plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
     <script src="../../plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../../plugins/ckeditor/ckeditor.js"></script>
     <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
     <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <script src="../../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>

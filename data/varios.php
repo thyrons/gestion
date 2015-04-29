@@ -134,15 +134,15 @@
 																	
 																}
 															}else{															
-																if($_GET['fun'] == "15"){//para ciudad con id
+																if($_GET['fun'] == "16"){//para ciudad con id
 																	if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
-																		$sql = "select id_usuario,cod_usuario,nombres_usuario,direccion_usuario,usuario.id_ciudad, nombre_ciudad, provincias.id_provincia, nombre_provincia, pais.id_pais, nombre_pais,telefono_usuario,celular_usuario,email_usuario,usuario.id_tipo_user,nombre_tipo,usuario.usuario,institucion,usuario.id_categoria,nombre_categoria,usuario.id_departamento,nombre_departamento,fecha,tipo_documento,nro_documento,clave from usuario,ciudad,provincias,pais,tipo_usuario,categorias,departamento,clave where usuario.id_ciudad = ciudad.id_ciudad and provincias.id_provincia = ciudad.id_provincia and provincias.id_pais = pais.id_pais and tipo_usuario.id_tipo_usuario = usuario.id_tipo_user and usuario.id_categoria = categorias.id_categoria and departamento.id_departamento = usuario.id_departamento and usuario.id_usuario = clave.usuario and usuario.id_usuario = '".$_SESSION['id_gestion']."'";
+																		$sql = "select id_usuario,nombres_usuario,usuario from usuario order by id_usuario asc";
 																		cargarSelect($conexion,$sql,$_GET['tam']);
 																	}else{
 																		
 																	}
 																}else{															
-																	
+
 																}															
 															}															
 														}

@@ -14,32 +14,135 @@ function inicio(){
 			 $this.next().css({'width': $this.parent().width()});			 
 		})
 	}).trigger('resize.chosen');
-	/////////////	
-	
-	
+	/////////////		
+	var d = new Date();
+    var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();    		
+	$('#txt_4').datepicker({
+		autoclose: "true",
+		calendarWeeks: "true",
+		clearBtn: "true",
+		format: "yyyy-mm-dd",
+		todayHighlight: "true",
+		setDate: strDate,
+		startDate: '+0d',
+		language: 'es',
+	}).datepicker("setDate", strDate);		  	  	
+
+  	cargar_usuarios();
+  	tipo_documento();
+  	medio_recepcion();
+  	CKEDITOR.replace('txt_8');
+
+  	/////////////////
+  	comprobarCamposRequired('form_envio');
+  	$("#form_envio :input").on("keyup click",function (e){//campos requeridos				
+		comprobarCamposRequired(e.currentTarget.form.id);
+	});	
+	$("#btn_1").on('click',guardar_envio);	
 }
 
-function autocompletar(id_chosen,id){
-	var input_chosen = $("#"+id_chosen).children().next().children();		
-  	$(input_chosen).on("keyup",function(input_chosen){
-  	var text = $(this).children().val();
-    if(text != ""){
-			$.ajax({        
-	        	type: "POST",
-	        	dataType: 'json',        
-	        	url: "../carga_ubicaciones.php?tipo=0&id=0&fun=12&val="+text,        
-	        	success: function(data, status) {
-	          		$('#txt_nro_identificacion').html("");	        	
-	          		for (var i = 0; i < data.length; i=i+3) {            				            		            	
-	            		appendToChosen(data[i],data[i+1],text,data[i+2],"txt_nro_identificacion","txt_nro_identificacion_chosen");
-	          		}		        
-	          		$('#txt_nombre_proveedor').html("");
-	          		$('#txt_nombre_proveedor').append($("<option data-extra='"+data[1]+"'></option>").val(data[0]).html(data[2])).trigger('chosen:updated');                    
-	          		$("#id_proveedor").val(data[0])            
-	        	},
-	        	error: function (data) {		        
-	        	}	        
-	      	});
-    	}
-	});	
+function cargar_usuarios(){	  	
+	$.ajax({        
+    	type: "POST",
+    	dataType: 'json',        
+    	url: "../varios.php?tipo=0&id=0&tam=3&fun=16",        
+    	success: function(data, status) {
+      		$('#txt_1').html("");	        	
+      		for (var i = 0; i < data.length; i=i+3) {            				            		            	
+        		appendToChosen(data[i],data[i+1],data[i+1],data[i+2],"txt_1","txt_1_chosen");
+      		}		                  		
+    	},
+    	error: function (data) {		        
+    	}	        
+  	});    	   
+}		
+function tipo_documento(){
+	$.ajax({        
+	    type: "POST",
+	    dataType: 'json',        
+	    url: "../varios.php?tipo=0&fun=8&tam=3",          
+	    success: function(response) {         			        	
+	    	$("#txt_6").html("");
+	        for (var i = 0; i < response.length; i=i+3) {            				            		        	
+				$("#txt_6").append("<option value ="+response[i]+">"+response[i+2]+"</option>");
+	        }   
+	        $("#txt_6").trigger("chosen:updated"); 	                                     
+	    }
+	});	      
+}
+function medio_recepcion(){
+	$.ajax({        
+	    type: "POST",
+	    dataType: 'json',        
+	    url: "../varios.php?tipo=0&fun=9&tam=3",          
+	    success: function(response) {         			        	
+	    	$("#txt_5").html("");
+	        for (var i = 0; i < response.length; i=i+3) {            				            		        	
+				$("#txt_5").append("<option value ="+response[i]+">"+response[i+2]+"</option>");
+	        }   
+	        $("#txt_5").trigger("chosen:updated"); 	                                     
+	    }
+	});	      
+}
+function guardar_envio(){
+	var resp=comprobarCamposRequired("form_envio");
+	
+	if(resp==true){
+		$("#form_envio").on("submit",function (e){				
+			var valores = $("#form_envio").serialize();
+			var archivos = document.getElementById("txt_9");
+		    var archivo = archivos.files;
+		    var archivos = new FormData();    
+		    var users = $("#txt_1").val();		    		    
+		    
+		    if(users != null){		    			    	
+		   		for(var i = 0; i < archivo.length; i++){
+			        archivos.append('archivo'+i,archivo[i]);        			        			        
+			    }	
+			    if(archivo.length == 0){		    
+				    $.ajax({
+				        url:'plan_cuentas.php?tipo=s&'+valores,
+				        type:'POST',
+				        contentType:false,
+				        data:archivos,
+				        processData:false,
+				        cache:false,        
+				    }).done(function(data){
+				        if( data == 0 ){            
+				            alert('Archivo subido satisfactoriamente');                                            			            
+				            
+				        }else{
+				            alert("Error al momento de enviar los datos la página se recargara");                   
+				            //actualizar_form();
+				        }
+				    }); 		
+				}else{
+					if(archivo[0].size <= 50000){
+				    	$.ajax({
+					        url:'plan_cuentas.php?tipo=s&'+valores,
+					        type:'POST',
+					        contentType:false,
+					        data:archivos,
+					        processData:false,
+					        cache:false,        
+					    }).done(function(data){
+					        if( data == 0 ){            
+					            alert('Archivo subido satisfactoriamente');					            
+					        }else{
+					            alert("Error al momento de enviar los datos la página se recargara");
+					            //actualizar_form();
+					        }
+					    });
+				    }else{
+				    	alert("El archivo supera las 50 MB permitidas");
+				    	$("#txt_9").val("");
+				    }
+				}
+		    }else{
+		    	alert("Seleccione al menos un remitente antes de enviar");
+		    }		    
+			e.preventDefault();
+    		$(this).unbind("submit");
+		});
+	}
 }
