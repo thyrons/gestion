@@ -48,7 +48,8 @@
 		$nombres = '';
 		$pass = '';
 		$fecha_login = '';
-		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user from usuario where usuario = '".$usuario."'";
+		$departamento = '';
+		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user,id_departamento from usuario where usuario = '".$usuario."'";
 		$sql = pg_query($conexion,$sql);
 		if(pg_num_rows($sql)){			
 			while($row = pg_fetch_row($sql)){
@@ -57,6 +58,8 @@
 				$user = $row[2];
 				$fecha_login = $row[3];
 				$tipo_user = $row[4];
+				$departamento = $row[5];
+
 			}
 			$sql_1 = "select id_clave,clave from clave where usuario = '".$id_user."'";			
 			$sql_1 = pg_query($conexion,$sql_1);			
@@ -72,6 +75,7 @@
 				$_SESSION['usuario_gestion'] = $user;				
 				$_SESSION['fecha_gestion'] = $fecha_login;	
 				$_SESSION['tipo_user'] = $tipo_user;	
+				$_SESSION['departamento'] = $departamento;	
 			}else{
 				$resp = '2'; ///clave incorrecta
 			}
@@ -150,9 +154,9 @@
     	$texto = substr($texto, 0,$cant);
     	return $texto;
 	}
-	function sql_array($conexion,$sql){        
+	function sql_array($conexion,$sql){        		
 	    $sql = pg_fetch_row(pg_query($sql));                                 
-	    $sql = "array['".implode("', '", $sql)."']";   
+	    $sql = "array['".implode("', '", $sql)."']";   	    
 	    return $sql;     
 	}
 	function atras_adelente($conexion,$sql){     

@@ -135,8 +135,9 @@
 																}
 															}else{															
 																if($_GET['fun'] == "16"){//para ciudad con id
-																	if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina
-																		$sql = "select id_usuario,nombres_usuario,usuario from usuario order by id_usuario asc";
+																	if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																		
+																		//$sql = "select id_usuario,nombres_usuario,usuario from usuario where id_usuario not in ('". $_SESSION['id_gestion'] ."') order by id_usuario asc";																		
+																		$sql = "select id_usuario,nombres_usuario,usuario from usuario order by id_usuario asc";																		
 																		cargarSelect($conexion,$sql,$_GET['tam']);
 																	}else{
 																		

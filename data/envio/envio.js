@@ -89,7 +89,7 @@ function guardar_envio(){
 	
 	if(resp==true){
 		$("#form_envio").on("submit",function (e){				
-			var valores = $("#form_envio").serialize();
+			var valores = $("#form_envio").serialize();			
 			var archivos = document.getElementById("txt_9");
 		    var archivo = archivos.files;
 		    var archivos = new FormData();    
@@ -101,7 +101,7 @@ function guardar_envio(){
 			    }	
 			    if(archivo.length == 0){		    
 				    $.ajax({
-				        url:'plan_cuentas.php?tipo=s&'+valores,
+				        url:'envio.php?tipo=g&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val(),
 				        type:'POST',
 				        contentType:false,
 				        data:archivos,
@@ -117,9 +117,10 @@ function guardar_envio(){
 				        }
 				    }); 		
 				}else{
-					if(archivo[0].size <= 50000){
+					//console.log((archivo[0].size) / 1024)
+					if((archivo[0].size) / 1024 <= 50000){						
 				    	$.ajax({
-					        url:'plan_cuentas.php?tipo=s&'+valores,
+					        url:'envio.php?tipo=s&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val(),
 					        type:'POST',
 					        contentType:false,
 					        data:archivos,

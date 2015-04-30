@@ -545,7 +545,6 @@ function ci_ruc_pass(campo,valor,documento){
         }                    
     }         
 }
-
 function appendToChosen(id,value,text,extra,chosen,chosen1){            
     $('#'+chosen).append($("<option data-extra='"+extra+"'></option>").val(id).html(value)).trigger('chosen:updated');        
     var input = $("#"+chosen1).children().next().children(); 
