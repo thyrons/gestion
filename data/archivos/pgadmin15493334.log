@@ -1,0 +1,1244 @@
+2014-10-30 15:26:59 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-10-30 15:50:32 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:50:33 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:50:51 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:50:58 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:50:59 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:51:02 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo inet: «1»
+LINE 1: INSERT INTO public.us(id, usu, pass) VALUES ('1'::inet, 'dei...
+                                                     ^
+2014-10-30 15:51:32 ERROR  : Couldn't retrieve information about list control item -1.
+2014-10-30 15:51:34 ERROR  : Couldn't retrieve information about list control item -1.
+2014-11-04 08:54:32 ERROR  : ERROR:  la relación «us» ya existe
+2014-11-04 08:54:54 ERROR  : ERROR:  la relación «us» ya existe
+2014-11-04 10:07:06 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-05 11:36:16 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-05 11:37:29 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-05 11:37:34 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-05 11:37:56 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-05 11:38:05 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-12 12:26:15 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-12 12:36:29 ERROR  : ERROR:  la extensión «plpgsql» ya existe
+2014-11-12 12:37:13 ERROR  : ERROR:  no existe el esquema «topology»
+2014-11-12 12:37:45 ERROR  : ERROR:  no existe el esquema «topology»
+2014-11-12 12:38:58 ERROR  : ERROR:  la base de datos de origen «postgis_21_sample» está siendo utilizada por otros usuarios
+DETAIL:  Hay 1 otra sesión usando la base de datos.
+2014-11-12 15:08:30 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «claves_pkey»
+DETAIL:  Ya existe la llave (id_clave)=(2).
+2014-11-21 11:04:11 ERROR  : ERROR:  la base de datos «mantenimiento_inventario» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 3 sesiones usando la base de datos.
+2014-11-21 11:04:53 ERROR  : ERROR:  la base de datos «mantenimiento_inventario» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 3 sesiones usando la base de datos.
+2014-11-26 08:50:52 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-11-26 11:04:42 ERROR  : ERROR:  la base de datos «inventario» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 7 sesiones usando la base de datos.
+2014-11-26 11:05:14 ERROR  : ERROR:  la base de datos «inventario» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 6 sesiones usando la base de datos.
+2014-11-26 11:05:38 ERROR  : ERROR:  la base de datos «inventario» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 6 sesiones usando la base de datos.
+2014-12-03 09:38:09 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-03 12:29:10 ERROR  : ERROR:  no existe la relación «seg.audi»
+2014-12-04 17:03:02 ERROR  : ERROR:  no existe el esquema «reg»
+LINE 1: select * from reg.usuario
+                      ^
+2014-12-04 17:03:09 ERROR  : ERROR:  no existe el esquema «seg»
+LINE 1: select * from seg.usuario
+                      ^
+2014-12-04 17:05:22 ERROR  : ERROR:  error de sintaxis en o cerca de «value»
+LINE 2: insert into seg.usuario value ('1','2','3','4','5',md5('1'),...
+                                ^
+2014-12-10 17:26:27 ERROR  : ERROR:  no se puede eliminar función servicios_mayusculas() porque otros objetos dependen de él
+DETAIL:  disparador servicios_mayusculas_insertar en tabla servicios depende de función servicios_mayusculas()
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2014-12-10 17:26:33 ERROR  : ERROR:  no se puede eliminar función servicios_mayusculas() porque otros objetos dependen de él
+DETAIL:  disparador servicios_mayusculas_insertar en tabla servicios depende de función servicios_mayusculas()
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2014-12-18 10:59:17 ERROR  : ERROR:  inserción o actualización en la tabla «ciudad» viola la llave foránea «ciudad_id_provincia_fkey»
+DETAIL:  La llave (id_provincia)=(3) no está presente en la tabla «provincia».
+2014-12-18 10:59:19 ERROR  : ERROR:  inserción o actualización en la tabla «ciudad» viola la llave foránea «ciudad_id_provincia_fkey»
+DETAIL:  La llave (id_provincia)=(3) no está presente en la tabla «provincia».
+2014-12-18 14:51:02 ERROR  : ERROR:  inserción o actualización en la tabla «usuario» viola la llave foránea «usuario_id_ciudad_fkey»
+DETAIL:  La llave (id_ciudad)=(5) no está presente en la tabla «provincia».
+2014-12-18 14:51:36 ERROR  : ERROR:  inserción o actualización en la tabla «usuario» viola la llave foránea «usuario_id_ciudad_fkey»
+DETAIL:  La llave (id_ciudad)=(5) no está presente en la tabla «provincia».
+2014-12-18 14:51:39 ERROR  : ERROR:  inserción o actualización en la tabla «usuario» viola la llave foránea «usuario_id_ciudad_fkey»
+DETAIL:  La llave (id_ciudad)=(0) no está presente en la tabla «provincia».
+2014-12-18 14:51:45 ERROR  : ERROR:  inserción o actualización en la tabla «usuario» viola la llave foránea «usuario_id_ciudad_fkey»
+DETAIL:  La llave (id_ciudad)=() no está presente en la tabla «provincia».
+2014-12-19 16:52:30 ERROR  : ERROR:  no existe la relación «localizacion.privincia»
+LINE 4: SELECT * FROM LOCALIZACION.PAIS P,LOCALIZACION.PRIVINCIA PRO...
+                                          ^
+2014-12-19 16:52:59 ERROR  : ERROR:  no existe la relación «localizacion.privincia»
+LINE 4: SELECT * FROM LOCALIZACION.PAIS P, LOCALIZACION.PRIVINCIA PR...
+                                           ^
+2014-12-19 17:12:17 ERROR  : ERROR:  no existe la columna p.id_pais
+LINE 4: ...ON.PROVINCIA PRO, LOCALIZACION.CIUDAD C WHERE P.ID=P.ID_PAIS
+                                                              ^
+2014-12-22 10:08:40 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-22 16:40:15 ERROR  : ERROR:  update o delete en «pais» viola la llave foránea «provincia_id_pais_fkey» en la tabla «provincia»
+DETAIL:  La llave (id)=(1) todavía es referida desde la tabla «provincia».
+2014-12-23 13:17:14 ERROR  : ERROR:  no existe la relación «persona»
+LINE 17: from persona p
+              ^
+2014-12-23 13:17:31 ERROR  : ERROR:  no existe la relación «usuario»
+LINE 17: from usuario p
+              ^
+2014-12-23 13:17:43 ERROR  : ERROR:  no existe la columna p.f_nacimiento
+LINE 4:     when substring(age(now(),p.f_nacimiento)::text from 1 fo...
+                                     ^
+2014-12-23 14:18:16 ERROR  : ERROR:  error de sintaxis en o cerca de «from»
+LINE 20: select age(now(),U.edad from seg.usuario U where stado='1';
+                                 ^
+2014-12-23 14:18:34 ERROR  : ERROR:  error de sintaxis en o cerca de «U»
+LINE 20: ...lect substring(age(now(),U.edad) from seg.usuario U where st...
+                                                              ^
+2014-12-23 14:18:43 ERROR  : ERROR:  error de sintaxis en o cerca de «where»
+LINE 20: select substring(age(now(),edad) from seg.usuario where stad...
+                                                           ^
+2014-12-23 14:19:10 ERROR  : ERROR:  error de sintaxis en o cerca de «from»
+LINE 20: select substring(age(now(),edad), FONO from seg.usuario wher...
+                                                ^
+2014-12-23 14:23:02 ERROR  : ERROR:  no existe la función pg_catalog.substring(interval)
+LINE 20: select substring(age(now(),edad)) from seg.usuario where sta...
+                ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2014-12-23 14:23:03 ERROR  : ERROR:  no existe la función pg_catalog.substring(interval)
+LINE 20: select substring(age(now(),edad)) from seg.usuario where sta...
+                ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2014-12-23 14:24:43 ERROR  : ERROR:  no existe la función to_char(interval)
+LINE 20: select to_char(age(now(),edad)) from seg.usuario where stado...
+                ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2014-12-23 14:25:17 ERROR  : ERROR:  no existe la columna «text»
+LINE 20: select to_char(age(now(),edad), text) from seg.usuario where...
+                                         ^
+2014-12-23 14:37:08 ERROR  : ERROR:  la sintaxis de entrada no es válida para integer: «hola»
+LINE 1: select chr('hola'),extract(day from age(now(),edad)), fono,n...
+                   ^
+2014-12-23 14:37:18 ERROR  : ERROR:  no existe la columna «hola»
+LINE 1: select chr("hola"),extract(day from age(now(),edad)), fono,n...
+                   ^
+2014-12-23 14:38:08 ERROR  : ERROR:  no existe la columna «hola»
+LINE 1: select lower("hola"), extract(day from age(now(),edad)), fon...
+                     ^
+2014-12-23 14:38:09 ERROR  : ERROR:  no existe la columna «hola»
+LINE 1: select lower("hola"), extract(day from age(now(),edad)), fon...
+                     ^
+2014-12-23 14:40:17 ERROR  : ERROR:  error de sintaxis en o cerca de «)»
+LINE 1: select lower('hola'+a++), extract(day from age(now(),edad)),...
+                               ^
+2014-12-23 14:44:09 ERROR  : ERROR:  error de sintaxis en o cerca de «@»
+LINE 1: DECLARE @myvar INT
+                ^
+2014-12-23 14:44:26 ERROR  : ERROR:  error de sintaxis en o cerca de «INT»
+LINE 1: DECLARE var INT
+                    ^
+2014-12-23 14:44:45 ERROR  : ERROR:  error de sintaxis en o cerca de «@»
+LINE 1: DECLARE @myvar INT
+                ^
+2014-12-23 14:46:02 ERROR  : ERROR:  error de sintaxis en o cerca de «integer»
+LINE 1: DECLARE myvar integer;
+                      ^
+2014-12-23 14:46:27 ERROR  : ERROR:  error de sintaxis en o cerca de «int»
+LINE 1: DECLARE myvar int;
+                      ^
+2014-12-23 14:46:30 ERROR  : ERROR:  error de sintaxis en o cerca de «Int»
+LINE 1: DECLARE myvar Int;
+                      ^
+2014-12-23 14:47:54 ERROR  : ERROR:  error de sintaxis en o cerca de «count»
+LINE 1: count(*)
+        ^
+2014-12-23 14:48:05 ERROR  : ERROR:  la columna «usuario.edad» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 2: select count(*), extract(day from age(now(),edad)), fono,nom...
+                                                    ^
+2014-12-23 15:23:02 ERROR  : ERROR:  error de sintaxis en o cerca de «stado»
+LINE 2: select (IF stado = '1' THEN true ELSE false) AS complete_fie...
+                   ^
+2014-12-23 15:23:16 ERROR  : ERROR:  error de sintaxis en o cerca de «stado»
+LINE 2: select (IF stado = '1' THEN true ELSE false), extract(day fr...
+                   ^
+2014-12-23 15:24:28 ERROR  : ERROR:  error de sintaxis en o cerca de «STADO»
+LINE 2: select (IF STADO = '1' THEN lower('hola') ELSE 'okis'), extr...
+                   ^
+2014-12-23 15:24:41 ERROR  : ERROR:  error de sintaxis en o cerca de «THEN»
+LINE 2: select (IF 'STADO' = '1' THEN lower('hola') ELSE 'okis'), ex...
+                                 ^
+2014-12-23 15:41:12 ERROR  : ERROR:  error de sintaxis en o cerca de «refcursor»
+LINE 2:     curs1 refcursor;
+                  ^
+2014-12-23 15:41:34 ERROR  : ERROR:  error de sintaxis en o cerca de «refcursor»
+LINE 2:     curs1 refcursor FOR
+                  ^
+2014-12-23 15:41:46 ERROR  : ERROR:  error de sintaxis en o cerca de «refcursor»
+LINE 1: DECLARE   curs1 refcursor FOR
+                        ^
+2014-12-23 15:42:08 ERROR  : ERROR:  la orden DECLARE CURSOR sólo puede ser usada en bloques de transacción
+2014-12-23 15:42:12 ERROR  : ERROR:  la orden DECLARE CURSOR sólo puede ser usada en bloques de transacción
+2014-12-23 15:42:13 ERROR  : ERROR:  la orden DECLARE CURSOR sólo puede ser usada en bloques de transacción
+2014-12-24 10:09:41 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-24 10:10:28 ERROR  : ERROR:  un identificador entre comillas está inconcluso en o cerca de «"»
+LINE 12:  FROM SEG.USUARIO WHERE STADO=1"
+                                        ^
+2014-12-24 10:28:18 ERROR  : ERROR:  no existe la función lower(timestamp with time zone)
+LINE 12:   lower(now())
+           ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2014-12-24 10:28:32 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo interval: «»
+LINE 12:   lower(''+now())
+                 ^
+2014-12-24 10:38:05 ERROR  : ERROR:  error de sintaxis en o cerca de «,»
+LINE 2: ...BRE, FONO, CORREO,extract(year from age(now(),edad)),FECHA,,
+                                                                      ^
+2014-12-24 10:38:37 ERROR  : ERROR:  error de sintaxis en o cerca de «CASE»
+LINE 3:   CASE 
+          ^
+2014-12-24 10:38:58 ERROR  : ERROR:  error de sintaxis en o cerca de «CASE»
+LINE 3:   CASE 
+          ^
+2014-12-24 10:38:59 ERROR  : ERROR:  error de sintaxis en o cerca de «CASE»
+LINE 3:   CASE 
+          ^
+2014-12-24 10:38:59 ERROR  : ERROR:  error de sintaxis en o cerca de «CASE»
+LINE 3:   CASE 
+          ^
+2014-12-24 10:44:17 ERROR  : ERROR:  inserción o actualización en la tabla «nivel» viola la llave foránea «nivel_id_usuario_fkey»
+DETAIL:  La llave (id_usuario)=(2014121812301354930f25c70a0) no está presente en la tabla «usuario».
+2014-12-24 10:45:15 ERROR  : ERROR:  error de sintaxis en o cerca de «AND»
+LINE 13:  FROM SEG.USUARIO U, SEG.NIVEL N WHERE AND STADO=1 
+                                                ^
+2014-12-24 10:45:57 ERROR  : ERROR:  error de sintaxis en o cerca de «STADO»
+LINE 13: ... SEG.USUARIO U, SEG.NIVEL N WHERE N.ID_USUARIO=U_ID STADO=1 
+                                                                ^
+2014-12-24 10:46:29 ERROR  : ERROR:  no existe la columna «u_id»
+LINE 13: ...ROM SEG.USUARIO U, SEG.NIVEL N WHERE N.ID_USUARIO=U_ID AND S...
+                                                              ^
+2014-12-24 11:54:24 ERROR  : ERROR:  error de sintaxis en o cerca de «,»
+LINE 1: UPDATE seg.nivel N, seg.usuario U
+                          ^
+2014-12-24 11:54:43 ERROR  : ERROR:  error de sintaxis en o cerca de «,»
+LINE 1: UPDATE seg.nivel, seg.usuario U
+                        ^
+2014-12-24 11:54:58 ERROR  : ERROR:  falta una entrada para la tabla «n» en la cláusula FROM
+LINE 3:  WHERE N.ID_USUARIO=U.ID AND U.CEDULA='100403482';
+               ^
+2014-12-24 11:55:32 ERROR  : ERROR:  falta una entrada para la tabla «u» en la cláusula FROM
+LINE 3:  WHERE ID_USUARIO=U.ID AND SEG.USUARIO.CEDULA='100403482';
+                          ^
+2014-12-24 11:55:49 ERROR  : ERROR:  falta una entrada para la tabla «usuario» en la cláusula FROM
+LINE 3:  WHERE ID_USUARIO=SEG.USUARIO.ID AND SEG.USUARIO.CEDULA='100...
+                          ^
+2014-12-24 12:03:51 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «nivel_pkey»
+DETAIL:  Ya existe la llave (id)=(10).
+2014-12-24 12:04:12 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «nivel_pkey»
+DETAIL:  Ya existe la llave (id)=(100).
+2014-12-24 12:06:06 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «nivel_pkey»
+DETAIL:  Ya existe la llave (id)=(100).
+2014-12-24 12:06:09 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «nivel_pkey»
+DETAIL:  Ya existe la llave (id)=(100).
+2014-12-24 12:09:29 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 5: select * FROM SEG.NIVEL N, SEG.USUARIO U WHERE ID_USUARIO=U....
+        ^
+2014-12-24 12:10:25 ERROR  : ERROR:  falta una entrada para la tabla «seg» en la cláusula FROM
+LINE 3:  WHERE N.ID_USUARIO=U.ID AND SEG.USUARIO;
+                                     ^
+2014-12-24 12:10:44 ERROR  : ERROR:  el operador no existe: text = integer
+LINE 3:  WHERE N.ID_USUARIO=U.ID AND U.CEDULA=100;
+                                             ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2014-12-24 12:21:39 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 5: select * FROM SEG.NIVEL N, SEG.USUARIO U WHERE ID_USUARIO=U....
+        ^
+2014-12-24 12:24:21 ERROR  : ERROR:  falta una entrada para la tabla «u» en la cláusula FROM
+LINE 3:  WHERE U.CEDULA='1004034805';
+               ^
+2014-12-24 12:26:16 ERROR  : ERROR:  no existe la columna nivel.cedula
+LINE 1: UPDATE seg.nivel SET NIVEL='4' WHERE nivel.CEDULA='100403480...
+                                             ^
+2014-12-24 12:26:20 ERROR  : ERROR:  no existe la columna nivel.cedula
+LINE 1: UPDATE seg.nivel SET NIVEL='4' WHERE seg.nivel.CEDULA='10040...
+                                             ^
+2014-12-24 12:31:50 ERROR  : ERROR:  error de sintaxis en o cerca de «;»
+LINE 3:    WHERE N.ID_USUARIO=U.ID AND ;
+                                       ^
+2014-12-24 12:32:04 ERROR  : ERROR:  falta una entrada para la tabla «seg» en la cláusula FROM
+LINE 3:  WHERE N.ID_USUARIO=U.ID AND SEG.USUARIO;
+                                     ^
+2014-12-24 12:32:23 ERROR  : ERROR:  no existe la columna u.cedual
+LINE 3:  WHERE N.ID_USUARIO=U.ID AND U.CEDUAL='0000';
+                                     ^
+2014-12-24 12:41:37 ERROR  : ERROR:  falta una entrada para la tabla «u» en la cláusula FROM
+LINE 3: WHERE U.USUARIO_ID=(SELECT ID FROM SEG.USUARIO U WHERE U.CED...
+              ^
+2014-12-24 12:41:54 ERROR  : ERROR:  no existe la columna «usuario_id»
+LINE 3: WHERE USUARIO_ID=(SELECT ID FROM SEG.USUARIO U WHERE U.CEDUL...
+              ^
+2014-12-26 17:49:55 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-29 08:43:41 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-29 08:46:22 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-29 08:52:21 ERROR  : ERROR:  error de sintaxis en o cerca de «SELECT»
+LINE 2: SELECT * FROM TARIFA 
+        ^
+2014-12-29 11:06:14 ERROR  : ERROR:  no existe la relación «servicio»
+LINE 3: SELECT * FROM SERVICIO
+                      ^
+2014-12-29 16:38:54 ERROR  : ERROR:  no existe la columna t.id_servicios
+LINE 2:  WHERE S.ID=H.ID_SERVICIO AND S.ID=T.ID_SERVICIOS
+                                           ^
+2014-12-29 16:41:04 ERROR  : ERROR:  no existe la columna «20141211160003548a05d39b5c8»
+LINE 2: ....ID=H.ID_SERVICIO AND S.ID=T.ID_SERVICIO AND S.ID="201412111...
+                                                             ^
+2014-12-29 16:51:52 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: SELECT H.ID,  FROM SERVICIOS S, HORARIO_SERVICIOS H
+                      ^
+2014-12-29 16:51:59 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: SELECT H.ID,  FROM SERVICIOS S, HORARIO_SERVICIOS H
+                      ^
+2014-12-29 16:52:00 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: SELECT H.ID,  FROM SERVICIOS S, HORARIO_SERVICIOS H
+                      ^
+2014-12-30 09:40:42 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-30 09:40:45 ERROR  : Error connecting to the server: fe_sendauth: no password supplied
+
+2014-12-30 17:43:21 ERROR  : ERROR:  no existe la columna «2014121812301354930f25c70a8»
+LINE 2: ...,CORREO,FECHA,DIRECCION FROM SEG.USUARIO WHERE id="201412181...
+                                                             ^
+2014-12-30 17:45:59 ERROR  : ERROR:  no existe la relación «pais»
+LINE 3: FROM SEG.USUARIO U,PAIS P  WHERE id='2014121812301354930f25c...
+                           ^
+2014-12-30 17:46:09 ERROR  : ERROR:  la referencia a la columna «id» es ambigua
+LINE 1: SELECT ID,CEDULA,NOMBRE,
+               ^
+2014-12-30 17:46:42 ERROR  : ERROR:  la referencia a la columna «fecha» es ambigua
+LINE 2: ...AD),extract(day from age(now(),edad)),FONO,CORREO,FECHA,DIRE...
+                                                             ^
+2014-12-30 17:46:48 ERROR  : ERROR:  la referencia a la columna «id» es ambigua
+LINE 3: FROM SEG.USUARIO U,LOCALIZACION.PAIS P  WHERE id='2014121812...
+                                                      ^
+2014-12-30 17:46:52 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 3: ...IS P  WHERE U.id='2014121812301354930f25c70a8' and stado='1'
+                                                              ^
+2014-12-31 09:20:08 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2014-12-31 12:50:12 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-01-06 11:20:48 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-01-07 11:03:27 ERROR  : ERROR:  no existe la columna «20141211160003548a05d39b5c8»
+LINE 1: SELECT * FROM HORARIO_SERVICIOS WHERE ID_SERVICIO="201412111...
+                                                          ^
+2015-01-09 11:42:30 ERROR  : ERROR:  la referencia a la columna «fecha» es ambigua
+LINE 2: ...E, FONO, CORREO,extract(day from age(now(),edad)),FECHA,NIVE...
+                                                             ^
+2015-01-09 11:42:51 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 4:  WHEN stado='1' 
+              ^
+2015-01-09 11:47:54 ERROR  : ERROR:  error de sintaxis en o cerca de «CEDULA»
+LINE 1: CEDULA, NOMBRE, FONO, CORREO,extract(year from age(now(),eda...
+        ^
+2015-01-09 11:48:02 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 15: ....USUARIO U, SEG.NIVEL N WHERE N.ID_USUARIO=U.ID AND STADO=1 
+                                                                ^
+2015-01-09 14:39:39 ERROR  : ERROR:  la relación «horario_servicios» ya existe
+2015-01-12 15:39:56 ERROR  : ERROR:  no existe la columna u.usaurio
+LINE 1: select * from usuario U, claves C WHERE U.usaurio=C.ID_USUAR...
+                                                ^
+2015-01-15 17:12:30 ERROR  : ERROR:  la relación «reservacion_tarifa» ya existe
+2015-01-15 17:17:19 ERROR  : ERROR:  la relación «reservacion» ya existe
+2015-01-15 17:17:24 ERROR  : ERROR:  no se puede eliminar tabla reservacion porque otros objetos dependen de él
+DETAIL:  restricción «reservacion_tarifa_id_reservacion_fkey» en tabla reservacion_tarifa depende de tabla reservacion
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-01-15 17:53:20 ERROR  : ERROR:  no existe la columna «id_usuario» referida en la llave foránea
+2015-01-15 19:01:09 ERROR  : ERROR:  no existe la columna r.id_servicios
+LINE 1: ...UARIO U, SERVICIOS S WHERE R.ID_USUARIO=U.ID AND  R.ID_SERVI...
+                                                             ^
+2015-01-19 17:40:51 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-01-19 17:41:16 ERROR  : ERROR:  la base de datos «prueba» ya existe
+2015-01-22 13:14:40 ERROR  : ERROR:  no existe la columna «2014123112301554a432a7be35a»
+LINE 1: SELECT * FROM SERVICIOS WHERE ID="2014123112301554a432a7be35...
+                                         ^
+2015-01-28 09:55:26 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-01-28 10:02:13 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015012810002954c8f98d97779) todavía es referida desde la tabla «nivel».
+2015-01-28 10:15:32 ERROR  : ERROR:  no existe la restricción «categoria_servicio_id_usuario_fkey» en la relación «categoria_servicio»
+2015-01-28 10:25:09 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(2015010912001154b0091ba3ca0) todavía es referida desde la tabla «reservacion».
+2015-01-30 09:57:17 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015013009550554cb9b4958d5e) todavía es referida desde la tabla «nivel».
+2015-02-02 09:07:51 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-03 09:17:48 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-03 12:02:32 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2015011516542454b83710a8265) todavía es referida desde la tabla «tarifa».
+2015-02-03 12:02:57 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2015011516542454b83710a8265) todavía es referida desde la tabla «tarifa».
+2015-02-03 12:03:08 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2014123112301554a432a7be35a) todavía es referida desde la tabla «tarifa».
+2015-02-03 12:03:11 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2014123111435354a427c970b9c) todavía es referida desde la tabla «tarifa».
+2015-02-03 12:03:12 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2014122911295054a1817e71af4) todavía es referida desde la tabla «tarifa».
+2015-02-05 10:52:58 ERROR  : ERROR:  no existe la relación «categoria_servicio»
+LINE 1: SELECT * FROM TARIFA, CATEGORIA_SERVICIO WHERE  STADO='1'
+                              ^
+2015-02-05 10:53:14 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 1: ...ELECT * FROM TARIFA, SEG.CATEGORIA_SERVICIO WHERE  STADO='1'
+                                                              ^
+2015-02-05 11:27:00 ERROR  : ERROR:  falta una entrada para la tabla «n» en la cláusula FROM
+LINE 3: ...ID=T.ID_SERVICIO AND T.ID_CATEGORIA=C.ID AND U.ID=N.ID_USUAR...
+                                                             ^
+2015-02-05 11:29:27 ERROR  : ERROR:  error de sintaxis en o cerca de «N»
+LINE 3: ...ID_USUARIO AND U.ID='2015013009584054cb9c20ae150' N.ID=C.ID_...
+                                                             ^
+2015-02-05 11:29:36 ERROR  : ERROR:  no existe la columna c.id_nivel
+LINE 3: ...O AND U.ID='2015013009584054cb9c20ae150' AND N.ID=C.ID_NIVEL...
+                                                             ^
+2015-02-06 10:20:34 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-06 12:19:02 ERROR  : ERROR:  la base de datos «aplicacion_dow» está siendo utilizada por otros usuarios
+DETAIL:  Hay otras 2 sesiones usando la base de datos.
+2015-02-10 11:23:58 ERROR  : ERROR:  error de sintaxis en o cerca de «"label label-success arrowed arrowed-righ"»
+LINE 4:    THEN '<span class=".'"label label-success arrowed arrowed...
+                                ^
+2015-02-10 11:24:20 ERROR  : ERROR:  error de sintaxis en o cerca de «class»
+LINE 5:    ELSE '<span class=label label-danger arrowed arrowed-righ...
+                       ^
+2015-02-10 11:24:33 ERROR  : ERROR:  error de sintaxis en o cerca de «class»
+LINE 5:    ELSE '<span class="label label-danger arrowed arrowed-rig...
+                       ^
+2015-02-10 11:24:54 ERROR  : ERROR:  error de sintaxis en o cerca de «"hidden-phone visible-desktop action-buttons"»
+LINE 7:   lower('<div class=".'"hidden-phone visible-desktop action-...
+                               ^
+2015-02-10 11:25:06 ERROR  : ERROR:  error de sintaxis en o cerca de «onclick»
+LINE 8:     <a onclick=btn_select_servicio()>')"
+               ^
+2015-02-10 11:25:23 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 9:  FROM BANCOS WHERE STADO='1'
+         ^
+2015-02-10 11:25:39 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 8:     '<a onclick=btn_select_servicio()>)' FROM BANCOS WHERE S...
+                                                 ^
+2015-02-10 11:25:49 ERROR  : ERROR:  error de sintaxis en o cerca de «*»
+LINE 8:     '<a onclick=btn_select_servicio()>)', * FROM BANCOS WHER...
+                                                  ^
+2015-02-10 11:27:14 ERROR  : ERROR:  error de sintaxis en o cerca de «NOM»
+LINE 8:     '<a onclick="btn_select_servicio('NOM')"') FROM BANCOS W...
+                                              ^
+2015-02-10 11:28:17 ERROR  : ERROR:  el operador no existe: unknown + text
+LINE 7:   lower(''+ID) FROM BANCOS WHERE STADO='1'
+                  ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-02-10 12:50:41 ERROR  : ERROR:  no existe la relación «b_cuenta»
+LINE 1: SELECT * FROM BANCOS B, B_CUENTA
+                                ^
+2015-02-10 12:51:02 ERROR  : ERROR:  no existe la columna c.id_bancos
+LINE 1: SELECT * FROM BANCOS B, B_CUENTAS C WHERE B.ID=C.ID_BANCOS
+                                                       ^
+2015-02-10 12:53:39 ERROR  : ERROR:  error de sintaxis en o cerca de «C»
+LINE 1: SELECT * FROM B_CUENTAS, BANCOS B C WHERE B.ID=C.ID_BANCO
+                                          ^
+2015-02-10 16:21:36 ERROR  : ERROR:  el valor null para la columna «id» viola la restricción not null
+DETAIL:  La fila que falla contiene (null, 2015021016190754da75cb7ce17, null, null, null, null).
+2015-02-10 16:55:40 ERROR  : ERROR:  no existe la relación «reservacion_horrios»
+LINE 1: SELECT * FROM RESERVACION_HORRIOS
+                      ^
+2015-02-11 10:19:51 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-18 11:25:20 ERROR  : ERROR:  no existe la columna c.id_bancos
+LINE 1: SELECT * FROM BANCOS B, B_CUENTAS C WHERE B.ID=C.ID_BANCOS
+                                                       ^
+2015-02-19 11:27:21 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 1: SELECT * FROM TARIFA WHERE --NOM_TARIFA='DOCENTE'
+                                                         ^
+2015-02-19 12:28:18 ERROR  : ERROR:  update o delete en «reservacion» viola la llave foránea «reservacion_horarios_id_reservacion_fkey» en la tabla «reservacion_horarios»
+DETAIL:  La llave (id)=(2015021911395854e611de00727) todavía es referida desde la tabla «reservacion_horarios».
+2015-02-20 09:43:05 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-20 10:01:01 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 4: --HAVING count(*) > 1
+                             ^
+2015-02-20 10:04:29 ERROR  : ERROR:  la columna «r.id» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 1: SELECT *--, count(*)
+               ^
+2015-02-20 10:51:35 ERROR  : ERROR:  count(*) debe ser usado para invocar una función de agregación sin parámetros
+LINE 3: HAVING count() >=1 limit 5
+               ^
+2015-02-20 10:52:13 ERROR  : ERROR:  error de sintaxis en o cerca de «ORDER»
+LINE 3: HAVING count(S.NOM) >=1 limit 5 ORDER BY count(S.NOM)
+                                        ^
+2015-02-20 10:52:18 ERROR  : ERROR:  error de sintaxis en o cerca de «ORDER»
+LINE 3: HAVING count(S.NOM) >=1 limit 5 AND ORDER BY count(S.NOM)
+                                            ^
+2015-02-20 10:53:56 ERROR  : ERROR:  error de sintaxis en o cerca de «HAVING»
+LINE 3: HAVING count(S.NOM) >=1 limit 5
+        ^
+2015-02-20 10:54:03 ERROR  : ERROR:  error de sintaxis en o cerca de «HAVING»
+LINE 3: AND HAVING count(S.NOM) >=1 limit 5
+            ^
+2015-02-20 10:54:16 ERROR  : ERROR:  error de sintaxis en o cerca de «HAVING»
+LINE 3: HAVING count(S.NOM) >=1 limit 5
+        ^
+2015-02-20 10:54:24 ERROR  : ERROR:  error de sintaxis en o cerca de «ORDER»
+LINE 2: ...IOS S WHERE R.ID_SERVICIO=S.ID GROUP BY S.NOM AND ORDER BY S...
+                                                             ^
+2015-02-20 14:54:40 ERROR  : ERROR:  no existe la relación «reservaciones»
+LINE 6: ..._at) as "semana", COUNT(fecha) AS "usuarios" FROM RESERVACIO...
+                                                             ^
+2015-02-20 14:54:51 ERROR  : ERROR:  no existe la columna «created_at»
+LINE 6: SELECT date_trunc('week', created_at) as "semana", COUNT(fec...
+                                  ^
+2015-02-20 14:54:59 ERROR  : ERROR:  no existe la columna «week»
+LINE 6: ...AS "usuarios" FROM RESERVACION GROUP BY 1 ORDER BY week DESC
+                                                              ^
+2015-02-20 14:55:10 ERROR  : ERROR:  la columna «reservacion.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: ...S "usuarios" FROM RESERVACION GROUP BY 1 ORDER BY fecha DESC
+                                                             ^
+2015-02-20 14:55:35 ERROR  : ERROR:  la columna «reservacion.subtotal» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: ...S "usuarios" FROM RESERVACION GROUP BY 1 ORDER BY subtotal D...
+                                                             ^
+2015-02-20 14:55:37 ERROR  : ERROR:  la columna «reservacion.subtotal» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: ...S "usuarios" FROM RESERVACION GROUP BY 1 ORDER BY subtotal D...
+                                                             ^
+2015-02-20 14:55:53 ERROR  : ERROR:  la referencia a la columna «fecha» es ambigua
+LINE 6: SELECT date_trunc('week', fecha) as "semana", COUNT(fecha) A...
+                                  ^
+2015-02-20 14:56:02 ERROR  : ERROR:  la referencia a la columna «fecha» es ambigua
+LINE 6: ...CT date_trunc('week', R.fecha) as "semana", COUNT(fecha) AS ...
+                                                             ^
+2015-02-20 14:56:10 ERROR  : ERROR:  la columna «servicios.nom» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: ..." FROM RESERVACION R, SERVICIOS GROUP BY 1 ORDER BY NOM DESC
+                                                               ^
+2015-02-20 14:56:41 ERROR  : ERROR:  la columna «servicios.nom» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: ..." FROM RESERVACION R, SERVICIOS GROUP BY 1 ORDER BY NOM DESC
+                                                               ^
+2015-02-20 14:59:34 ERROR  : ERROR:  la columna «r.id» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 6: SELECT R.id,date_trunc('week', R.fecha) as "semana", COUNT(R...
+               ^
+2015-02-20 15:03:00 ERROR  : ERROR:  no existe la columna «fechas»
+LINE 7: select extract(year from fechas)
+                                 ^
+2015-02-20 15:03:41 ERROR  : ERROR:  la columna «reservacion.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 7: select extract(month from fecha)
+                                  ^
+2015-02-20 15:15:37 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 10: select to_char(now(), 'TMMonth');
+         ^
+2015-02-20 15:16:00 ERROR  : ERROR:  error de sintaxis en o cerca de «from»
+LINE 8: from RESERVACION
+        ^
+2015-02-20 15:23:14 ERROR  : ERROR:  el operador no existe: double precision || double precision
+LINE 11:    EXTRACT(MONTH FROM r.fecha) || EXTRACT(YEAR FROM r.fecha)...
+                                        ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-02-20 15:23:53 ERROR  : ERROR:  la columna «r.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 11:    EXTRACT(MONTH FROM r.fecha), EXTRACT(YEAR FROM r.fecha) A...
+                               ^
+2015-02-20 15:24:05 ERROR  : ERROR:  la columna «r.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 11:    EXTRACT(MONTH FROM R.fecha), EXTRACT(YEAR FROM R.fecha) A...
+                               ^
+2015-02-20 15:27:05 ERROR  : ERROR:  error de sintaxis en o cerca de «,»
+LINE 10: SELECT , to_char(R.fecha, 'mm/yy') as R.fecha, count(*) as R...
+                ^
+2015-02-20 15:27:12 ERROR  : ERROR:  error de sintaxis en o cerca de «.»
+LINE 10: SELECT to_char(R.fecha, 'mm/yy') as R.fecha, count(*) as R.i...
+                                              ^
+2015-02-20 15:27:18 ERROR  : ERROR:  error de sintaxis en o cerca de «.»
+LINE 10: SELECT to_char(R.fecha, 'mm/yy') as R.fecha count(*) as R.id
+                                              ^
+2015-02-20 15:27:48 ERROR  : ERROR:  error de sintaxis en o cerca de «.»
+LINE 10: SELECT to_char(R.fecha, 'mm/yy') as R.FECHA, count(*) as R.i...
+                                              ^
+2015-02-20 15:27:53 ERROR  : ERROR:  error de sintaxis en o cerca de «.»
+LINE 10: SELECT to_char(R.fecha, 'mm/yy') as FECHA, count(*) as R.id
+                                                                 ^
+2015-02-20 15:28:42 ERROR  : ERROR:  no existe la columna s.id_reservacion
+LINE 12: RESERVACION R, SERVICIOS S WHERE S.ID_RESERVACION=R.ID group...
+                                          ^
+2015-02-20 15:29:22 ERROR  : ERROR:  no existe la columna r.id_servicios
+LINE 12: RESERVACION R, SERVICIOS S WHERE R.ID_SERVICIOS=S.ID group b...
+                                          ^
+2015-02-20 15:30:21 ERROR  : ERROR:  la columna «r.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 10: SELECT to_char(R.fecha, 'dd/mm/yy') as FECHA, count(*) as id
+                        ^
+2015-02-20 15:32:32 ERROR  : ERROR:  la columna «r.fecha» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 10: SELECT to_char(R.fecha, 'day'),to_char(R.fecha, 'yy') as FEC...
+                        ^
+2015-02-23 09:20:07 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-24 15:42:07 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-24 17:06:05 ERROR  : ERROR:  no existe la columna r.b_cuentas
+LINE 4: S.ID=R.ID_SERVICIO AND R.B_CUENTAS=C.ID
+                               ^
+2015-02-24 17:06:59 ERROR  : ERROR:  no existe la columna c.id_reservacion
+LINE 4: S.ID=R.ID_SERVICIO AND C.ID_RESERVACION=R.ID
+                               ^
+2015-02-24 17:07:44 ERROR  : ERROR:  no existe la columna con.id_b_cuentas
+LINE 4: ....ID=R.ID_SERVICIO AND CON.ID_RESERVACION=R.ID AND CON.ID_B_C...
+                                                             ^
+2015-02-24 17:08:05 ERROR  : ERROR:  no existe la columna con.id_cuentas
+LINE 4: ....ID=R.ID_SERVICIO AND CON.ID_RESERVACION=R.ID AND CON.ID_CUE...
+                                                             ^
+2015-02-24 17:15:25 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: ...SUBTOTAL,B.NOM,C.TIPO,C.NUM,CON.COMPROBANTE,CON.FECHA* FROM 
+                                                                  ^
+2015-02-24 18:03:54 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: ...UM,CON.COMPROBANTE,CON.FECHA, CON.ID,U.NOMBRE,U.CORREO,FROM 
+                                                                  ^
+2015-02-24 18:03:58 ERROR  : ERROR:  error de sintaxis en o cerca de «S»
+LINE 2: SERVICIOS S,RESERVACION R,BANCOS B, B_CUENTAS C, CONFIRMACIO...
+                  ^
+2015-02-25 09:28:14 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-26 10:02:23 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-02-26 10:22:12 ERROR  : ERROR:  el valor null para la columna «id» viola la restricción not null
+DETAIL:  La fila que falla contiene (null, Servicios, null, null).
+2015-02-26 10:25:13 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo timestamp with time zone: «s»
+LINE 1: ...ATE seg.menu SET nom_menu='Usuarios'::text, fecha='s'::times...
+                                                             ^
+2015-02-26 10:26:17 ERROR  : ERROR:  la sintaxis de entrada no es válida para tipo timestamp with time zone: «""»
+LINE 1: UPDATE seg.menu SET fecha='""'::timestamp with time zone WHE...
+                                  ^
+2015-02-26 12:19:56 ERROR  : ERROR:  el valor de array debe comenzar con «{» o información de dimensión
+LINE 1: UPDATE seg.segmento SET acesos='1'::text[] WHERE id = '20150...
+                                       ^
+2015-02-26 12:20:02 ERROR  : ERROR:  el valor de array debe comenzar con «{» o información de dimensión
+LINE 1: UPDATE seg.segmento SET acesos='1'::text[] WHERE id = '20150...
+                                       ^
+2015-02-26 12:20:25 ERROR  : ERROR:  literal de array no es válido: «{,}»
+LINE 1: UPDATE seg.segmento SET acesos='{,}'::text[] WHERE id = '201...
+                                       ^
+2015-02-26 12:20:27 ERROR  : ERROR:  literal de array no es válido: «{,}»
+LINE 1: UPDATE seg.segmento SET acesos='{,}'::text[] WHERE id = '201...
+                                       ^
+2015-03-03 09:34:30 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-03 09:36:59 ERROR  : ERROR:  no se puede eliminar tabla seg.categoria_servicio porque otros objetos dependen de él
+DETAIL:  restricción «tarifa_id_categoria_fkey» en tabla tarifa depende de tabla seg.categoria_servicio
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-03-04 11:51:00 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-04 18:03:10 ERROR  : ERROR:  falta una entrada para la tabla «u» en la cláusula FROM
+LINE 2:  S.ID=T.ID_SERVICIO AND T.ID_CATEGORIA=C.ID AND U.ID=N.ID_US...
+                                                        ^
+2015-03-04 18:03:18 ERROR  : ERROR:  falta una entrada para la tabla «n» en la cláusula FROM
+LINE 2:  S.ID=T.ID_SERVICIO AND T.ID_CATEGORIA=C.ID AND N.ID_CATEGOR...
+                                                        ^
+2015-03-04 18:06:49 ERROR  : ERROR:  error de sintaxis en o cerca de «AND»
+LINE 2: ...D_CATEGORIA=C.ID AND S.ID='$_POST[id]' AND C.NOM= AND T.STAD...
+                                                             ^
+2015-03-05 09:11:42 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-05 09:15:55 ERROR  : ERROR:  falta una entrada para la tabla «n» en la cláusula FROM
+LINE 2: ...AND T.ID_CATEGORIA=C.ID AND S.ID='$_POST[id]' AND N.ID_CATEG...
+                                                             ^
+2015-03-05 11:16:09 ERROR  : ERROR:  no existe la columna s.id_tarifa
+LINE 1: ...ERVICIOS S, TARIFA T WHERE R.ID_SERVICIO=S.ID AND S.ID_TARIF...
+                                                             ^
+2015-03-05 11:16:53 ERROR  : ERROR:  no existe la columna s.id_tarifa
+LINE 1: ...RESERVACION_TARIFA T WHERE R.ID_SERVICIO=S.ID AND S.ID_TARIF...
+                                                             ^
+2015-03-09 15:35:24 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-12 11:28:45 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-12 16:41:27 ERROR  : ERROR:  no existe la relación «seg.cliente»
+LINE 1: SELECT * FROM SEG.USUARIO U,SEG.CLIENTE C WHERE  STADO='1'
+                                    ^
+2015-03-12 16:41:37 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 1: SELECT * FROM SEG.USUARIO U,SEG.NIVEL N WHERE  STADO='1'
+                                                       ^
+2015-03-12 16:42:11 ERROR  : ERROR:  error de sintaxis en o cerca de «U»
+LINE 1: ... SEG.USUARIO U,SEG.NIVEL N WHERE NIVEL='Cliente'  U.STADO='1...
+                                                             ^
+2015-03-12 16:42:45 ERROR  : ERROR:  error de sintaxis en o cerca de «N»
+LINE 1: ...M SEG.USUARIO U,SEG.NIVEL N WHERE NIVEL='Cliente' N.ID_USUAR...
+                                                             ^
+2015-03-12 16:57:30 ERROR  : ERROR:  error de sintaxis en o cerca de «CEDULA»
+LINE 1: CEDULA,NOMBRE,FONO,DIRECCION
+        ^
+2015-03-16 09:08:47 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:02 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:18 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:24 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:25 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:25 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:25 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:09:37 ERROR  : ERROR:  error de sintaxis en o cerca de «sleep»
+LINE 3: sleep(seconds=5);
+        ^
+2015-03-16 09:10:47 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:10:59 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 09:21:40 ERROR  : ERROR:  error de sintaxis en o cerca de «trigger»
+LINE 1: CREATE OR REPLACE FUNCTION flogout() trigger AS
+                                             ^
+2015-03-16 09:22:04 ERROR  : ERROR:  las funciones SQL no pueden retornar el tipo trigger
+2015-03-16 10:01:29 ERROR  : ERROR:  no existe la relación «id_servicios»
+LINE 1: SELECT * FROM RESERVACION R, ID_SERVICIOS
+                                     ^
+2015-03-16 10:10:29 ERROR  : ERROR:  no existe la relación «servicio»
+LINE 1: SELECT * FROM RESERVACION natural join SERVICIO
+                                               ^
+2015-03-16 10:10:56 ERROR  : ERROR:  no existe la columna r.id_servicios
+LINE 1: SELECT * FROM RESERVACION R, SERVICIOS S WHERE R.ID_SERVICIO...
+                                                       ^
+2015-03-16 10:13:21 ERROR  : ERROR:  el operador no existe: text = integer
+LINE 1: ...WHERE R.ID_SERVICIO=S.ID AND R.ID_USUARIO=U.ID AND R.STADO=1
+                                                                     ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-03-16 10:20:24 ERROR  : ERROR:  falta una entrada para la tabla «t» en la cláusula FROM
+LINE 3: ...HERE R.ID_SERVICIO=S.ID AND R.ID_USUARIO=U.ID AND T.ID_SERVI...
+                                                             ^
+2015-03-16 10:26:12 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 3: ...D AND R.FECHA BETWEEN R.FECHA='2015-01-02 '--AND R.STADO='1'
+                                                                       ^
+2015-03-16 10:26:20 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 3: ...ID AND R.FECHA BETWEEN R.FECHA='2015-01-02'--AND R.STADO='1'
+                                                                       ^
+2015-03-16 10:27:35 ERROR  : ERROR:  error de sintaxis en o cerca de «to_dat»
+LINE 1: to_dat
+        ^
+2015-03-16 10:27:46 ERROR  : ERROR:  no existe la columna «timestamp»
+LINE 1: SELECT U.CEDULA,U.NOMBRE,R.to_date(to_char(timestamp, 'YYYY/...
+                                                   ^
+2015-03-16 10:33:47 ERROR  : ERROR:  error de sintaxis en o cerca de «*»
+LINE 1: ... U.CEDULA,U.NOMBRE,R.FECHA,R.FECHA.ToString("dd/MM/yyyy");* 
+                                                                     ^
+2015-03-16 10:33:51 ERROR  : ERROR:  no existe la columna «dd/MM/yyyy»
+LINE 1: SELECT U.CEDULA,U.NOMBRE,R.FECHA,R.FECHA.ToString("dd/MM/yyy...
+                                                          ^
+2015-03-16 10:34:03 ERROR  : ERROR:  no están implementadas las referencias entre bases de datos: r.fecha.tostring
+2015-03-16 10:34:06 ERROR  : ERROR:  no están implementadas las referencias entre bases de datos: r.fecha.tostring
+2015-03-16 10:34:23 ERROR  : ERROR:  no están implementadas las referencias entre bases de datos: r.fecha.to_char
+2015-03-16 10:34:32 ERROR  : ERROR:  no están implementadas las referencias entre bases de datos: r.fecha.to_char
+2015-03-16 10:36:37 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 2: FROM RESERVACION R, SERVICIOS S, SEG.USUARIO U
+        ^
+2015-03-16 10:36:44 ERROR  : ERROR:  el argumento de AND debe ser de tipo boolean, no tipo timestamp with time zone
+LINE 3: ...HERE R.ID_SERVICIO=S.ID AND R.ID_USUARIO=U.ID AND now()--AND...
+                                                             ^
+2015-03-16 10:41:11 ERROR  : ERROR:  no existe la columna «fh»
+LINE 1: ...ELECT EXTRACT(YEAR FROM R.FECHA) AS anho, TO_CHAR(fh,'MMDD')...
+                                                             ^
+2015-03-16 10:43:12 ERROR  : ERROR:  la referencia a la columna «fecha» es ambigua
+LINE 1: SELECT TO_CHAR(FECHA,'HH:MI') AS FECHA --U.CEDULA,U.NOMBRE,R...
+                       ^
+2015-03-16 10:45:50 ERROR  : ERROR:  error de sintaxis en o cerca de «*»
+LINE 1: ...ULA,U.NOMBRE,R.FECHA, TO_CHAR(R.FECHA,'YY-MM-DD') AS FECHA* 
+                                                                     ^
+2015-03-16 10:53:49 ERROR  : ERROR:  no existe la columna s.nombre
+LINE 1: ..., R.FECHA, TO_CHAR(R.FECHA,'YYYY-MM-DD') AS FECHA,S.NOMBRE,R...
+                                                             ^
+2015-03-16 11:13:24 ERROR  : ERROR:  no existe la función no()
+LINE 1: ...CHA, TO_CHAR(R.FECHA,'hh:mm:ss') AS FECHA,TO_CHAR(no(),'YYYY...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-03-18 10:02:01 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-18 10:15:28 ERROR  : ERROR:  error de sintaxis en o cerca de «AND»
+LINE 1: SELECT * FROM RESERVACION R, SEG.USUARIO U AND U.ID=R.ID_USU...
+                                                   ^
+2015-03-18 10:15:42 ERROR  : ERROR:  error de sintaxis en o cerca de «AN»
+LINE 1: ...ERVACION R, SEG.USUARIO U WHERE U.ID=R.ID_USUARIO AN R.STADO...
+                                                             ^
+2015-03-18 10:15:46 ERROR  : ERROR:  el operador no existe: text = integer
+LINE 1: ...ACION R, SEG.USUARIO U WHERE U.ID=R.ID_USUARIO AND R.STADO=1
+                                                                     ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-03-18 10:21:31 ERROR  : ERROR:  no existe la relación «servicio»
+LINE 1: SELECT CEDULA,* FROM RESERVACION R, SEG.USUARIO U,SERVICIO W...
+                                                          ^
+2015-03-18 10:21:56 ERROR  : ERROR:  no existe la columna r.id_servicios
+LINE 1: ...FROM RESERVACION R, SEG.USUARIO U,SERVICIOS WHERE R.ID_SERVI...
+                                                             ^
+2015-03-18 10:22:01 ERROR  : ERROR:  falta una entrada para la tabla «s» en la cláusula FROM
+LINE 1: ...ON R, SEG.USUARIO U,SERVICIOS WHERE R.ID_SERVICIO=S.ID AND U...
+                                                             ^
+2015-03-18 10:22:10 ERROR  : ERROR:  no existe la columna «cedula»
+LINE 1: SELECT CEDULA,* FROM RESERVACION R
+               ^
+2015-03-18 10:22:14 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 1: SELECT CEDULA,* FROM RESERVACION R, SEG.USUARIO U,
+                                                          ^
+2015-03-18 10:22:18 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 1: SELECT CEDULA,* FROM RESERVACION R, SEG.USUARIO U,
+                                                          ^
+2015-03-18 10:22:51 ERROR  : ERROR:  falta una entrada para la tabla «s» en la cláusula FROM
+LINE 1: ...ON R, SEG.USUARIO U,SERVICIOS WHERE R.ID_SERVICIO=S.ID AND U...
+                                                             ^
+2015-03-19 16:42:17 ERROR  : ERROR:  no existe la función to_char(text, unknown)
+LINE 4: ... R.ID_USUARIO=U.ID AND RH.ID_RESERVACION=R.ID AND TO_CHAR(RH...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-03-19 16:48:06 ERROR  : ERROR:  error de sintaxis en o cerca de «ELECT»
+LINE 1: ELECT CEDULA,NOMBRE,FONO,DIRECCION,U.ID FROM SEG.USUARIO U,S...
+        ^
+2015-03-19 16:49:27 ERROR  : ERROR:  el nombre de tabla «u» fue especificado más de una vez
+2015-03-19 17:04:36 ERROR  : ERROR:  no existe la columna r.id_servicios
+LINE 4: ...VICIOS S, RESERVACION R, SEG.USUARIO U WHERE S.ID=R.ID_SERVI...
+                                                             ^
+2015-03-19 17:09:44 ERROR  : ERROR:  error de sintaxis en o cerca de «,»
+LINE 4: SELECT CEDULA,S.NOM,,* FROM SERVICIOS S, RESERVACION R, SEG....
+                            ^
+2015-03-19 17:09:49 ERROR  : ERROR:  no existe la relación «reservacion_horario»
+LINE 4: ...* FROM SERVICIOS S, RESERVACION R, SEG.USUARIO U, RESERVACIO...
+                                                             ^
+2015-03-19 17:10:32 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 4: SELECT CEDULA,S.NOM,HINICIo,HFIN* FROM SERVICIOS S, RESERVAC...
+                                          ^
+2015-03-19 17:10:56 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 4: SELECT CEDULA,S.NOM,HINICIo,HFIN,FE* FROM SERVICIOS S, RESER...
+                                             ^
+2015-03-19 17:44:10 ERROR  : ERROR:  no existe la columna s.id_reservacion
+LINE 5: ... R, SERVICIOS S, RESERVACION_TARIFA RT WHERE R.ID=S.ID_RESER...
+                                                             ^
+2015-03-19 17:47:01 ERROR  : ERROR:  error de sintaxis en o cerca de «RT»
+LINE 5: ...ERE R.ID_SERVICIO=S.ID AND RT.ID_RESERVACION=R.ID RT.ID_TARI...
+                                                             ^
+2015-03-19 17:47:06 ERROR  : ERROR:  no existe la columna rt.id_tarifa
+LINE 5: ...R.ID_SERVICIO=S.ID AND RT.ID_RESERVACION=R.ID AND RT.ID_TARI...
+                                                             ^
+2015-03-19 17:48:08 ERROR  : ERROR:  no existe la columna s.id_tarifa
+LINE 5: ...R.ID_SERVICIO=S.ID AND RT.ID_RESERVACION=R.ID AND S.ID_TARIF...
+                                                             ^
+2015-03-19 17:48:27 ERROR  : ERROR:  falta una entrada para la tabla «t» en la cláusula FROM
+LINE 5: ...R.ID_SERVICIO=S.ID AND RT.ID_RESERVACION=R.ID AND T.ID=S.ID_...
+                                                             ^
+2015-03-19 17:51:11 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 1: SELECT * FROM RESERVACION R, SERVICIOS S,
+                                                 ^
+2015-03-19 17:52:06 ERROR  : ERROR:  no existe la columna r.nom
+LINE 1: SELECT R.NOM,* FROM RESERVACION R, SERVICIOS S
+               ^
+2015-03-19 18:05:28 ERROR  : ERROR:  falta una entrada para la tabla «s» en la cláusula FROM
+LINE 6: SELECT S.NOM WHERE R.ID_SERVICIO=S.ID
+               ^
+2015-03-19 18:22:00 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 6: SELECT S.NOM,T.NOM* FROM RESERVACION R, SERVICIOS S,TARIFA T...
+                            ^
+2015-03-19 18:22:04 ERROR  : ERROR:  no existe la columna t.nom
+LINE 6: SELECT S.NOM,T.NOM,* FROM RESERVACION R, SERVICIOS S,TARIFA ...
+                     ^
+2015-03-19 18:22:30 ERROR  : ERROR:  no existe la columna s.nom_tarifa
+LINE 6: SELECT S.NOM_TARIFA,* FROM RESERVACION R, SERVICIOS S,TARIFA...
+               ^
+2015-03-19 18:26:38 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 6: ...TEGORIA WHERE R.ID_SERVICIO=S.ID AND T.ID_SERVICIO=S.ID AND 
+                                                                       ^
+2015-03-19 18:26:57 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 6: ...ERVICIO WHERE R.ID_SERVICIO=S.ID AND T.ID_SERVICIO=S.ID AND 
+                                                                       ^
+2015-03-19 18:27:26 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 6: ...ervicio WHERE R.ID_SERVICIO=S.ID AND T.ID_SERVICIO=S.ID AND 
+                                                                       ^
+2015-03-19 18:32:43 ERROR  : ERROR:  no existe la columna «201503130954535502fa3dee3e4»
+LINE 1: ...IO AND U.ID=R.ID_USUARIO AND R.STADO='0' and U.ID="201503130...
+                                                             ^
+2015-03-19 18:50:12 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: FROM RESERVACION R, SERVICIOS S, RESERVACION_TARIFA T,*
+        ^
+2015-03-19 18:50:18 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: FROM RESERVACION R, SERVICIOS S, RESERVACION_TARIFA T,*
+        ^
+2015-03-19 18:50:45 ERROR  : ERROR:  error de sintaxis en o cerca de «SELECT»
+LINE 7: SELECT S.NOM,T.SERVICIOS,T.PRECIO,T.CANTIDAD,T.TOTAL
+        ^
+2015-03-26 09:52:42 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-03-26 10:34:35 ERROR  : ERROR:  update o delete en «pais» viola la llave foránea «provincia_id_pais_fkey» en la tabla «provincia»
+DETAIL:  La llave (id)=(1) todavía es referida desde la tabla «provincia».
+2015-03-26 10:34:49 ERROR  : ERROR:  update o delete en «provincia» viola la llave foránea «ciudad_id_provincia_fkey» en la tabla «ciudad»
+DETAIL:  La llave (id)=(2) todavía es referida desde la tabla «ciudad».
+2015-03-26 10:35:00 ERROR  : ERROR:  update o delete en «ciudad» viola la llave foránea «usuario_id_ciudad_fkey» en la tabla «usuario»
+DETAIL:  La llave (id)=(4) todavía es referida desde la tabla «usuario».
+2015-03-26 10:35:03 ERROR  : ERROR:  update o delete en «ciudad» viola la llave foránea «usuario_id_ciudad_fkey» en la tabla «usuario»
+DETAIL:  La llave (id)=(1) todavía es referida desde la tabla «usuario».
+2015-03-26 10:35:41 ERROR  : ERROR:  update o delete en «pais» viola la llave foránea «provincia_id_pais_fkey» en la tabla «provincia»
+DETAIL:  La llave (id)=(1) todavía es referida desde la tabla «provincia».
+2015-03-24 16:55:29 ERROR  : ERROR:  no existe la columna u.nom
+LINE 2: SELECT S.NOM, COUNT(S.NOM), U.NOM FROM RESERVACION R, SERVIC...
+                                    ^
+2015-03-24 16:55:57 ERROR  : ERROR:  la columna «u.nombre» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
+LINE 2: SELECT S.NOM, COUNT(S.NOM), U.NOMBRE FROM RESERVACION R, SER...
+                                    ^
+2015-03-24 16:57:10 ERROR  : ERROR:  error de sintaxis en o cerca de «R»
+LINE 2: ...SEG.USUARIO U, SEG.INFO I WHERE U.ID=I.ID_USUARIO R.ID_USUAR...
+                                                             ^
+2015-03-24 17:03:51 ERROR  : ERROR:  error de sintaxis en o cerca de «GRUP»
+LINE 6: ...ID=I.PAIS AND P.ID!='20150326104209551428d175961' GRUP BY NO...
+                                                             ^
+2015-03-24 17:04:01 ERROR  : ERROR:  error de sintaxis en o cerca de «BY»
+LINE 6: ... AND P.ID!='20150326104209551428d175961' AND GRUP BY NOM_PAI...
+                                                             ^
+2015-03-24 17:04:28 ERROR  : ERROR:  error de sintaxis en o cerca de «GRUP»
+LINE 6: ...ID=I.PAIS AND P.ID!='20150326104209551428d175961' GRUP BY NO...
+                                                             ^
+2015-03-24 17:04:46 ERROR  : ERROR:  error de sintaxis en o cerca de «GRUP»
+LINE 6: ...ID=I.PAIS AND P.ID!='20150326104209551428d175961' GRUP BY NO...
+                                                             ^
+2015-03-24 17:04:54 ERROR  : ERROR:  error de sintaxis en o cerca de «GRUP»
+LINE 6: WHERE P.ID=I.PAIS GRUP BY NOM_PAIS count(S.nom) >=1 limit 5
+                          ^
+2015-03-24 17:05:02 ERROR  : ERROR:  error de sintaxis en o cerca de «count»
+LINE 6: ...!='20150326104209551428d175961' GROUP BY NOM_PAIS count(S.no...
+                                                             ^
+2015-03-24 17:05:57 ERROR  : ERROR:  error de sintaxis en o cerca de «count»
+LINE 6: ...!='20150326104209551428d175961' GROUP BY NOM_PAIS count(P.NO...
+                                                             ^
+2015-03-24 17:06:08 ERROR  : ERROR:  error de sintaxis en o cerca de «count»
+LINE 6: ...!='20150326104209551428d175961' GROUP BY NOM_PAIS count(P.NO...
+                                                             ^
+2015-03-24 17:06:36 ERROR  : ERROR:  error de sintaxis en o cerca de «COUNT»
+LINE 6: ...!='20150326104209551428d175961' GROUP BY NOM_PAIS COUNT(P.NO...
+                                                             ^
+2015-03-24 17:06:53 ERROR  : ERROR:  error de sintaxis en o cerca de «FROM»
+LINE 1: SELECT S.NOM, COUNT(S.NOM), U.NOMBRE, FROM RESERVACION R, SE...
+                                              ^
+2015-03-24 17:12:03 ERROR  : ERROR:  error de sintaxis en o cerca de «SELECT»
+LINE 3: SELECT P.NOM_PAIS FROM LOCALIZACION.PAIS P, RESERVACION R
+        ^
+2015-03-24 17:25:23 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(201503231244595510511b8cef0) todavía es referida desde la tabla «reservacion».
+2015-03-24 17:26:03 ERROR  : ERROR:  update o delete en «reservacion» viola la llave foránea «confirmacion_id_reservacion_fkey» en la tabla «confirmacion»
+DETAIL:  La llave (id)=(20150318191913550a1601bea6a) todavía es referida desde la tabla «confirmacion».
+2015-03-24 17:26:10 ERROR  : ERROR:  update o delete en «reservacion» viola la llave foránea «confirmacion_id_reservacion_fkey» en la tabla «confirmacion»
+DETAIL:  La llave (id)=(20150318191913550a1601bea6a) todavía es referida desde la tabla «confirmacion».
+2015-03-24 17:26:16 ERROR  : ERROR:  update o delete en «reservacion» viola la llave foránea «confirmacion_id_reservacion_fkey» en la tabla «confirmacion»
+DETAIL:  La llave (id)=(201503181631025509ee96372cf) todavía es referida desde la tabla «confirmacion».
+2015-03-24 17:26:17 ERROR  : ERROR:  update o delete en «reservacion» viola la llave foránea «confirmacion_id_reservacion_fkey» en la tabla «confirmacion»
+DETAIL:  La llave (id)=(2015030512411754f8953da5b7f) todavía es referida desde la tabla «confirmacion».
+2015-03-24 17:27:01 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(201503231244595510511b8cef0) todavía es referida desde la tabla «nivel».
+2015-03-24 18:01:30 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(201503241801035511ecaf15364) todavía es referida desde la tabla «nivel».
+2015-03-25 15:43:02 ERROR  : ERROR:  error de sintaxis en o cerca de «(»
+LINE 1: SELECT extract(age(now(),edad)) FROM SEG.USUARIO
+                          ^
+2015-03-25 15:43:39 ERROR  : ERROR:  error de sintaxis en o cerca de «(»
+LINE 1: SELECT extract(age(now(edad)) FROM SEG.USUARIO
+                          ^
+2015-03-27 11:13:42 ERROR  : ERROR:  la base de datos «neltext» está siendo utilizada por otros usuarios
+DETAIL:  Hay 1 otra sesión usando la base de datos.
+2015-03-31 12:13:31 ERROR  : ERROR:  no existe la relación «facturac_compra»
+LINE 1: select * from facturac_compra
+                      ^
+2015-03-31 12:19:43 ERROR  : ERROR:  no existe la columna c.nombres_clompletos
+LINE 1: SELECT C.nombres_clompletos,* FROM FACTURA_VENTA FV, CLIENTE...
+               ^
+2015-03-31 12:20:11 ERROR  : ERROR:  no existe la columna «factura_venta»
+LINE 1: SELECT FACTURA_VENTA,C.nombres_completos,* FROM FACTURA_VENT...
+               ^
+2015-03-31 12:21:31 ERROR  : ERROR:  no existe la columna «fecha_actural»
+LINE 1: ... ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,FECHA_ACTU...
+                                                             ^
+2015-03-31 13:00:14 ERROR  : ERROR:  no existe la función to_char(text, unknown)
+LINE 1: ... ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,to_char(FE...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-03-31 13:00:50 ERROR  : ERROR:  no existe la función upper(text, unknown)
+LINE 1: ... ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,upper(FECH...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-03-31 13:01:13 ERROR  : ERROR:  error de sintaxis en o cerca de «to_char»
+LINE 1: ...ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,*to_char(FE...
+                                                             ^
+2015-03-31 13:07:34 ERROR  : ERROR:  no existe la función to_char(text, unknown)
+LINE 1: ... ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,to_char(FE...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-03-31 13:07:39 ERROR  : ERROR:  no existe la función to_char(text, unknown)
+LINE 1: ... ID_FACTURA_VENTA,C.nombres_completos,COMPROBANTE,to_char(FE...
+                                                             ^
+HINT:  Ninguna función coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+2015-04-01 12:29:58 ERROR  : out of memory for query result
+2015-04-01 12:35:49 ERROR  : ERROR:  falta una entrada para la tabla «u» en la cláusula FROM
+LINE 1: select * from SEG.USUARIO WHERE U.id='2015032711023355157f19...
+                                        ^
+2015-04-01 12:36:19 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 6: select * from SEG.USUARIO U WHERE U.id='2015032711023355157f...
+        ^
+2015-04-01 12:40:14 ERROR  : out of memory for query result
+2015-04-01 12:50:54 ERROR  : out of memory for query result
+2015-04-01 15:32:00 ERROR  : ERROR:  el valor «134896464889» está fuera de rango para el tipo integer
+LINE 5:           AND U.stado='134896464889'
+                              ^
+2015-04-01 15:37:16 ERROR  : out of memory for query result
+2015-04-02 10:00:48 ERROR  : ERROR:  error de sintaxis en o cerca de «AND»
+LINE 1: SELECT * FROM SEG.USUARIO AND ID_CIUDAD=1
+                                  ^
+2015-04-02 10:01:01 ERROR  : ERROR:  el operador no existe: text = integer
+LINE 1: SELECT * FROM SEG.USUARIO WHERE ID_CIUDAD=1
+                                                 ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-04-02 10:02:23 ERROR  : out of memory for query result
+2015-04-02 10:22:18 ERROR  : ERROR:  no existe la relación «info»
+LINE 1: SELECT * FROM SEG.USUARIO U, INFO I, LOCALIZACION.PAIS P WHE...
+                                     ^
+2015-04-02 10:25:23 ERROR  : out of memory for query result
+2015-04-09 16:11:42 ERROR  : ERROR:  la base de datos «ventas_catalogo» está siendo utilizada por otros usuarios
+DETAIL:  Hay 1 otra sesión usando la base de datos.
+2015-04-09 16:11:56 ERROR  : ERROR:  la base de datos «ventas_catalogo» está siendo utilizada por otros usuarios
+DETAIL:  Hay 1 otra sesión usando la base de datos.
+2015-04-09 16:19:00 ERROR  : ERROR:  la base de datos «ventas_catalogo» está siendo utilizada por otros usuarios
+DETAIL:  Hay 1 otra sesión usando la base de datos.
+2015-04-13 09:56:42 ERROR  : Error connecting to the server: FATAL:  la autentificación password falló para el usuario «postgres»
+
+2015-04-15 14:52:22 ERROR  : ERROR:  error de sintaxis en o cerca de «$»
+LINE 1: $resultado = $class->consulta("SELECT horai, horaf, dias, la...
+        ^
+2015-04-20 12:24:36 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:24:39 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:24:39 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:24:40 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:24:41 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:24:50 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:25:00 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-20 12:25:04 ERROR  : ERROR:  secuencia de bytes no válida para codificación «UTF8»: 0xe1 0x20 0x69
+2015-04-21 13:14:52 ERROR  : ERROR:  no existe la columna «id_usuario»
+LINE 3:  WHERE ID_USUARIO='2015042011475855352dbe724c3';
+               ^
+2015-04-21 13:16:47 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015042011475855352dbe724c3) todavía es referida desde la tabla «nivel».
+2015-04-21 13:16:53 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(20150402115502551d74669fc15) todavía es referida desde la tabla «reservacion».
+2015-04-21 13:16:54 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402115302551d73ee545a1) todavía es referida desde la tabla «nivel».
+2015-04-21 13:16:55 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402115050551d736aef0e8) todavía es referida desde la tabla «nivel».
+2015-04-21 13:16:56 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402114656551d7280755c9) todavía es referida desde la tabla «nivel».
+2015-04-21 13:16:56 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015032711023355157f19b1614) todavía es referida desde la tabla «nivel».
+2015-04-21 13:16:57 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(201503241807495511ee4521634) todavía es referida desde la tabla «reservacion».
+2015-04-21 16:44:26 ERROR  : ERROR:  no existe la relación «ciudad»
+LINE 1: SELECT * FROM CIUDAD WHERE NOM_CIUDAD='CAMILO PONCE'
+                      ^
+2015-04-22 11:34:21 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(20150402115502551d74669fc15) todavía es referida desde la tabla «reservacion».
+2015-04-22 11:35:43 ERROR  : ERROR:  no existe la relación «seg.u»
+LINE 1: DELETE FROM seg.u
+                    ^
+2015-04-22 12:29:55 ERROR  : ERROR:  no se puede eliminar función servicios_mayusculas() porque otros objetos dependen de él
+DETAIL:  disparador servicios_mayusculas_insertar en tabla servicios depende de función servicios_mayusculas()
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-04-22 12:30:14 ERROR  : ERROR:  no se puede eliminar función servicios_mayusculas() porque otros objetos dependen de él
+DETAIL:  disparador servicios_mayusculas_insertar en tabla servicios depende de función servicios_mayusculas()
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-04-22 12:30:50 ERROR  : ERROR:  no se puede eliminar tabla servicios porque otros objetos dependen de él
+DETAIL:  restricción «reservacion_id_servicio_fkey» en tabla reservacion depende de tabla servicios
+restricción «horario_servicios_id_servicio_fkey» en tabla horario_servicios depende de tabla servicios
+restricción «tarifa_id_servicio_fkey» en tabla tarifa depende de tabla servicios
+restricción «sgaleria_id_servicio_fkey» en tabla sgaleria depende de tabla servicios
+restricción «sdescripcion_id_servicio_fkey» en tabla sdescripcion depende de tabla servicios
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-04-24 11:04:10 ERROR  : ERROR:  update o delete en «categoria_servicio» viola la llave foránea «tarifa_id_categoria_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2015013009475954cb999f5b70f) todavía es referida desde la tabla «tarifa».
+2015-04-24 11:37:03 ERROR  : ERROR:  no se puede eliminar función seg.categoria_servicios_mayusculas() porque otros objetos dependen de él
+DETAIL:  disparador categoria_mayusculas en tabla seg.categoria_servicio depende de función seg.categoria_servicios_mayusculas()
+HINT:  Use DROP ... CASCADE para eliminar además los objetos dependientes.
+2015-04-24 11:41:25 ERROR  : ERROR:  no existe la relación «categoria_servicio»
+2015-04-24 11:41:36 ERROR  : ERROR:  no existe la función categoria_mayusculas()
+2015-04-24 13:15:00 ERROR  : ERROR:  update o delete en «categoria_servicio» viola la llave foránea «tarifa_id_categoria_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2015013009474954cb9995c4017) todavía es referida desde la tabla «tarifa».
+2015-04-27 10:32:50 ERROR  : ERROR:  la referencia a la columna «stado» es ambigua
+LINE 1: ...OM BANCOS B, B_CUENTAS C WHERE B.ID=C.ID_BANCO AND STADO='1'
+                                                              ^
+2015-04-29 14:56:25 ERROR  : ERROR:  no existe la relación «seg»
+LINE 1: SELECT * FROM SEG A, A.USUARIO
+                      ^
+2015-04-29 15:02:13 ERROR  : ERROR:  error de sintaxis al final de la entrada
+LINE 5: FROM SEG.USUARIO U, SEG.INFO I WHERE U.ID=I.ID_USUARIO AND 
+                                                                   ^
+2015-04-29 15:02:58 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 3:       ELSE upper('EXTRANGERO') as NACIONALIDAD
+                                       ^
+2015-04-29 15:03:05 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 3:       ELSE upper('EXTRANGERO') as 'NACIONALIDAD'
+                                       ^
+2015-04-29 15:03:16 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 3:       ELSE upper('EXTRANGERO' as 'NACIONALIDAD')  
+                                      ^
+2015-04-29 15:03:31 ERROR  : ERROR:  error de sintaxis en o cerca de «extrangero»
+LINE 3:       ELSE upper('EXTRANGERO') extrangero
+                                       ^
+2015-04-29 15:03:35 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 3:       ELSE upper('EXTRANGERO') as extrangero
+                                       ^
+2015-04-29 15:03:45 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 3:       ELSE (upper('EXTRANGERO') as extrangero)
+                                        ^
+2015-04-29 15:10:28 ERROR  : ERROR:  no existe la relación «localizacion.provencia»
+LINE 6: ...M SEG.USUARIO U, SEG.INFO I, LOCALIZACION.PAIS P, LOCALIZACI...
+                                                             ^
+2015-04-29 15:12:35 ERROR  : ERROR:  falta una entrada para la tabla «c» en la cláusula FROM
+LINE 6: ... WHERE U.ID=I.ID_USUARIO AND PRO.ID_PAIS=P.ID AND C.ID_PROVI...
+                                                             ^
+2015-04-29 15:16:33 ERROR  : ERROR:  no existe la columna «201504221136495537ce2193f46»
+LINE 7: ...ND C.ID_PROVINCIA=PRO.ID AND I.PAIS=P.ID AND U.ID="201504221...
+                                                             ^
+2015-04-29 15:18:20 ERROR  : ERROR:  no existe la relación «pais»
+LINE 8: SELECT * FROM PAIS
+                      ^
+2015-04-29 15:22:50 ERROR  : out of memory for query result
+2015-04-29 15:32:51 ERROR  : ERROR:  la subconsulta debe retornar sólo una columna
+LINE 11:   ELSE (SELECT * FROM LOCALIZACION.PAIS)
+                ^
+2015-04-29 15:33:08 ERROR  : ERROR:  la subconsulta debe retornar sólo una columna
+LINE 11:   ELSE (SELECT * FROM LOCALIZACION.PAIS WHERE ID='1')
+                ^
+2015-04-29 15:33:14 ERROR  : ERROR:  error de sintaxis en o cerca de «SELECT»
+LINE 11:   ELSE SELECT * FROM LOCALIZACION.PAIS WHERE ID='1'
+                ^
+2015-04-29 15:36:59 ERROR  : out of memory for query result
+2015-04-29 15:41:01 ERROR  : ERROR:  falta una entrada para la tabla «pro» en la cláusula FROM
+LINE 7: ...4221136495537ce2193f46' AND U.ID=I.ID_USUARIO AND PRO.ID_PAI...
+                                                             ^
+2015-04-29 15:44:29 ERROR  : ERROR:  no existe la columna i.idusuario
+LINE 1: ...IS P WHERE P.ID='20150326104209551428d175961' AND I.IDUSUARI...
+                                                             ^
+2015-04-29 15:52:22 ERROR  : ERROR:  el operador no existe: text == unknown
+LINE 1: SELECT CASE WHEN P.ID=='201504221136495537ce2193f46' 
+                             ^
+HINT:  Ningún operador coincide con el nombre y el tipo de los argumentos. Puede ser necesario agregar conversiones explícitas de tipos.
+2015-04-29 15:56:01 ERROR  : ERROR:  no existe la columna «a»
+LINE 1: SELECT CASE a WHEN I.PAIS='201504221136495537ce2193f46' 
+                    ^
+2015-04-29 16:09:02 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 3:  ELSE upper(select ID FROM SEG.USUARIO U WHERE ID='201504221...
+                    ^
+2015-04-29 16:09:10 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 3:  ELSE select ID FROM SEG.USUARIO U WHERE ID='201504221136495...
+              ^
+2015-04-29 16:12:12 ERROR  : ERROR:  no existe la columna p.i
+LINE 5: ...S P, LOCALIZACION.PROVINCIA PRO WHERE PRO.ID_PAIS=P.I AND I....
+                                                             ^
+2015-04-29 16:19:55 ERROR  : ERROR:  falta una entrada para la tabla «c» en la cláusula FROM
+LINE 5: ...ON.PROVINCIA PRO,LOCALIZACION.CIUDAD WHERE PRO.ID=C.ID_PROVI...
+                                                             ^
+2015-04-29 16:29:56 ERROR  : ERROR:  error de sintaxis en o cerca de «WHEN»
+LINE 1:  WHEN P.ID='20150326104209551428d175961' THEN upper('naciona...
+         ^
+2015-04-29 16:30:07 ERROR  : ERROR:  error de sintaxis en o cerca de «P»
+LINE 2:    TWHEN P.ID='20150326104209551428d175961' THEN upper('naci...
+                 ^
+2015-04-29 16:30:20 ERROR  : ERROR:  error de sintaxis en o cerca de «ANDU»
+LINE 7: ...USUARIO=U.ID AND I.PAIS=P.ID AND PRO.ID_PAIS=P.ID ANDU.ID='$...
+                                                             ^
+2015-04-29 16:39:55 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 2: ...D='20150326104209551428d175961' THEN upper('nacional') as dc
+                                                                  ^
+2015-04-29 16:40:17 ERROR  : ERROR:  error de sintaxis en o cerca de «as»
+LINE 2:  WHEN P.ID='20150326104209551428d175961' as dc THEN upper('n...
+                                                 ^
+2015-04-30 11:57:54 ERROR  : ERROR:  update o delete en «categoria_servicio» viola la llave foránea «tarifa_id_categoria_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(2015013009475954cb999f5b70f) todavía es referida desde la tabla «tarifa».
+2015-04-30 11:58:17 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(20141211160613548a07457dffd) todavía es referida desde la tabla «tarifa».
+2015-04-30 11:58:24 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(20141211160613548a07457dffd) todavía es referida desde la tabla «tarifa».
+2015-04-30 11:58:26 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(20141211160521548a07112af84) todavía es referida desde la tabla «tarifa».
+2015-04-30 11:58:27 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «tarifa_id_servicio_fkey» en la tabla «tarifa»
+DETAIL:  La llave (id)=(20141211160155548a0643d0616) todavía es referida desde la tabla «tarifa».
+2015-04-30 11:58:28 ERROR  : ERROR:  update o delete en «servicios» viola la llave foránea «reservacion_id_servicio_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(20141211160003548a05d39b5c8) todavía es referida desde la tabla «reservacion».
+2015-04-30 11:59:12 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(20150402115502551d74669fc15) todavía es referida desde la tabla «reservacion».
+2015-04-30 11:59:15 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402115302551d73ee545a1) todavía es referida desde la tabla «nivel».
+2015-04-30 11:59:16 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402115050551d736aef0e8) todavía es referida desde la tabla «nivel».
+2015-04-30 11:59:17 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402114656551d7280755c9) todavía es referida desde la tabla «nivel».
+2015-04-30 11:59:17 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015032711023355157f19b1614) todavía es referida desde la tabla «nivel».
+2015-04-30 11:59:18 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(201503241807495511ee4521634) todavía es referida desde la tabla «reservacion».
+2015-04-30 11:59:18 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «reservacion_id_usuario_fkey» en la tabla «reservacion»
+DETAIL:  La llave (id)=(201503241756185511eb92885ef) todavía es referida desde la tabla «reservacion».
+2015-04-30 12:00:20 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(20150402115502551d74669fc15) todavía es referida desde la tabla «nivel».
+2015-04-30 12:06:47 ERROR  : ERROR:  update o delete en «usuario» viola la llave foránea «nivel_id_usuario_fkey» en la tabla «nivel»
+DETAIL:  La llave (id)=(2015043012014055425ff434729) todavía es referida desde la tabla «nivel».
+2015-05-04 12:10:13 ERROR  : ERROR:  error de sintaxis en o cerca de «select»
+LINE 2: select * from empresa
+        ^
+2015-05-04 12:10:16 ERROR  : ERROR:  no existe la columna «telefono1»
+LINE 1: select ruc_empresa,nombre_empresa,propietario,telefono1,tele...
+                                                      ^
+2015-05-04 12:36:49 ERROR  : ERROR:  no existe la columna «subototal»
+LINE 2: ...e,fecha_actual,hora_actual,cod_productos,cantidad,subototal ...
+                                                             ^
+2015-05-04 12:36:51 ERROR  : ERROR:  no existe la columna «subtotal»
+LINE 2: ...e,fecha_actual,hora_actual,cod_productos,cantidad,subtotal f...
+                                                             ^
+2015-05-04 12:42:23 ERROR  : ERROR:  la referencia a la columna «cod_productos» es ambigua
+LINE 2: ...s,id_usuario,comprobante,fecha_actual,hora_actual,cod_produc...
+                                                             ^
+2015-05-04 12:42:49 ERROR  : ERROR:  la referencia a la columna «cod_productos» es ambigua
+LINE 2: ...s,id_usuario,comprobante,fecha_actual,hora_actual,cod_produc...
+                                                             ^
+2015-05-04 12:42:53 ERROR  : ERROR:  falta una entrada para la tabla «producots» en la cláusula FROM
+LINE 2: ...s,id_usuario,comprobante,fecha_actual,hora_actual,producots....
+                                                             ^
+2015-05-04 12:43:06 ERROR  : ERROR:  no existe la columna «nombre_producto»
+LINE 2: ...actual,productos.cod_productos,cantidad,sub_total,nombre_pro...
+                                                             ^
+2015-05-04 12:43:14 ERROR  : ERROR:  no existe la columna «artculo»
+LINE 2: ...actual,productos.cod_productos,cantidad,sub_total,artculo fr...
+                                                             ^
+2015-05-04 15:14:37 ERROR  : ERROR:  no existe la columna «id»
+LINE 1: select id-envio,id_archivo,id_bitacora,fecha,estado,leido,id...
+               ^
+2015-05-04 15:14:40 ERROR  : ERROR:  no existe la columna «id»
+LINE 1: select id-envio,id_archivo,id_bitacora,fecha,estado,leido,id...
+               ^
+2015-05-04 15:31:42 ERROR  : ERROR:  la sintaxis de entrada no es válida para integer: «Enviado»
+LINE 1: ...viados values('1','21','21','2015-05-04 15:31:35','Enviado',...
+                                                             ^
+2015-05-04 15:43:11 ERROR  : ERROR:  error de sintaxis en o cerca de «recibidos»
+LINE 1: insert into recibidos values recibidos ('1','32','32','2015-...
+                                     ^
+2015-05-04 15:43:22 ERROR  : ERROR:  error de sintaxis en o cerca de «1»
+LINE 1: ...ues ('1','32','32','2015-05-04 15:42:55','1','array['1,2']')
+                                                                ^
+2015-05-04 15:44:02 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «recibidos_pkey»
+DETAIL:  Ya existe la llave (id_recibido)=(2).
+2015-05-04 15:44:02 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «recibidos_pkey»
+DETAIL:  Ya existe la llave (id_recibido)=(2).
+2015-05-04 15:44:03 ERROR  : ERROR:  llave duplicada viola restricción de unicidad «recibidos_pkey»
+DETAIL:  Ya existe la llave (id_recibido)=(2).
+2015-05-04 15:45:04 ERROR  : ERROR:  no existe la columna «usaurios»
+LINE 2: ..._recibido,id_archivo,id_bitacora,fecha,id_usuario,usaurios f...
+                                                             ^

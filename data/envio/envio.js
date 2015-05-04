@@ -85,8 +85,7 @@ function medio_recepcion(){
 	});	      
 }
 function guardar_envio(){
-	var resp=comprobarCamposRequired("form_envio");
-	
+	var resp=comprobarCamposRequired("form_envio");	
 	if(resp==true){
 		$("#form_envio").on("submit",function (e){				
 			var valores = $("#form_envio").serialize();			
@@ -108,12 +107,17 @@ function guardar_envio(){
 				        processData:false,
 				        cache:false,        
 				    }).done(function(data){
-				        if( data == 0 ){            
-				            alert('Archivo subido satisfactoriamente');                                            			            
-				            
+				         if( data == 1 ){            
+				            alert('Archivo subido satisfactoriamente');	
+				            actualizar_form();			            
 				        }else{
-				            alert("Error al momento de enviar los datos la página se recargara");                   
-				            //actualizar_form();
+				            if(data == 2){
+				            	alert("Error al momento de enviar los datos la página se recargara");
+				            	actualizar_form();
+				            }else{
+				            	alert(data);
+				            	actualizar_form();
+				            }
 				        }
 				    }); 		
 				}else{
@@ -127,11 +131,17 @@ function guardar_envio(){
 					        processData:false,
 					        cache:false,        
 					    }).done(function(data){
-					        if( data == 0 ){            
+					        if( data == 1 ){            
 					            alert('Archivo subido satisfactoriamente');					            
+					            actualizar_form();
 					        }else{
-					            alert("Error al momento de enviar los datos la página se recargara");
-					            //actualizar_form();
+					            if(data == 2){
+					            	alert("Error al momento de enviar los datos la página se recargara");
+					            	actualizar_form();
+					            }else{
+					            	alert(data);
+					            	actualizar_form();
+					            }
 					        }
 					    });
 				    }else{
