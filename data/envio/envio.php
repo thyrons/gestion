@@ -37,7 +37,7 @@ if ($_GET['tipo'] == "g") {
             $array = explode(",", $_GET['user']);
             for($i = 0; $i < count($array); $i++){
                 $id_envio = id($conexion,'enviados','id_envio');                                
-                $sql = "insert into enviados values('".$id_envio."','".$id_archivo."','".$id_bitacora."','".$fecha."','0','0','".$_SESSION['id_gestion']."')";                                
+                $sql = "insert into enviados values('".$id_envio."','".$id_archivo."','".$id_bitacora."','".$fecha."','0','0','".$array[$i]."')";                                
                 $guardar = guardarSql($conexion, $sql);
                 $sql_nuevo = "select (id_envio,id_archivo,id_bitacora,fecha,estado,leido,id_usuario) from enviados where id_envio = '".$id_envio."'";
                 $sql_nuevo = sql_array($conexion,$sql_nuevo);                                  
@@ -86,6 +86,7 @@ if ($_GET['tipo'] == "g") {
                     /////////////
                     move_uploaded_file($temporal, $root.$destino);                    
                     $sql = "insert into archivo values ('".$id_archivo."','".$_GET['txt_2']."','".$codigo_documento."','".$_SESSION['departamento']."','".$_SESSION['id_gestion']."','".$fecha."','".$_GET['txt_7']."')";
+                    echo $sql;
                     $guardar = guardarSql($conexion, $sql);
                     if($guardar == 'true'){                
                         //////////proceso archivo//////
@@ -129,7 +130,7 @@ if ($_GET['tipo'] == "g") {
                             $array = explode(",", $_GET['user']);
                             for($i = 0; $i < count($array); $i++){
                                 $id_envio = id($conexion,'enviados','id_envio');                                
-                                $sql = "insert into enviados values('".$id_envio."','".$id_archivo."','".$id_bitacora."','".$fecha."','0','0','".$_SESSION['id_gestion']."')";                                
+                                $sql = "insert into enviados values('".$id_envio."','".$id_archivo."','".$id_bitacora."','".$fecha."','0','0','".$array[$i]."')";                                
                                 $guardar = guardarSql($conexion, $sql);
                                 $sql_nuevo = "select (id_envio,id_archivo,id_bitacora,fecha,estado,leido,id_usuario) from enviados where id_envio = '".$id_envio."'";
                                 $sql_nuevo = sql_array($conexion,$sql_nuevo);                                  

@@ -143,7 +143,16 @@
 																		
 																	}
 																}else{															
+																	if($_GET['fun'] == "17"){//para ciudad con id
+																		if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																			$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,usuario.id_usuario,nombres_usuario,referencia from archivo,bitacora,enviados,usuario where archivo.id_archivo = enviados.id_archivo and archivo.id_archivo = bitacora.id_archivo and bitacora.id_bitacora = enviados.id_bitacora and bitacora.id_usuario = enviados.id_usuario and usuario.id_usuario = enviados.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."'";
+																			cargarTabla($conexion,$sql,$_GET['tam']);
+																		}else{
+																			
+																		}
+																	}else{															
 
+																	}	
 																}															
 															}															
 														}

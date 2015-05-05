@@ -29,7 +29,21 @@
 	        echo $lista = json_encode($lista);
 	    }
 	}
-
+	function cargarTabla($conexion, $sql, $tam) {
+	    $lista = array();
+	    $data = 0;
+	    $sql = pg_query($conexion, $sql);	    	    	    
+	    if ($sql) {
+	    	$cont = pg_num_rows($sql);
+	        while ($row = pg_fetch_row($sql)) {
+	            for($i = 0; $i < $tam; $i++){
+	            	$lista[] = $row[$i];	            
+	            }
+	        }
+	        $lista=array("cont" => $cont, "cuerpo" => $lista); 
+	        echo $lista = json_encode($lista);
+	    }
+	}
 
 	function id ($conexion,$tabla,$id){
 		$contador = 0;
