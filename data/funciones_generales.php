@@ -169,6 +169,7 @@
     	return $texto;
 	}
 	function sql_array($conexion,$sql){        		
+		//echo $sql;
 	    $sql = pg_fetch_row(pg_query($sql));                                 
 	    $sql = "array['".implode("', '", $sql)."']";   	    
 	    return $sql;     
@@ -198,5 +199,11 @@
 	        $id = $row[0];
 	    }
 	    return $id;
+	}
+	function nro_rows($conexion, $sql) { //retorna el id de una consulta con solo un parametro de retorno en el sql
+	    $total = 0;	    
+	    $sql = pg_query($conexion, $sql);
+	    $total = pg_num_rows($sql);
+	    echo $total;
 	}
 ?>

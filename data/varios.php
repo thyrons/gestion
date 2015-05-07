@@ -145,13 +145,22 @@
 																}else{															
 																	if($_GET['fun'] == "17"){//para ciudad con id
 																		if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																			$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,usuario.id_usuario,nombres_usuario,referencia from archivo,bitacora,enviados,usuario where archivo.id_archivo = enviados.id_archivo and archivo.id_archivo = bitacora.id_archivo and bitacora.id_bitacora = enviados.id_bitacora and bitacora.id_usuario = enviados.id_usuario and usuario.id_usuario = enviados.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."'";
+																			$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' order by enviados.fecha asc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
 																			cargarTabla($conexion,$sql,$_GET['tam']);
 																		}else{
 																			
 																		}
 																	}else{															
+																		if($_GET['fun'] == "18"){//para ciudad con id
+																			if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																				$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' order by enviados.fecha asc ";																			
+																				nro_rows($conexion,$sql);
+																			}else{
+																				
+																			}
+																		}else{															
 
+																		}	
 																	}	
 																}															
 															}															

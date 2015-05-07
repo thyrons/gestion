@@ -109,14 +109,14 @@ function guardar_envio(){
 				    }).done(function(data){
 				         if( data == 1 ){            
 				            alert('Archivo subido satisfactoriamente');	
-				            //actualizar_form();			            
+				            actualizar_form();			            
 				        }else{
 				            if(data == 2){
 				            	alert("Error al momento de enviar los datos la página se recargara");
-				            	//actualizar_form();
+				            	actualizar_form();
 				            }else{
 				            	alert(data);
-				            	//actualizar_form();
+				            	actualizar_form();
 				            }
 				        }
 				    }); 		
@@ -133,14 +133,14 @@ function guardar_envio(){
 					    }).done(function(data){
 					        if( data == 1 ){            
 					            alert('Archivo subido satisfactoriamente');					            
-					            //actualizar_form();
+					            actualizar_form();
 					        }else{
 					            if(data == 2){
 					            	alert("Error al momento de enviar los datos la página se recargara");
-					            	//actualizar_form();
+					            	actualizar_form();
 					            }else{
 					            	alert(data);
-					            	//actualizar_form();
+					            	actualizar_form();
 					            }
 					        }
 					    });
