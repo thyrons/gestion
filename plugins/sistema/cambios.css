@@ -10,4 +10,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  }
+}
+#tabla_inbox ul li a{
+  color : #000;
+}

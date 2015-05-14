@@ -54,9 +54,9 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviados</a></li>                                        
-                    <li><a href="#"><i class="fa fa-trash-o"></i> No Deseados</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviados</a></li>                                                            
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Reportes</a></li>                                                                                                    
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
@@ -70,7 +70,7 @@
                   <h3 class="box-title">Bandeja de Entrada</h3>
                   <div class="box-tools pull-right">
                     <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Buscar"/>
+                      <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>
                       <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                   </div><!-- /.box-tools -->
@@ -80,11 +80,11 @@
                     <!-- Check all button -->
                     <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
                     <div class="btn-group">
-                      <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                      <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                      
+                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
+                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
                     </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-default btn-sm"  name="refresh_inbox"><i class="fa fa-refresh"></i></button>
                     <div class="pull-right">
                       <label name="tot"></label>
                       <!-- el total de archivos 1-50/200 -->
@@ -109,11 +109,11 @@
                     <!-- Check all button -->
                     <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>                    
                     <div class="btn-group">
-                      <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                      <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                      
+                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
+                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
                     </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                    <button class="btn btn-default btn-sm" name="refresh_inbox"><i class="fa fa-refresh"></i></button>
                     <div class="pull-right">
                       <label name="tot"></label>
                       <div class="btn-group">
@@ -127,6 +127,7 @@
             </div><!-- /.col -->
           </div><!-- /.row -->  
         </section>        
+        
         <!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php footer(); ?>
