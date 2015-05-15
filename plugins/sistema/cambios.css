@@ -12,5 +12,9 @@
   white-space: nowrap;
 }
 #tabla_inbox ul li a{
-  color : #000;
+  color : #000;  
+}
+#tabla_inbox .menu_inbox{
+	position: absolute;
+	z-index: 9999999999999999;
 }
