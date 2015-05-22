@@ -18,3 +18,14 @@
 	position: absolute;
 	z-index: 9999999999999999;
 }
+.chosen-container-single .chosen-single {
+    height: 33px !important;
+    border-radius: 3px !important;
+    border: 1px solid #CCCCCC !important;
+}
+.chosen-container-single .chosen-single span {
+    padding-top: 2px;
+}
+.chosen-container-single .chosen-single div b {
+    margin-top: 2px;
+}

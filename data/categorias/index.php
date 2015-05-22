@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>PRINCIPAL</title>
+    <meta charset="UTF-8">    
+    <title>.:CATEGORÍAS:.</title>
+    <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="../../web/favicon.ico/index.html" rel="icon" type="image/x-icon" />
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />    
     <link href="../../font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/icon/ionicons.min.css" rel="stylesheet" type="text/css" />    
@@ -22,7 +24,7 @@
     <link href="../../plugins/sistema/cambios.css" rel="stylesheet" type="text/css" /> 
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">   
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/address.css" rel="stylesheet">   
-    <link href="../../plugins/gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />    
+    <link href="../../plugins/gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />        
   </head>
   <body class="skin-blue">
     <div class="wrapper">

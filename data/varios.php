@@ -166,6 +166,15 @@
 																				}else{
 																					
 																				}
+																			}else{
+																				if($_GET['fun'] == "20"){//para cargar el correo
+																					if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																						$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' and nombre_archivo like '".$_GET['txt']."%' order by enviados.fecha asc offset ".$_GET['inicio']." limit ".$_GET['fin']."";
+																						cargarTabla($conexion,$sql,$_GET['tam']);
+																					}else{
+																						
+																					}
+																				}
 																			}
 																		}	
 																	}	
