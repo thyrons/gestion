@@ -5,10 +5,13 @@ var inicial = 0;
 var fin = 0;
 var cont_reg = 2;
 var temp_reg = 0;
-function inicio(){	
+var loc = document.location.href;
+function inicio(){	    
   //////////////procesos inbox recibidos
   total_registro();
-	cargar_recibidos();	  
+	cargar_recibidos();	
+  var id_get = getGET(loc);   
+  cargar_datos_correo(id_get) 
   $("button[name$='adelante']").on('click',function(){        
     inicial =  fin;    
     fin = registros * cont_reg;        
@@ -147,32 +150,26 @@ function total_registro(){
   });     
 }
 function cargar_datos_correo(id){
-  $.ajax({        
-    type: "POST",
-    dataType: 'json',        
-    url: "../varios.php?tipo=0&id=0&tam=11&fun=17&inicio="+inicial+"&fin="+registros,        
-    success: function(data, status) {                     
-        if(registros > total_registros){
-          registros = total_registros;
-        }
-        fin = registros;
-        $("#tabla_inbox tbody").html("");
-        $("label[name$='tot']").html("");          
-        $("label[name$='tot']").append((inicial+1) + ' - '+ registros + ' de ' + total_registros);          
-        for (var i = 0; i < (registros * 11); i=i+11) {           
-          if((data['cuerpo'].length / 11) > (i / 11)){
-        if(data['cuerpo'][i + 10] == ''){
-              adjunto = "<i class=''></i>";
-            }else{
-              adjunto = "<i class='fa fa-paperclip'></i>";
-            }                           
-            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
-          }           
-        }
-    },
-    error: function (data) {            
-    }         
-  }); 
+  if(id){
+    $.ajax({        
+      type: "POST",
+      dataType: 'json',        
+      url: "../varios.php?tipo=0&id="+id.id+"&tam=6&fun=20",        
+      success: function(data, status) {  
+        $("#subject").html("");
+        $("#subject").html(data['cuerpo'][2]);
+        $("#from_mail").html("");
+        $("#from_mail").html("De: "+data['cuerpo'][5]);
+        $("#cuerpo_mail").html("");
+        $("#cuerpo_mail").html(data['cuerpo'][3]);
+        $("#date_mail").html("");
+        $("#date_mail").html(data['cuerpo'][1]);
+      }, 
+      error: function (data) {            
+      }         
+    }); 
+
+  }  
 }
 
 function cargar_enviados(){}

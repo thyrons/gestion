@@ -551,3 +551,16 @@ function appendToChosen(id,value,text,extra,chosen,chosen1){
     $(input).children().val(text);        
     //console.log($("#txt_1_chosen").children().children().next())        
 }
+function getGET(loc){   
+   var getString = loc.split('?')[1];
+   if(getString){
+       var GET = getString.split('&');
+       var get = {};//this object will be filled with the key-value pairs and returned.
+
+       for(var i = 0, l = GET.length; i < l; i++){
+          var tmp = GET[i].split('=');
+          get[tmp[0]] = unescape(decodeURI(tmp[1]));
+       }
+       return get;
+   }      
+}
