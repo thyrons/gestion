@@ -166,6 +166,39 @@ function atras_adelante(inicio,fin){
     },         
   });     
 }
+function atras_adelante_read(inicio,fin){
+  pag = document.location.href;
+  id_pag = getGET(pag);     
+  $("#cuerpo_mail").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');  
+  $.ajax({        
+    type: "POST",
+    dataType: 'json',              
+    timeout: 60000,            
+    url: "../varios.php?tipo=0&id="+id_pag.id+"&tam=7&fun=21",        
+    success: function(data, status) {          
+      data = data;               
+      loadStop();                    
+      $("#subject").html("");
+      $("#subject").html(data['cuerpo'][2]);
+      $("#from_mail").html("");
+      $("#from_mail").html("De: "+data['cuerpo'][5]);
+      $("#cuerpo_mail").html("");
+      $("#cuerpo_mail").html(data['cuerpo'][3]);
+      $("#date_mail").html("");
+      $("#date_mail").html(data['cuerpo'][1]);
+      if(data['cuerpo'][4] == ''){
+      }else{
+        $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>')
+      }
+    }, 
+    error: function (data) {            
+      loadStart();
+    },   
+    beforeSend: function(){
+      loadStart();                
+    },   
+  });                 
+}
 function total_registro(){
   $.ajax({        
     type: "POST",
@@ -179,8 +212,7 @@ function total_registro(){
     }           
   });     
 }
-function cargar_datos_correo(id){  
-  var datos_correo;  
+function cargar_datos_correo(id){    
   $("#cuerpo_mail").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
   if(id){
     $.ajax({        

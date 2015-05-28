@@ -174,6 +174,15 @@
 																					}else{
 																						
 																					}																					
+																				}else{
+																					if($_GET['fun'] == "21"){//para cargar el correo																					
+																						if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																							$sql = "select id_envio,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario,peso from enviados,usuario,bitacora where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_usuario = usuario.id_usuario  and enviados.id_envio not in ('".$_GET['id']."')  order by id_envio asc limit 1";																						
+																							cargarTabla($conexion,$sql,$_GET['tam']);																							
+																						}else{
+																							
+																						}																					
+																					}	
 																				}
 																			}
 																		}	
