@@ -83,44 +83,34 @@
                     <h5 id="from_mail"></h5>
                   </div><!-- /.mailbox-read-info -->
                   <div class="mailbox-controls with-border text-center">
-                    <div class="btn-group">
-                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
-                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Reply"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Forward"><i class="fa fa-share"></i></button>
+                    <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Reenviar"><i class="fa fa-edit"></i></button>
+                    <div class="btn-group">                      
+                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Atras" name="atras_read"><i class="fa fa-reply"></i></button>
+                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Siguiente" name="adelante_read"><i class="fa fa-share"></i></button>
                     </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></button>
+                    <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Imprmir"><i class="fa fa-print"></i></button>                    
                   </div><!-- /.mailbox-controls -->
                   <div class="mailbox-read-message" id="cuerpo_mail" >
                     
                   </div><!-- /.mailbox-read-message -->
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                  <ul class="mailbox-attachments clearfix">
-                    <li>
-                      <span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span>
-                      <div class="mailbox-attachment-info">
-                        <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Sep2014-report.pdf</a>
-                        <span class="mailbox-attachment-size">
-                          1,245 KB
-                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-                        </span>
-                      </div>
-                    </li>                    
+                  <ul class="mailbox-attachments clearfix" id="footer_mail">
+                    
                   </ul>
                 </div><!-- /.box-footer -->
-                <!-- <div class="box-footer">
+                <div class="box-footer">
                   <div class="pull-right">
-                    <button class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                    <button class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
-                  </div>
-                  <button class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
-                  <button class="btn btn-default"><i class="fa fa-print"></i> Print</button>
-                </div><!-- /.box-footer -->
+                    <button class="btn btn-primary" name="atras_read"><i class="fa fa-reply"></i> Atras</button>
+                    <button class="btn btn-primary" name="adelante_read"><i class="fa fa-share"></i> Siguiente</button>
+                  </div>                  
+                  <button class="btn btn-primary"><i class="fa fa-edit"></i> Reenviar</button>
+                  <button class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</button>
+                </div><!-- /.box-footer-->
               </div><!-- /. box -->
             </div><!-- /.col -->
           </div><!-- /.row -->  
-        </section>        
-        
+        </section>                
         <!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php footer(); ?>

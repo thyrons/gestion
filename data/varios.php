@@ -167,13 +167,13 @@
 																					
 																				}
 																			}else{
-																				if($_GET['fun'] == "20"){//para cargar el correo
+																				if($_GET['fun'] == "20"){//para cargar el correo																					
 																					if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																						$sql = "select id_envio,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario from enviados,usuario,bitacora where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_usuario = usuario.id_usuario and enviados.id_envio = '".$_GET['id']."'";
-																						cargarTabla($conexion,$sql,$_GET['tam']);
+																						$sql = "select id_envio,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario,peso from enviados,usuario,bitacora where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_usuario = usuario.id_usuario and enviados.id_envio = '".$_GET['id']."'";																						
+																						cargarTabla($conexion,$sql,$_GET['tam']);																							
 																					}else{
 																						
-																					}
+																					}																					
 																				}
 																			}
 																		}	
