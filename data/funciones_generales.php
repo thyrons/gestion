@@ -2,8 +2,8 @@
 	session_start();  
 	date_default_timezone_set('America/Guayaquil'); 
 	$fecha = date('Y-m-d H:i:s', time());   
-	$fecha_larga = date('His', time());
-
+	$fecha_larga = date('His', time());	
+	
 	function sesion_activa(){	  		        
 	    return $_SESSION['id_gestion'];
 	}
@@ -22,8 +22,8 @@
 	    $sql = pg_query($conexion, $sql);
 	    if ($sql) {
 	        while ($row = pg_fetch_row($sql)) {
-	            for($i = 0; $i < $tam; $i++){
-	            	$lista[] = $row[$i];	            
+	            for($i = 0; $i < $tam; $i++){	            	
+	            	$lista[] = $row[$i];	   	            	         
 	            }
 	        }
 	        echo $lista = json_encode($lista);
