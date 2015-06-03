@@ -24,7 +24,8 @@
   </head>
   <body class="login-page">
     <div class="login-box">      
-      <div class="login-box-body">
+      <div class="login-box-body" align="center">
+        <img src="img/logo2.fw.png" width="100%">
         <p class="login-box-msg">Ingrese los datos para iniciar session</p>
         <form action="" id="form_login" name="form_login" method="post">
           <div class="form-group has-feedback">
@@ -48,6 +49,8 @@
           </div>
         </form>
 
+        <img src="img/logo.png" width="100%">
+
         <!--<a href="#">Olvido su contraseña</a><br>
         <a href="register.html" class="text-center">Registrar Nuevo Usuario</a>-->
 
@@ -59,9 +62,13 @@
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- iCheck -->
-    <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>    
+    <script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>  
+    <script src="../../dist/js/bootbox.js"></script>  
 
     <script src="login.js" type="text/javascript"></script>    
-    <script src="../funciones_generales.js" type="text/javascript"></script>    
+    <script src="../funciones_generales.js"></script>    
+    <script type="text/javascript">
+  // bootbox.alert("Hello world!");
+    </script>
   </body>
 </html>
