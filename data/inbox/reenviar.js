@@ -70,9 +70,12 @@ function cargar_datos_documento(id){
     	success: function(data, status) {      		
     		$('#txt_8').text("");	        	
     		console.log(data);
-      		for (var i = 0; i < data.length; i=i+6) {            				            		            	        		
-      			
-    			//$("#txt_8").text(data[i+3]);
+    		var text = '';
+			//$("#txt_8").text('');
+      		for (var i = 0; i < data.length; i=i+6) {           
+      			text = $("#txt_8").text(); 				            		            	        		      			
+      			lineas ="----------------------- "+data[i+5];      			
+      			$("#txt_8").append("<pre>"+data[i+3]+"</pre>");      			      			  
     		}
     	},
     	error: function (data) {		        

@@ -66,9 +66,6 @@
     <script src="../../dist/js/bootbox.js"></script>  
 
     <script src="login.js" type="text/javascript"></script>    
-    <script src="../funciones_generales.js"></script>    
-    <script type="text/javascript">
-  // bootbox.alert("Hello world!");
-    </script>
+    <script src="../funciones_generales.js"></script>        
   </body>
 </html>

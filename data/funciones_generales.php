@@ -21,7 +21,7 @@
 	    $data = 0;
 	    $sql = pg_query($conexion, $sql);
 	    if ($sql) {
-	        while ($row = pg_fetch_row($sql)) {
+	        while ($row = pg_fetch_row($sql)) {	        	
 	            for($i = 0; $i < $tam; $i++){	            	
 	            	$lista[] = $row[$i];	   	            	         
 	            }
