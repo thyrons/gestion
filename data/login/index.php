@@ -68,30 +68,5 @@
     <script src="../../dist/js/bootbox.js"></script>  
 
     <script src="login.js" type="text/javascript"></script>    
-    <script src="../funciones_generales.js"></script>    
-    <script type="text/javascript">
-    // advertencia
-      $.gritter.add({
-        title: 'This is a regular notice!',
-        text: 'This will fade out after a certain amount of time.',
-        image: '../../dist/img/advertencia.fw.png',
-        class_name: 'dc_ok'
-      });
-      // error
-      $.gritter.add({
-        title: 'This is a regular notice!',
-        text: 'This will fade out after a certain amount of time.',
-        image: '../../dist/img/error.fw.png',
-        class_name: 'dc_ok'
-      });
-      // ok
-      $.gritter.add({
-        title: 'This is a regular notice!',
-        text: 'This will fade out after a certain amount of time.',
-        image: '../../dist/img/ok.fw.png',
-        sticky: false, 
-        class_name: 'dc_ok'
-      });
-    </script>
   </body>
 </html>

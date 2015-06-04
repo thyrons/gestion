@@ -193,7 +193,7 @@
 																						}else{
 																							if($_GET['fun'] == "23"){//para cargar el correo																					
 																								if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																									$sql = "select id_bitacora,fecha_cambios,asunto_cambio,bitacora,bitacora.id_usuario,nombres_usuario from bitacora,usuario where bitacora.id_usuario = usuario.id_usuario and id_archivo = '".$_GET['id']."' order by fecha_cambios asc";																						
+																									$sql = "select id_bitacora,fecha_cambios,asunto_cambio,bitacora.observaciones,bitacora.id_usuario,nombres_usuario from bitacora,usuario where bitacora.id_usuario = usuario.id_usuario and id_archivo = '".$_GET['id']."' order by fecha_cambios asc";																						
 																									cargarSelect($conexion,$sql,$_GET['tam']);																							
 																								}else{
 																									
