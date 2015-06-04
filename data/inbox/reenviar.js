@@ -67,15 +67,22 @@ function cargar_datos_documento(id){
     	type: "POST",
     	dataType: 'json',        
     	url: "../varios.php?tipo=0&id="+id+"&tam=6&fun=23",        
-    	success: function(data, status) {      		
-    		$('#txt_8').text("");	        	
-    		console.log(data);
-    		var text = '';
-			//$("#txt_8").text('');
-      		for (var i = 0; i < data.length; i=i+6) {           
+    	success: function(data, status) {      		    		
+    		var observaciones = '';
+      		for (var i = 0; i < data.length; i=i+6) {                 			
+      			observaciones = '';
+      			var text_editor = CKEDITOR.instances.txt_8.getData();    			      					
       			text = $("#txt_8").text(); 				            		            	        		      			
-      			lineas ="----------------------- "+data[i+5];      			
-      			$("#txt_8").append("<pre>"+data[i+3]+"</pre>");      			      			  
+      			lineasIz ="---------- ";
+      			lineasDer =" ----------";      			
+      			if(data[i + 3] == ''){
+      				observaciones = "<p>Sin observaciones</p>";
+
+      			}else{
+      				observaciones = data[i + 3];
+      			}      			
+      			userP = text_editor +  observaciones + lineasIz + data[i+5] +lineasDer
+      			CKEDITOR.instances.txt_8.setData(userP);    			
     		}
     	},
     	error: function (data) {		        

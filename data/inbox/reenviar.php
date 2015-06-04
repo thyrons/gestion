@@ -96,7 +96,7 @@
                     </div>  
                     <div class="form-group col-md-6 ">
                       <label for="txt_8" class="">Historial deObservaciones</label>                                            
-                      <textarea id="txt_8" name="txt_8" rows="80" cols="50">                                            
+                      <textarea id="txt_8" disabled="" name="txt_8" rows="80" cols="50">                                            
                       </textarea>                      
                     </div>                                                                                                         
                     <div class="form-group col-md-6 ">
