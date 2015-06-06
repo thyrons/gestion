@@ -96,7 +96,8 @@
                       </div><!-- /.btn-group -->
                     </div><!-- /.pull-right -->
                   </div>
-                  <div class="table-responsive mailbox-messages">
+                  <div id="tbl">
+                  <div class="table-responsive mailbox-messages" id="">
                     <table class="table table-hover table-striped" id="tabla_inbox">
                     <thead>
                       
@@ -105,6 +106,7 @@
                       </tbody>
                     </table><!-- /.table -->
                   </div><!-- /.mail-box-messages -->
+                  </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer no-padding">
                   <div class="mailbox-controls">

@@ -14,4 +14,6 @@
     	auditoria_sistema($conexion,'usuario',$id_session,'Login','',$fecha_larga,$fecha,'','',"Ingreso al sistema por el usuario ".$_SESSION['usuario_gestion']."");		    	
 	}	
 	echo $data;
+	
+
 ?>

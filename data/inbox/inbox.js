@@ -18,6 +18,7 @@ function inicio(){
   var id_get = getGET(loc);   
   cargar_datos_correo(id_get);  
   $("button[name$='adelante']").on('click',function(){        
+    $("#buscar_tabla").val("");
     inicial =  fin;    
     fin = registros * cont_reg;        
     if(fin > total_registros){      
@@ -31,6 +32,7 @@ function inicio(){
   });
 
   $("button[name$='atras']").on('click',function(){                  
+    $("#buscar_tabla").val("");
     cont_reg = cont_reg - 1;    
     temp_reg = temp_reg - registros;    
     fin = temp_reg;
@@ -48,7 +50,7 @@ function inicio(){
     }        
   });  
   $("#buscar_tabla").on('keyup',function (){
-    $("#tabla_inbox tbody").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
+    $("#tabla_inbox tbody").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
     loadStart();
     $.ajax({        
       type: "POST",
@@ -71,6 +73,10 @@ function inicio(){
               
             }           
           }
+        }else{
+          //alert("No existen mas registros");
+          $("#load").remove();
+          $("#buscar_tabla").val("");
         }
       },
       error: function (data) {            
@@ -110,7 +116,7 @@ function cargar_recibidos(){
       loadStop();          
       if(registros > total_registros){
         registros = total_registros;
-      }
+      }      
       fin = registros;
   		$("#tabla_inbox tbody").html("");
       $("label[name$='tot']").html("");          
@@ -124,7 +130,14 @@ function cargar_recibidos(){
     			}	      				      			
           $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
   			}      			
-  		}          
+  		}    
+      var div = Math.floor(registros/2);      
+      if(div == 0){
+        div = 1;
+      }
+      $("#tabla_inbox tr:nth-child(n + "+(div+1)+")").each(function(){
+        var ss = $(this).children(":last");        
+      });
   	},
   	error: function (data) {            
       loadStart();
@@ -134,38 +147,47 @@ function cargar_recibidos(){
     },
   });    
 }
-function atras_adelante(inicio,fin){
-  $("#tabla_inbox tbody").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
-  loadStart();
-  $.ajax({        
-    type: "POST",
-    dataType: 'json',        
-    url: "../varios.php?tipo=0&id=0&tam=11&fun=17&inicio="+inicio+"&fin="+fin,            
-    success: function(data, status) {
-      if(data['cuerpo'].length > 0){              
-        $("#tabla_inbox tbody").html("");
-        $("label[name$='tot']").html("");
-        $("label[name$='tot']").append((inicio+1) + ' - '+ fin + ' de ' + total_registros);          
-        for (var i = 0; i < (registros * 11); i=i+11) {            
-          if((data['cuerpo'].length / 11) > (i / 11)){
-        if(data['cuerpo'][i + 10] == ''){
-              adjunto = "<i class=''></i>";
-            }else{
-              adjunto = "<i class='fa fa-paperclip'></i>";
-            }                         
-            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
-          }           
+function atras_adelante(inicio,fin){ 
+  $("#tabla_inbox tbody").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
+  if(inicio < total_registros ){    
+    loadStart();   
+    $.ajax({        
+      type: "POST",
+      dataType: 'json',        
+      url: "../varios.php?tipo=0&id=0&tam=11&fun=17&inicio="+inicio+"&fin="+fin,            
+      success: function(data, status) {
+        if(data['cuerpo'].length > 0){              
+          $("#tabla_inbox tbody").html("");
+          $("label[name$='tot']").html("");
+          $("label[name$='tot']").append((inicio+1) + ' - '+ fin + ' de ' + total_registros);          
+          for (var i = 0; i < (registros * 11); i=i+11) {            
+            if((data['cuerpo'].length / 11) > (i / 11)){
+          if(data['cuerpo'][i + 10] == ''){
+                adjunto = "<i class=''></i>";
+              }else{
+                adjunto = "<i class='fa fa-paperclip'></i>";
+              }                         
+              $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
+            }           
+          }
+        }else{
+          alert("No existen mas registros");
+          $("#load").remove();
         }
-      }
-    },     
-    error: function (data) {            
-      loadStart();
-    },   
-    beforeSend: function(){
-      loadStart();                
-    },         
-  });     
+      },     
+      error: function (data) {            
+        loadStart();
+      },   
+      beforeSend: function(){
+        loadStart();                
+      },         
+    });     
+  }else{
+    alert("No existen mas registros");
+    $("#load").remove();
+  }  
 }
+
 function atras_adelante_read(inicio,fin){
   pag = document.location.href;
   id_pag = getGET(pag);     

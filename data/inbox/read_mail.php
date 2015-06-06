@@ -70,11 +70,8 @@
              <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Vista Previa</h3>
-                  <div class="box-tools pull-right">
-                    <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
-                    <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
-                  </div>
+                  <h3 class="box-title">Vista Documento</h3>
+                  
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="mailbox-read-info">
@@ -82,14 +79,7 @@
                     <span class="mailbox-read-time pull-right" id="date_mail"></span>
                     <h5 id="from_mail"></h5>
                   </div><!-- /.mailbox-read-info -->
-                  <div class="mailbox-controls with-border text-center">
-                    <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Reenviar"><i class="fa fa-edit"></i></button>
-                    <div class="btn-group">                      
-                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Atras" name="atras_read"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Siguiente" name="adelante_read"><i class="fa fa-share"></i></button>
-                    </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm" data-toggle="tooltip" title="Imprmir"><i class="fa fa-print"></i></button>                    
-                  </div><!-- /.mailbox-controls -->
+                  
                   <div class="mailbox-read-message" id="cuerpo_mail" >
                     
                   </div><!-- /.mailbox-read-message -->
@@ -99,11 +89,7 @@
                     
                   </ul>
                 </div><!-- /.box-footer -->
-                <div class="box-footer">
-                  <div class="pull-right">
-                    <button class="btn btn-primary" name="atras_read"><i class="fa fa-reply"></i> Atras</button>
-                    <button class="btn btn-primary" name="adelante_read"><i class="fa fa-share"></i> Siguiente</button>
-                  </div>                  
+                <div class="box-footer">                  
                   <button class="btn btn-primary"><i class="fa fa-edit"></i> Reenviar</button>
                   <button class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</button>
                 </div><!-- /.box-footer-->
