@@ -355,13 +355,13 @@ function guardar_usuario(){
 					if($("#txt_14").val() == $("#txt_15").val()){
 						datos_usuarios(valores,"g",e);						
 					}else{
-						$.gritter.add({							
-							title: 'Error..!',							
+						$.gritter.add({
+						    title: 'Error..!',							
 							text: "Las claves no coinciden vuelva a ingresarlas",														
 							image: '../../img/error.png',							
-							sticky: false, 							
+						    class_name: 'dc_ok',
+						    sticky: false, 							
 							time: 500,									
-							class_name: 'light',						        
 							after_close: function(){
 								$("#txt_15").val("");
 								$("#txt_15").focus();

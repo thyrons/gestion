@@ -82,7 +82,7 @@ function cargar_datos_documento(id){
       			observaciones = '';
       			var text_editor = CKEDITOR.instances.txt_8.getData();    			      					
       			text = $("#txt_8").text(); 				            		            	        		      			
-      			lineasIz ="---------- ";
+      			lineasIz ="---------- De: ";
       			lineasDer =" ----------";      			
       			if(data[i + 3] == ''){
       				observaciones = "<p>Sin observaciones</p>";
