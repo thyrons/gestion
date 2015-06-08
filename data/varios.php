@@ -198,7 +198,16 @@
 																								}else{
 																									
 																								}																					
-																							}	
+																							}else{
+																								if($_GET['fun'] == "24"){//para cargar el correo																					
+																									if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																										$sql = "select id_envio,archivo.id_archivo,bitacora.id_bitacora,fecha_cambios,asunto_cambio,bitacora.id_tipo_documento,bitacora.id_medio_recepcion,nombre_archivo,codigo_archivo,archivo.estado from enviados, bitacora, archivo,tipo_documento,medio_recepcion where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_archivo = archivo.id_archivo and bitacora.id_archivo = archivo.id_archivo and bitacora.id_tipo_documento = tipo_documento.id_tipo_documento and medio_recepcion.id_medio = bitacora.id_medio_recepcion and id_envio= '".$_GET['id']."'";
+																										cargarSelect($conexion,$sql,$_GET['tam']);																							
+																									}else{
+																										
+																									}																					
+																								}	
+																							}		
 																						}	
 																					}	
 																				}

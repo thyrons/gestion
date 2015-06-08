@@ -13,10 +13,11 @@ var temp_reg = 0;
 var loc = document.location.href;
 function inicio(){	    
   //////////////procesos inbox recibidos
-  total_registro();
-	cargar_recibidos();	
+  total_registro();	
   var id_get = getGET(loc);   
-  cargar_datos_correo(id_get);  
+  cargar_datos_correo(id_get);    
+  $("#btn_reenviar").attr('href','reenviar.php?id='+id_get.id);         
+  
   $("button[name$='adelante']").on('click',function(){        
     $("#buscar_tabla").val("");
     inicial =  fin;    
@@ -69,7 +70,7 @@ function inicio(){
               }else{
                 adjunto = "<i class='fa fa-paperclip'></i>";
               }             
-              $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
+              $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
               
             }           
           }
@@ -94,13 +95,7 @@ function inicio(){
     temp_reg = 0;
     cargar_recibidos();   
   });
-  /////////////////////procesos read mail
-  $("button[name$='atras_read']").on('click',function(){            
-    atras_adelante_read(inicial,fin);                  
-  });
-  $("button[name$='adelante_read']").on('click',function(){            
-    atras_adelante_read(inicial,fin);                  
-  });
+
 
   /////////////////////////////////////
 
@@ -128,15 +123,16 @@ function cargar_recibidos(){
     		  }else{
     				adjunto = "<i class='fa fa-paperclip'></i>";
     			}	      				      			
-          $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
+          $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
   			}      			
   		}    
       var div = Math.floor(registros/2);      
       if(div == 0){
         div = 1;
-      }
-      $("#tabla_inbox tr:nth-child(n + "+(div+1)+")").each(function(){
+      }      
+      $("#tabla_inbox tr:nth-child(n + "+(div+1)+")").each(function(){        
         var ss = $(this).children(":last");        
+        ss.addClass('dropup');
       });
   	},
   	error: function (data) {            
@@ -167,7 +163,7 @@ function atras_adelante(inicio,fin){
               }else{
                 adjunto = "<i class='fa fa-paperclip'></i>";
               }                         
-              $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"' target='_blank'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
+              $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='#'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li><li><a href='#'><i class='fa fa-share-square'></i>Reenviar</a></li></ul></div></td></tr>");
             }           
           }
         }else{
@@ -188,39 +184,7 @@ function atras_adelante(inicio,fin){
   }  
 }
 
-function atras_adelante_read(inicio,fin){
-  pag = document.location.href;
-  id_pag = getGET(pag);     
-  $("#cuerpo_mail").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');  
-  $.ajax({        
-    type: "POST",
-    dataType: 'json',              
-    timeout: 60000,            
-    url: "../varios.php?tipo=0&id="+id_pag.id+"&tam=7&fun=21",        
-    success: function(data, status) {          
-      data = data;               
-      loadStop();                    
-      $("#subject").html("");
-      $("#subject").html(data['cuerpo'][2]);
-      $("#from_mail").html("");
-      $("#from_mail").html("De: "+data['cuerpo'][5]);
-      $("#cuerpo_mail").html("");
-      $("#cuerpo_mail").html(data['cuerpo'][3]);
-      $("#date_mail").html("");
-      $("#date_mail").html(data['cuerpo'][1]);
-      if(data['cuerpo'][4] == ''){
-      }else{
-        $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>')
-      }
-    }, 
-    error: function (data) {            
-      loadStart();
-    },   
-    beforeSend: function(){
-      loadStart();                
-    },   
-  });                 
-}
+
 function total_registro(){
   $.ajax({        
     type: "POST",
@@ -229,6 +193,7 @@ function total_registro(){
     success: function(data, status) {
       total_registros = data;
       $("#total_inbox").html(total_registros);
+      cargar_recibidos(); 
     },
     error: function (data) {            
     }           
@@ -275,4 +240,3 @@ function loadStop() {
 }
 
 function cargar_enviados(){}
-function cargar_no_deseados(){}

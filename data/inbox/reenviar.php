@@ -55,7 +55,7 @@
                 <div class="box-header">                  
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_envio" class="" method="POST" action="">                
+                <form role="form" id="form_reenvio" class="" method="POST" action="">                
                   <div class="box-body">
                     <div class="form-group col-md-12">                      
                       <label for="txt_1" class="">Para: </label>                      
@@ -72,7 +72,7 @@
                     </div>                
                     <div class="form-group col-md-4">                            
                       <label for="txt_4" class="">Fecha Envió</label>                      
-                      <input type="text" class="form-control" id="txt_4" name="txt_4">
+                      <input type="text" class="form-control" id="txt_4" name="txt_4" readonly="" required pattern="[0-9 -]{10}">
                     </div>                                                                                                         
                     <div class="form-group col-md-4">                            
                       <label for="txt_5" class="">Medio de Recepción</label>                      
@@ -95,7 +95,7 @@
                       <p class="help-block">Seleccione el archivo a enviar.</p>
                     </div>  
                     <div class="form-group col-md-6 ">
-                      <label for="txt_8" class="">Historial deObservaciones</label>                                            
+                      <label for="txt_8" class="">Historial de Observaciones</label>                                            
                       <textarea id="txt_8" disabled="" name="txt_8" rows="80" cols="50">                                            
                       </textarea>                      
                     </div>                                                                                                         
@@ -107,11 +107,11 @@
                   </div>                                    
                   <div class="box-footer">                       
                     <button type="submit" class="btn btn-primary "  id="btn_1">
-                      <span class="glyphicon glyphicon-save"></span> Enviar Documento
+                      <span class="glyphicon glyphicon-save"></span> Reenviar Documento
                     </button>                    
-                    <button type="button" class="btn btn-primary" id="btn_2">
-                      <span class="glyphicon glyphicon-paperclip"></span> Limpiar
-                    </button>                                                            
+                    <a type="button" href="../inbox" class="btn btn-primary" id="btn_2">
+                      <span class="glyphicon glyphicon-chevron-left"></span> Regresar
+                    </a>                                                            
                   </div>                  
                 </form>
               </div><!-- /.box -->              

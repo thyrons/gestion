@@ -123,7 +123,7 @@ print'
               <i class="fa fa-angle-left pull-right"></i>
             </a>              
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-users"></i> Nuevos Usuarios</a></li>                              
+              <li><a href="../usuarios"><i class="fa fa-users"></i> Nuevos Usuarios</a></li>                              
               <li><a href="#"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
               <li><a href="#"><i class="fa fa-bullseye"></i> Restaurar Archivos</a></li>
               <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>

@@ -16,7 +16,7 @@
 	    }
 	    return $resp;
 	}
-	function cargarSelect($conexion, $sql, $tam) {
+	function cargarSelect($conexion, $sql, $tam) {		
 	    $lista = array();
 	    $data = 0;
 	    $sql = pg_query($conexion, $sql);

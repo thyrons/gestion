@@ -1,6 +1,7 @@
 $(document).on("ready",inicio);
 function inicio(){	
 	$("#btn_1").on('click',ingresar);
+	$("#txt_1").focus();
 }
 
 function ingresar(){	
@@ -46,3 +47,27 @@ function datos_login(valores,tipo,p){
 		}
 	}); 
 }
+ 
+ /*   // advertencia
+      $.gritter.add({
+        title: 'This is a regular notice!',
+        text: 'This will fade out after a certain amount of time.',
+        image: '../../dist/img/advertencia.fw.png',
+        class_name: 'dc_ok'
+      });
+      // error
+      $.gritter.add({
+        title: 'This is a regular notice!',
+        text: 'This will fade out after a certain amount of time.',
+        image: '../../dist/img/error.fw.png',
+        class_name: 'dc_ok'
+      });
+      // ok
+      $.gritter.add({
+        title: 'This is a regular notice!',
+        text: 'This will fade out after a certain amount of time.',
+        image: '../../dist/img/ok.fw.png',
+        sticky: false, 
+        class_name: 'dc_ok'
+      });*/
+    

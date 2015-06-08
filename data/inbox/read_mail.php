@@ -90,7 +90,7 @@
                   </ul>
                 </div><!-- /.box-footer -->
                 <div class="box-footer">                  
-                  <button class="btn btn-primary"><i class="fa fa-edit"></i> Reenviar</button>
+                  <a class="btn btn-primary" id="btn_reenviar"><i class="fa fa-edit"></i> Reenviar</a>
                   <button class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</button>
                 </div><!-- /.box-footer-->
               </div><!-- /. box -->
