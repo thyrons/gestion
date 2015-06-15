@@ -48,7 +48,8 @@
 .gritter-item {
 	display:block;
 	/*background:url(../images/gritter.png) no-repeat left -40px;*/
-	background: #3C8DBC;
+	background: #3B5C7B;
+	/*background: #3C8DBC;*/
 	color:#eee;
 	padding:2px 11px 8px 11px;
 	font-size: 11px;
@@ -104,3 +105,4 @@
 .gritter-light .gritter-title {
     text-shadow: none;
 }
+

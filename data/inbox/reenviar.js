@@ -36,7 +36,7 @@ function inicio (){
 	toolbarGroups: [		
  		{ name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
 	],
-	height: '295',	
+	height: '265',	
 	resize_enabled : 'false',
 	
 	});
@@ -51,15 +51,28 @@ function inicio (){
 		comprobarCamposRequired(e.currentTarget.form.id);
 	});	
  	$("#btn_1").on('click',function(){
- 		modificar_inbox(id_ge.id);
+ 		modificar_inbox(id_get.id);
+ 		
  	});
 }
 function cargar_datos_documento(id){
+	//obtener archivo id
+	$.ajax({        
+    	type: "POST",
+    	dataType: 'json',        
+    	url: "../varios.php?tipo=0&id="+id+"&tam=1&fun=25",        
+    	success: function(data, status) {      		
+      		$("#txt_0").val(data[0]);
+    	},
+    	error: function (data) {		        
+    	},
+    	async: false,	        
+  	});
 	////usuarios
 	$.ajax({        
     	type: "POST",
     	dataType: 'json',        
-    	url: "../varios.php?tipo=0&id="+id+"&tam=2&fun=22",        
+    	url: "../varios.php?tipo=0&id="+$("#txt_0").val()+"&tam=2&fun=22",        
     	success: function(data, status) {      		
       		$('#txt_1').html("");	        	
       		for (var i = 0; i < data.length; i=i+2) {            				            		            	        		
@@ -75,7 +88,7 @@ function cargar_datos_documento(id){
   	$.ajax({        
     	type: "POST",
     	dataType: 'json',        
-    	url: "../varios.php?tipo=0&id="+id+"&tam=6&fun=23",        
+    	url: "../varios.php?tipo=0&id="+$("#txt_0").val()+"&tam=6&fun=23",        
     	success: function(data, status) {      		    		
     		var observaciones = '';
       		for (var i = 0; i < data.length; i=i+6) {                 			
@@ -112,16 +125,23 @@ function cargar_datos_documento(id){
     		$("#txt_6").val(data[5]);    			 
     		$("#txt_6").trigger("chosen:updated"); 
     		$("#txt_7").val(data[9]);    	    		
-			$("#txt_7").trigger("chosen:updated"); 	 					    
+    		if(data[9] == 1){
+				$("#txt_7").attr("disabled",true);	
+				$("#btn_1").attr("disabled",true);					
+			}
+			$("#txt_7").trigger("chosen:updated"); 	 					    			
 		    $.gritter.add({
+
 		    	title: 'Mensaje del Servidor!',
 		        text: 'Datos cargados correctamente',
 		        image: '../../dist/img/ok.fw.png',
 		        sticky: false, 
 		        class_name: 'dc_ok',						        
-				time: 2000,																	
+				time: 2000,																					
 				after_close: function(){
 					comprobarCamposRequired('form_reenvio');
+					$("#btn_1").attr("disabled",true);		
+
 				},		
 		    });
     	},
@@ -158,105 +178,118 @@ function medio_recepcion(){
 	    }
 	});	      
 }
-function modificar_inbox(id){	
+function modificar_inbox(id_doc){		
 	var resp=comprobarCamposRequired("form_reenvio");	
-	if(resp==true){
+	if(resp==true){		
 		$("#form_reenvio").on("submit",function (e){				
 			var valores = $("#form_reenvio").serialize();			
 			var archivos = document.getElementById("txt_9");
-		    var archivo = archivos.files;
+			var archivo = archivos.files;
 		    var archivos = new FormData();    
-		    var users = $("#txt_1").val();		    		    
-		    
-		    if(users != null){		    			    	
-		   		for(var i = 0; i < archivo.length; i++){
-			        archivos.append('archivo'+i,archivo[i]);        			        			        
-			    }	
-			    if(archivo.length == 0){		    
-				    $.ajax({
-				        url:'envio.php?tipo=m&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'$id_reenvio='+id_get.id,
-				        type:'POST',
-				        contentType:false,
-				        data:archivos,
-				        processData:false,
-				        cache:false,        
-				    }).done(function(data){
-				         if( data == 1 ){            				            
-				            $.gritter.add({
-						    	title: 'Mensaje del Servidor!',
-						        text: 'Archivo subido satisfactoriamente.',
-						        image: '../../dist/img/ok.fw.png',
-						        sticky: false, 
-						        class_name: 'dc_ok',						        
-								time: 1000,																	
-								after_close: function(){
-									actualizar_form();			            		
-								},		
-						    });
-				            
-				        }else{
-				            if(data == 2){
-				            	$.gritter.add({
-						        title: 'Error al momento de enviar!',
-						        text: 'La página se recargara.',
-						        image: '../../dist/img/error.fw.png',						        
-						        sticky: false, 
-						        class_name: 'dc_ok',						        
-								time: 1000,																	
-								after_close: function(){
-									actualizar_form();			            		
-								},		
-						      });				            	
-				            }else{
-				            	$.gritter.add({
-							        title: 'Errores encontrados!',
-							        text: '' + data,
-							        image: '../../dist/img/advertencia.fw.png',							        
+		   	var users = $("#txt_1").val();	
+		   	if($("#txt_7").val() == '1'){
+				$.gritter.add({
+			        title: 'Error al momento de enviar!',
+			        text: 'Un documento finalizado no se puede modificar.',
+			        image: '../../dist/img/error.fw.png',						        
+			        sticky: false, 
+			        class_name: 'dc_ok',						        
+					time: 5000,																	
+					after_close: function(){
+						actualizar_form();			            		
+					},		   	
+				});
+			}else{	    		    		    		   
+				if(users != null){		    			    	
+			   		for(var i = 0; i < archivo.length; i++){
+					    archivos.append('archivo'+i,archivo[i]);        			        			        
+				   	}		    
+			    	if(archivo.length == 0){		    
+					    $.ajax({
+					        url:'inbox.php?tipo=m&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_doc,
+					        type:'POST',
+					        contentType:false,
+					        data:archivos,
+				    	    processData:false,
+				        	cache:false,        
+					    }).done(function(data){
+					         if( data == 1 ){            				            
+					            $.gritter.add({
+							    	title: 'Mensaje del Servidor!',
+							        text: 'Archivo subido satisfactoriamente.',
+							        image: '../../dist/img/ok.fw.png',
 							        sticky: false, 
-							        class_name: 'dc_ok',						        
+						    	    class_name: 'dc_ok',						        
 									time: 1000,																	
 									after_close: function(){
 										actualizar_form();			            		
 									},		
-							    });				            	
-				            	actualizar_form();
-				            }
-				        }
-				    }); 		
-				}else{
-					//console.log((archivo[0].size) / 1024)
-					if((archivo[0].size) / 1024 <= 50000){						
-				    	$.ajax({
-					        url:'envio.php?tipo=sm&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'$id_reenvio='+id_get.id,
-					        type:'POST',
-					        contentType:false,
-					        data:archivos,
-					        processData:false,
-					        cache:false,        
-					    }).done(function(data){
-					        if( data == 1 ){            
-					            alert('Archivo subido satisfactoriamente');					            
-					            actualizar_form();
-					        }else{
-					            if(data == 2){
-					            	alert("Error al momento de enviar los datos la página se recargara");
-					            	actualizar_form();
+							    });				            
+				    	    }else{
+				        	    if(data == 2){
+				            		$.gritter.add({
+							        	title: 'Error al momento de enviar!',
+								        text: 'La página se recargara.',
+								        image: '../../dist/img/error.fw.png',						        
+								        sticky: false, 
+								        class_name: 'dc_ok',						        
+										time: 1000,																	
+										after_close: function(){
+											actualizar_form();			            		
+										},		
+								    });				            	
 					            }else{
-					            	alert(data);
-					            	actualizar_form();
-					            }
-					        }
-					    });
-				    }else{
-				    	alert("El archivo supera las 50 MB permitidas");
-				    	$("#txt_9").val("");
-				    }
-				}
-		    }else{
-		    	alert("Seleccione al menos un remitente antes de enviar");
-		    }		    
-			e.preventDefault();
-    		$(this).unbind("submit");
-		});
+				            		$.gritter.add({
+								        title: 'Errores encontrados!',
+								        text: '' + data,
+								        image: '../../dist/img/advertencia.fw.png',							        
+								        sticky: false, 
+								        class_name: 'dc_ok',						        
+										time: 1000,																	
+										after_close: function(){
+											actualizar_form();			            		
+										},		
+							    	});				            	
+				            		actualizar_form();
+				            	}
+				        	}
+				    	}); 		
+					}else{
+						//console.log((archivo[0].size) / 1024)
+						if((archivo[0].size) / 1024 <= 50000){						
+					    	$.ajax({
+						        url:'inbox.php?tipo=sm&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_doc,
+						        type:'POST',
+						        contentType:false,
+						        data:archivos,
+						        processData:false,
+						        cache:false,        
+					    	}).done(function(data){
+						        if( data == 1 ){            
+						            alert('Archivo subido satisfactoriamente');					            
+						            actualizar_form();
+						        }else{
+						            if(data == 2){
+						            	alert("Error al momento de enviar los datos la página se recargara");
+					    	        	actualizar_form();
+					        	    }else{
+					            		alert(data);
+					            		actualizar_form();
+					            	}
+					        	}
+					    	});
+				    	}else{
+					    	alert("El archivo supera las 50 MB permitidas");
+					    	$("#txt_9").val("");
+					    }
+					}
+		    	}else{
+			    	alert("Seleccione al menos un remitente antes de enviar");
+			    }	    
+			
+			}
+		    e.preventDefault();
+			$(this).unbind("submit");	
+		});			
 	}
 }

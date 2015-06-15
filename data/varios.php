@@ -185,7 +185,7 @@
 																					}else{
 																						if($_GET['fun'] == "22"){//para cargar el correo																					
 																							if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																								$sql = "select usuario.id_usuario,nombres_usuario from enviados,usuario where enviados.id_usuario = usuario.id_usuario and id_archivo = '".$_GET['id']."'";																						
+																								$sql = "select distinct usuario.id_usuario,nombres_usuario from enviados,usuario where enviados.id_usuario = usuario.id_usuario and id_archivo = '".$_GET['id']."'";
 																								cargarSelect($conexion,$sql,$_GET['tam']);																							
 																							}else{
 																								
@@ -206,6 +206,15 @@
 																									}else{
 																										
 																									}																					
+																								}else{
+																									if($_GET['fun'] == "25"){//para cargar el correo																					
+																										if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																											$sql = "select id_archivo from enviados where id_envio = '".$_GET['id']."'";
+																											cargarSelect($conexion,$sql,$_GET['tam']);																							
+																										}else{
+																											
+																										}																					
+																									}	
 																								}	
 																							}		
 																						}	

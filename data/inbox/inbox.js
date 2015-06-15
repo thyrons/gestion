@@ -15,8 +15,13 @@ function inicio(){
   //////////////procesos inbox recibidos
   total_registro();	
   var id_get = getGET(loc);   
-  cargar_datos_correo(id_get);    
-  $("#btn_reenviar").attr('href','reenviar.php?id='+id_get.id);         
+  if(id_get == undefined){
+    
+  }else{
+    cargar_datos_correo(id_get);    
+    $("#btn_reenviar").attr('href','reenviar.php?id='+id_get.id);           
+  }
+  
   
   $("button[name$='adelante']").on('click',function(){        
     $("#buscar_tabla").val("");

@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:ENVÍO:.</title>
+    <title>.:REENVÍO:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -63,6 +63,7 @@
                       </select>     
                     </div>                    
                     <div class="form-group col-md-4">                            
+                      <input type="hidden" id="txt_0" name="txt_0" />
                       <label for="txt_2" class="">Nombre Documento</label>                      
                       <input type="text" class="form-control" id="txt_2" name="txt_2" disabled placeholder="Nombre del documento" required pattern="[A-Za-záéíóúÁÉÍÓÚñÑ0-9. ]{1,}">
                     </div>                                    
