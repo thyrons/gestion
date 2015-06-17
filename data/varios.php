@@ -83,8 +83,7 @@
 												}else{
 													$sql = "select id_tipo_usuario,nombre_tipo from tipo_usuario where estado = '1' order by id_tipo_usuario asc";													
 													
-												}
-												
+												}												
 												cargarSelect($conexion,$sql,$_GET['tam']);
 											}else{
 												
@@ -145,7 +144,7 @@
 																}else{															
 																	if($_GET['fun'] == "17"){//para ciudad con id
 																		if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																			$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' order by enviados.fecha asc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
+																			$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' order by enviados.fecha desc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
 																			cargarTabla($conexion,$sql,$_GET['tam']);
 																		}else{
 																			
@@ -214,6 +213,41 @@
 																										}else{
 																											
 																										}																					
+																									}else{
+																										if($_GET['fun'] == "26"){//para cargar el correo																					
+																											if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																												$sql = "select recibidos.id_recibido,recibidos.id_archivo,recibidos.id_bitacora,recibidos.fecha,recibidos.id_usuario,nombres_usuario,usuario,nombre_archivo,asunto_cambio from recibidos,usuario,archivo,bitacora where recibidos.id_usuario = '".$_SESSION['id_gestion']."' and recibidos.id_usuario = usuario.id_usuario and recibidos.id_archivo = archivo.id_archivo and recibidos.id_bitacora = bitacora.id_bitacora order by recibidos.fecha desc";																			
+																												nro_rows($conexion,$sql);
+																											}else{
+																											}
+																										}else{
+																											if($_GET['fun'] == "27"){//para ciudad con id
+																												if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																													$sql = "select recibidos.id_recibido,recibidos.id_archivo,recibidos.id_bitacora,nombre_archivo,asunto_cambio,recibidos.id_usuario,recibidos.fecha,usuario,peso,nombres_usuario,referencia from recibidos,usuario,archivo,bitacora where recibidos.id_usuario = '".$_SESSION['id_gestion']."' and recibidos.id_usuario = usuario.id_usuario and recibidos.id_archivo = archivo.id_archivo and recibidos.id_bitacora = bitacora.id_bitacora order by recibidos.fecha desc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
+																													cargarTabla($conexion,$sql,$_GET['tam']);
+																												}else{
+																													
+																												}
+																											}else{
+																												if($_GET['fun'] == "28"){//para ciudad con id
+																													if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																														$sql = "select recibidos.id_recibido,recibidos.id_archivo,recibidos.id_bitacora,nombre_archivo,asunto_cambio,recibidos.id_usuario,recibidos.fecha,usuario,peso,nombres_usuario,referencia from recibidos,usuario,archivo,bitacora where recibidos.id_usuario = '".$_SESSION['id_gestion']."' and recibidos.id_usuario = usuario.id_usuario and recibidos.id_archivo = archivo.id_archivo and recibidos.id_bitacora = bitacora.id_bitacora and nombre_archivo like '".$_GET['txt']."%' order by recibidos.fecha desc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
+																														cargarTabla($conexion,$sql,$_GET['tam']);
+																													}else{
+																														
+																													}
+																												}else{
+																													if($_GET['fun'] == "29"){//para ciudad con id
+																														if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																															$sql = "select recibidos.id_recibido,recibidos.id_archivo,recibidos.id_bitacora,nombre_archivo,asunto_cambio,recibidos.id_usuario,recibidos.fecha,usuario,peso,nombres_usuario,referencia from recibidos,usuario,archivo,bitacora where recibidos.id_usuario = '".$_SESSION['id_gestion']."' and recibidos.id_usuario = usuario.id_usuario and recibidos.id_archivo = archivo.id_archivo and recibidos.id_bitacora = bitacora.id_bitacora and nombre_archivo like '".$_GET['txt']."%' order by recibidos.fecha desc offset ".$_GET['inicio']." limit ".$_GET['fin']."";																			
+																															cargarTabla($conexion,$sql,$_GET['tam']);
+																														}else{
+																															
+																														}
+																													}
+																												}																												
+																											}
+																										}
 																									}	
 																								}	
 																							}		

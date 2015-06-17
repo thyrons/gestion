@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:VISTA ARCHIVO:.</title>
+    <title>.:INBOX:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -41,7 +41,7 @@
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Gestion Documental</li>
-            <li class="active">Vista Previa</li>
+            <li class="active">Documentos Enviados</li>
           </ol>
         </section>
 
@@ -57,8 +57,8 @@
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
-                    <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
-                    <li class="active"><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                    
+                    <li class="active"><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
+                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
@@ -66,36 +66,73 @@
               <!-- en caso de nuevas opciones -->
               </div><!-- /.box -->
             </div><!-- /.col -->
-             <div class="col-md-9">
+            <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Vista Documento</h3>
-                  
+                  <h3 class="box-title">Bandeja de Entrada</h3>
+                  <div class="box-tools pull-right">
+                    <div class="has-feedback">
+                      <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>
+                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                  </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <div class="mailbox-read-info">
-                    <h3 id="subject"></h3><!--asunto del mensaje-->
-                    <span class="mailbox-read-time pull-right" id="date_mail"></span>
-                    <h5 id="from_mail"></h5>
-                  </div><!-- /.mailbox-read-info -->
-                  
-                  <div class="mailbox-read-message" id="cuerpo_mail" >
-                    
-                  </div><!-- /.mailbox-read-message -->
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+                    <div class="btn-group">
+                      
+                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
+                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
+                    </div><!-- /.btn-group -->
+                    <button class="btn btn-default btn-sm"  name="refresh_inbox"><i class="fa fa-refresh"></i></button>
+                    <div class="pull-right">
+                      <label name="tot"></label>
+                      <!-- el total de archivos 1-50/200 -->
+                      <div class="btn-group">
+                        <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-chevron-left"></i></button>
+                        <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-chevron-right"></i></button>
+                      </div><!-- /.btn-group -->
+                    </div><!-- /.pull-right -->
+                  </div>
+                  <div id="tbl">
+                  <div class="table-responsive mailbox-messages" id="">
+                    <table class="table table-hover table-striped" id="tabla_inbox">
+                    <thead>
+                      
+                    </thead>
+                      <tbody>                                                
+                      </tbody>
+                    </table><!-- /.table -->
+                  </div><!-- /.mail-box-messages -->
+                  </div>
                 </div><!-- /.box-body -->
-                <div class="box-footer">
-                  <ul class="mailbox-attachments clearfix" id="footer_mail">
-                    
-                  </ul>                  
-                </div><!-- /.box-footer -->
-                <div class="box-footer">                  
-                  <a class="btn btn-primary" id="btn_reenviar"><i class="fa fa-edit"></i> Reenviar</a>
-                  <button class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</button>
-                </div><!-- /.box-footer-->
+                <div class="box-footer no-padding">
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>                    
+                    <div class="btn-group">
+                      
+                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
+                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
+                    </div><!-- /.btn-group -->
+                    <button class="btn btn-default btn-sm" name="refresh_inbox"><i class="fa fa-refresh"></i></button>
+                    <div class="pull-right">
+                      <label name="tot"></label>
+                      <div class="btn-group">
+                        <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-chevron-left"></i></button>
+                        <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-chevron-right"></i></button>                        
+                      </div><!-- /.btn-group -->
+                    </div><!-- /.pull-right -->
+                  </div>
+                </div>
               </div><!-- /. box -->
             </div><!-- /.col -->
           </div><!-- /.row -->  
-        </section>                
+         
+        </section>        
+        
         <!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php footer(); ?>
@@ -134,6 +171,7 @@
     <script src="../../plugins/gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
     <script src="../../plugins/moment/moment-with-locales.js" type="text/javascript"></script>
     <script src="inbox.js" type="text/javascript"></script> 
+    
     <script src="../mod_user.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     

@@ -57,8 +57,8 @@
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviados</a></li>                                                            
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Reportes</a></li>                                                                                                    
+                    <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
+                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->

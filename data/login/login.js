@@ -25,7 +25,7 @@ function datos_login(valores,tipo,p){
 		url: "login.php",			
 	    success: function(data) {	
 	    	if( data == 0 ){
-	    		location.href='../../data/inicio/';
+	    		location.href='../../data/inbox/';
 	    		
 	    	}else{
 	    		if( data == 1 ){
