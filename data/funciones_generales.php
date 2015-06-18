@@ -7,6 +7,30 @@
 	function sesion_activa(){	  		        
 	    return $_SESSION['id_gestion'];
 	}
+
+	function cargarTablaUsusariosRecibidos($conexion, $sql,$tam){
+		$lista = array();
+		$nombres = array();
+		$sql = pg_query($conexion, $sql);
+		$cont = 0;
+		while($row = pg_fetch_row($sql)){
+			$usuarios =$row[0];				
+		}	
+		$usuarios = str_replace('{"', "", $usuarios);
+		$usuarios = str_replace('"}', "", $usuarios);		
+		$usuarios = str_replace('{', "", $usuarios);
+		$usuarios = str_replace('}', "", $usuarios);		
+		$lista = explode(",", $usuarios);												
+		for($i = 0; $i < count($lista); $i++){			
+			$sql = "select nombres_usuario from usuario where id_usuario = $lista[$i]";			
+			$sql = pg_query($sql);
+			while ($row = pg_fetch_row($sql)) {	        					
+				$nombres[$cont] = $row[0];
+				$cont++;
+			}
+		}			
+		echo $nombres = json_encode($nombres);		
+	}
 	function guardarSql($conexion, $sql) {
 	    $resp = true;    
 	    if (pg_query($conexion, $sql)) {

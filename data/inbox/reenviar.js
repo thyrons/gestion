@@ -131,7 +131,6 @@ function cargar_datos_documento(id){
 			}
 			$("#txt_7").trigger("chosen:updated"); 	 					    			
 		    $.gritter.add({
-
 		    	title: 'Mensaje del Servidor!',
 		        text: 'Datos cargados correctamente',
 		        image: '../../dist/img/ok.fw.png',
@@ -139,11 +138,10 @@ function cargar_datos_documento(id){
 		        class_name: 'dc_ok',						        
 				time: 2000,																					
 				after_close: function(){
-					comprobarCamposRequired('form_reenvio');
-					$("#btn_1").attr("disabled",true);		
-
+					comprobarCamposRequired('form_reenvio');					
 				},		
 		    });
+		    //$("#btn_1").attr("disabled",false);		
     	},
     	error: function (data) {		        
     	},    	
@@ -178,7 +176,7 @@ function medio_recepcion(){
 	    }
 	});	      
 }
-function modificar_inbox(id_doc){		
+function modificar_inbox(id_bitacora){		
 	var resp=comprobarCamposRequired("form_reenvio");	
 	if(resp==true){		
 		$("#form_reenvio").on("submit",function (e){				
@@ -206,7 +204,7 @@ function modificar_inbox(id_doc){
 				   	}		    
 			    	if(archivo.length == 0){		    
 					    $.ajax({
-					        url:'inbox.php?tipo=m&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_doc,
+					        url:'inbox.php?tipo=m&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_bitacora,
 					        type:'POST',
 					        contentType:false,
 					        data:archivos,
@@ -258,7 +256,7 @@ function modificar_inbox(id_doc){
 						//console.log((archivo[0].size) / 1024)
 						if((archivo[0].size) / 1024 <= 50000){						
 					    	$.ajax({
-						        url:'inbox.php?tipo=sm&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_doc,
+						        url:'inbox.php?tipo=sm&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_bitacora,
 						        type:'POST',
 						        contentType:false,
 						        data:archivos,

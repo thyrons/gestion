@@ -168,7 +168,7 @@
 																			}else{
 																				if($_GET['fun'] == "20"){//para cargar el correo																					
 																					if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																						$sql = "select id_envio,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario,peso from enviados,usuario,bitacora where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_usuario = usuario.id_usuario and enviados.id_envio = '".$_GET['id']."'";																						
+																						$sql = "select id_envio,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario,peso,bitacora.id_bitacora from enviados,usuario,bitacora where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_usuario = usuario.id_usuario and enviados.id_envio = '".$_GET['id']."'";																						
 																						cargarTabla($conexion,$sql,$_GET['tam']);																							
 																					}else{
 																						
@@ -200,7 +200,7 @@
 																							}else{
 																								if($_GET['fun'] == "24"){//para cargar el correo																					
 																									if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																										$sql = "select id_envio,archivo.id_archivo,bitacora.id_bitacora,fecha_cambios,asunto_cambio,bitacora.id_tipo_documento,bitacora.id_medio_recepcion,nombre_archivo,codigo_archivo,archivo.estado from enviados, bitacora, archivo,tipo_documento,medio_recepcion where enviados.id_bitacora = bitacora.id_bitacora and enviados.id_archivo = archivo.id_archivo and bitacora.id_archivo = archivo.id_archivo and bitacora.id_tipo_documento = tipo_documento.id_tipo_documento and medio_recepcion.id_medio = bitacora.id_medio_recepcion and id_envio= '".$_GET['id']."'";
+																										$sql = "select id_bitacora,archivo.id_archivo,bitacora.id_bitacora,fecha_cambios,asunto_cambio,bitacora.id_tipo_documento,bitacora.id_medio_recepcion,nombre_archivo,codigo_archivo,archivo.estado from bitacora, archivo,tipo_documento,medio_recepcion where bitacora.id_archivo = archivo.id_archivo and bitacora.id_tipo_documento = tipo_documento.id_tipo_documento and bitacora.id_medio_recepcion = medio_recepcion.id_medio and bitacora.id_bitacora = '".$_GET['id']."'";
 																										cargarSelect($conexion,$sql,$_GET['tam']);																							
 																									}else{
 																										
@@ -208,7 +208,7 @@
 																								}else{
 																									if($_GET['fun'] == "25"){//para cargar el correo																					
 																										if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
-																											$sql = "select id_archivo from enviados where id_envio = '".$_GET['id']."'";
+																											$sql = "select id_archivo from bitacora where id_bitacora = '".$_GET['id']."'";
 																											cargarSelect($conexion,$sql,$_GET['tam']);																							
 																										}else{
 																											
@@ -243,6 +243,35 @@
 																															cargarTabla($conexion,$sql,$_GET['tam']);
 																														}else{
 																															
+																														}
+																													}else{
+																														if($_GET['fun'] == "30"){//para ciudad con id
+																															if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																																$sql = "select enviados.id_envio,bitacora.id_bitacora,archivo.id_archivo,nombre_archivo,asunto_cambio,observaciones,enviados.fecha,leido,bitacora.id_usuario,nombres_usuario,referencia from enviados,bitacora,archivo,usuario where enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and enviados.id_usuario = '".$_SESSION['id_gestion']."' and leido = '0' order by enviados.fecha asc ";																			
+																																nro_rows($conexion,$sql);
+																															}else{
+																																
+																															}
+																														}else{
+																															if($_GET['fun'] == "31"){//para ciudad con id
+																																if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																																	$sql = "select id_recibido,fecha_cambios,asunto_cambio,observaciones,referencia,nombres_usuario,peso,bitacora.id_bitacora from recibidos,usuario,bitacora,archivo where recibidos.id_bitacora = bitacora.id_bitacora and recibidos.id_usuario = usuario.id_usuario and recibidos.id_archivo = archivo.id_archivo and recibidos.id_recibido = '".$_GET['id']."'";
+																																	cargarTabla($conexion,$sql,$_GET['tam']);
+																																}else{
+																																	
+																																}
+																															}else{
+																																if($_GET['fun'] == "32"){//para ciudad con id
+																																	if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																																		$sql = "select usuarios from recibidos where id_recibido = '".$_GET['id']."'";
+																																		cargarTablaUsusariosRecibidos($conexion,$sql,$_GET['tam']);
+																																	}else{
+																																		
+																																	}
+																																}else{
+																																	
+																																}	
+																															}
 																														}
 																													}
 																												}																												

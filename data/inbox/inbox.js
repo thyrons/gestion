@@ -10,7 +10,6 @@ var inicial = 0;
 var fin = 0;
 var cont_reg = 2;
 var temp_reg = 0;
-
 var loc = document.location.href;
 var pathArray = window.location.pathname.split( '/' );
 for (i = 0; i < pathArray.length; i++) {    
@@ -186,7 +185,7 @@ function cargar_enviados(){
     type: "POST",
     dataType: 'json',           
     url: "../varios.php?tipo=0&id=0&tam=11&fun=27&inicio="+inicial+"&fin="+registros,        
-    success: function(data, status) {                           
+    success: function(data, status) {                                 
       loadStop();          
       if(registros > total_registros){
         registros = total_registros;
@@ -286,12 +285,22 @@ function total_registro(){
     type: "POST",
     dataType: 'json',        
     url: "../varios.php?tipo=0&id=0&tam=11&fun=18",      
-    success: function(data, status) {
-      total_registros = data;
-      $("#total_inbox").html(total_registros);
+    success: function(data, status) {      
       if(pathArray[4] == '' || pathArray[4] == 'index.php'){
         cargar_recibidos(); 
-      }            
+        total_registros = data;      
+      }
+      $.ajax({        
+        type: "POST",
+        dataType: 'json',        
+        url: "../varios.php?tipo=0&id=0&tam=11&fun=30",      
+        success: function(data, status) {          
+          $("#total_inbox").html(data);          
+          
+        },
+        error: function (data) {            
+        }           
+      });         
     },
     error: function (data) {            
     }           
@@ -307,32 +316,39 @@ function totalEnviados(){
       $("#total_enviados").html(total_enviados);            
       if(pathArray[4] == 'enviados.php'){
         cargar_enviados(); 
+        total_registros = data;      
       }            
     },
     error: function (data) {            
     }           
   });     
 }
-function cargar_datos_correo(id){  
-  var id_correo = 0;
-  if(id['id_mail'] != undefined){
-    id_correo = id['id_mail']
-    $("#btn_reenviar").attr('href','reenviar.php?id_mail='+id_correo);               
-  }else{
-    if(id['id_envio'] != undefined){
-      id_correo = id['id_envio'];
-      $("#btn_reenviar").attr('href','reenviar.php?id_envio='+id_correo);               
-    } 
-  }    
+function cargar_datos_correo(id){    
+  var id_correo = 0;     
   $("#cuerpo_mail").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
   if(id){
     if(id['id_mail'] != undefined){
+      id_correo = id['id_mail']      
+      $.ajax({        ////////////cambiar estado correo
+        type: "POST",      
+        url:'inbox.php?tipo=mc&id='+id_correo,
+        success: function(data, status) {      
+          if(data == 0){
+            $("#total_enviados").html("");
+            $("#total_enviados").html(total_enviados);                          
+          }else{
+          }        
+        },
+        error: function (data) {            
+        }           
+      });     
+      //////////////////
       $.ajax({        
         type: "POST",
-        dataType: 'json',              
-        timeout: 60000,            
-        url: "../varios.php?tipo=0&id="+id_correo+"&tam=7&fun=20",        
+        dataType: 'json',                      
+        url: "../varios.php?tipo=0&id="+id_correo+"&tam=8&fun=20",        
         success: function(data, status) {          
+          console.log(data);
           data = data;               
           loadStop();                    
           $("#subject").html("");
@@ -346,7 +362,8 @@ function cargar_datos_correo(id){
           if(data['cuerpo'][4] == ''){
           }else{
             $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');
-          }
+          } 
+          $("#btn_reenviar").attr('href','reenviar.php?id='+data['cuerpo'][7]);    ///envio id bitacora           
         }, 
         error: function (data) {            
           loadStart();
@@ -357,12 +374,13 @@ function cargar_datos_correo(id){
       }); 
     }else{
       if(id['id_envio'] != undefined){
+        id_correo = id['id_envio'];
         $.ajax({        
           type: "POST",
           dataType: 'json',              
           timeout: 60000,            
-          url: "../varios.php?tipo=0&id="+id_correo+"&tam=7&fun=20",        
-          success: function(data, status) {          
+          url: "../varios.php?tipo=0&id="+id_correo+"&tam=8&fun=31",        
+          success: function(data, status) {                   
             data = data;               
             loadStop();                    
             $("#subject").html("");
@@ -375,8 +393,28 @@ function cargar_datos_correo(id){
             $("#date_mail").html(data['cuerpo'][1]);
             if(data['cuerpo'][4] == ''){
             }else{
-              $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');
+              $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');                            
             }
+            $("#footer_mail").append('<li class="pull-right"><span class=""><label for="txt_usuarios" class="">Para los Usuarios:</label><select disabled="disabled" class="chosen-select form-control" id="txt_usuarios" name="txt_usuarios" data-placeholder="Tipo de Documento" multiple></select></span></li>');
+            $.ajax({        
+              type: "POST",
+              dataType: 'json',        
+              url: "../varios.php?tipo=0&id="+data['cuerpo'][7]+"&tam=1&fun=32",        
+              success: function(data, status) {         
+                console.log(data);
+                  $('#txt_usuarios').html("");           
+                  for (var i = 0; i < data.length; i=i+1) {                                                             
+                        $("#txt_usuarios").append("<option value ="+data[i]+" selected>"+data[i]+"</option>"); 
+                  } 
+                  $("#txt_usuarios").trigger("chosen:updated");                                      
+              },
+              error: function (data) {            
+              },
+              async: false,         
+            });
+            $("#txt_usuarios").chosen();              
+            $("#btn_reenviar").attr('href','reenviar.php?id='+data['cuerpo'][7]);////id bitacora
+
           }, 
           error: function (data) {            
             loadStart();
@@ -384,7 +422,7 @@ function cargar_datos_correo(id){
           beforeSend: function(){
             loadStart();                
           },     
-        });  
+        });                  
       } 
     }        
   }    

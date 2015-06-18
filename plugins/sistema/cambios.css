@@ -105,4 +105,5 @@
 .color_fila > td{
     font-weight: bold !important;
     text-decoration: underline;
+    background: rgba(194, 194, 194, 0.1);
 }

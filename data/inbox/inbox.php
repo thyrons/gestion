@@ -11,12 +11,12 @@
 
     $id_user = sesion_activa();
     $ruta = '../../archivos/';
-    $sql = "select id_envio,archivo.id_archivo,bitacora.id_bitacora,codigo_archivo,referencia from enviados,archivo,bitacora where enviados.id_archivo = archivo.id_archivo and enviados.id_bitacora = bitacora.id_bitacora and bitacora.id_archivo = archivo.id_archivo and id_envio = '".$_GET['id_reenvio']."'";
+    $sql = "select archivo.id_archivo,bitacora.id_bitacora,codigo_archivo,referencia from archivo,bitacora where archivo.id_archivo = bitacora.id_archivo and id_bitacora = '".$_GET['id_reenvio']."'";
     $sql = pg_query($conexion, $sql);
     while($row = pg_fetch_row($sql)){
-        $id_archivo = $row[1];        
-        $referencia = $row[4];    
-        $codigo_archivo = $row[3];
+        $id_archivo = $row[0];        
+        $referencia = $row[3];    
+        $codigo_archivo = $row[2];
     }
     
     $sql = "select id_bitacora,referencia,peso,tipo,estado from bitacora where id_archivo = '".$id_archivo."' order by id_bitacora desc limit 1" ;
@@ -162,6 +162,26 @@
                     }
                 }       
             }
+        }else{
+           if ($_GET['tipo'] == "mc") {        ////acutalizar el nro de correos
+                $sql_anterior = "select (id_envio,id_archivo,id_bitacora,fecha,estado,leido,id_usuario) from enviados where id_envio = '".$_GET['id']."'";
+                $sql_anterior = sql_array($conexion,$sql_anterior);                                                      
+                
+                $sql = "update enviados set leido = '1' where id_envio = '".$_GET['id']."'";
+                $guardar = guardarSql($conexion, $sql);
+                
+                $sql_nuevo = "select (id_envio,id_archivo,id_bitacora,fecha,estado,leido,id_usuario) from enviados where id_envio = '".$_GET['id']."'";
+                $sql_nuevo = sql_array($conexion,$sql_nuevo);           
+                
+                auditoria_sistema($conexion,'enviados',$id_user,'Update',$id_archivo,$fecha_larga,$fecha,$sql_nuevo,$sql_anterior,'Archivo visto por el usuario correspondiente');
+                        
+                $guardar = guardarSql($conexion, $sql);
+                if($guardar == 'true'){                       
+                    $data = '0';
+                }else{
+                    $data = '1';
+                } 
+           } 
         }    
     }
     echo $data;

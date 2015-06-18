@@ -86,7 +86,7 @@
                 <div class="box-footer">
                   <ul class="mailbox-attachments clearfix" id="footer_mail">
                     
-                  </ul>                  
+                  </ul>                   
                 </div><!-- /.box-footer -->
                 <div class="box-footer">                  
                   <a class="btn btn-primary" id="btn_reenviar"><i class="fa fa-edit"></i> Reenviar</a>
