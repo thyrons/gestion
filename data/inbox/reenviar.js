@@ -124,11 +124,7 @@ function cargar_datos_documento(id){
 			$("#txt_5").trigger("chosen:updated"); 	 
     		$("#txt_6").val(data[5]);    			 
     		$("#txt_6").trigger("chosen:updated"); 
-    		$("#txt_7").val(data[9]);    	    		
-    		if(data[9] == 1){
-				$("#txt_7").attr("disabled",true);	
-				$("#btn_1").attr("disabled",true);					
-			}
+    		$("#txt_7").val(data[9]);    	    		    		
 			$("#txt_7").trigger("chosen:updated"); 	 					    			
 		    $.gritter.add({
 		    	title: 'Mensaje del Servidor!',
@@ -141,6 +137,10 @@ function cargar_datos_documento(id){
 					comprobarCamposRequired('form_reenvio');					
 				},		
 		    });
+		    if(data[9] == 1){
+				$("#txt_7").attr("disabled",true);	
+				$("#btn_1").attr("disabled",true);					
+			}
 		    //$("#btn_1").attr("disabled",false);		
     	},
     	error: function (data) {		        
