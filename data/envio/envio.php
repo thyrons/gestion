@@ -16,11 +16,11 @@ $id_bitacora = id($conexion,'bitacora','id_bitacora');
 $id_user = sesion_activa();
 if ($_GET['tipo'] == "g") {
     $codigo_documento=$_GET['txt_2']{0}."-".$fecha_doc."-".'SD'."-".$id_archivo."-".$id_bitacora;                      //sin documento SD
-    $sql = "insert into archivo values ('".$id_archivo."','".$_GET['txt_2']."','".$codigo_documento."','".$_SESSION['departamento']."','".$_SESSION['id_gestion']."','".$fecha."','".$_GET['txt_7']."')";
+    $sql = "insert into archivo values ('".$id_archivo."','".$_GET['txt_2']."','".$codigo_documento."','".$_SESSION['departamento']."','".$_SESSION['id_gestion']."','".$fecha."','".$_GET['txt_7']."')";    
     $guardar = guardarSql($conexion, $sql);
     if($guardar == 'true'){                
-        //////////proceso archivo//////
-        $sql_nuevo = "select (id_archivo,nombre_archivo,codigo_archivo,origen,fuente_usuario,fecha_creacion,estado) from archivo where id_archivo = '".$id_archivo."'";        
+        //////////proceso archivo//////        
+        $sql_nuevo = "select (id_archivo,nombre_archivo,codigo_archivo,origen,fuente_usuario,fecha_creacion,estado) from archivo where id_archivo = '".$id_archivo."'";                
         $sql_nuevo = sql_array($conexion,$sql_nuevo);                                  
         auditoria_sistema($conexion,'archivo',$id_user,'Insert',$id_archivo,$fecha_larga,$fecha,$sql_nuevo,'','Inserción de datos en la tabla archivo');
         $data = "1";//guardado    
@@ -85,12 +85,11 @@ if ($_GET['tipo'] == "g") {
                     $bytea = '';
                     /////////////
                     move_uploaded_file($temporal, $root.$destino);                    
-                    $sql = "insert into archivo values ('".$id_archivo."','".$_GET['txt_2']."','".$codigo_documento."','".$_SESSION['departamento']."','".$_SESSION['id_gestion']."','".$fecha."','".$_GET['txt_7']."')";                    
+                    $sql = "insert into archivo values ('".$id_archivo."','".$_GET['txt_2']."','".$codigo_documento."','".$_SESSION['departamento']."','".$_SESSION['id_gestion']."','".$fecha."','".$_GET['txt_7']."')";                                        
                     $guardar = guardarSql($conexion, $sql);
                     if($guardar == 'true'){                
-                        //////////proceso archivo//////
+                        //////////proceso archivo//////                        
                         $sql_nuevo = "select (id_archivo,nombre_archivo,codigo_archivo,origen,fuente_usuario,fecha_creacion,estado) from archivo where id_archivo = '".$id_archivo."'";        
-                        
                         $sql_nuevo = sql_array($conexion,$sql_nuevo);                                  
                         auditoria_sistema($conexion,'archivo',$id_user,'Insert',$id_archivo,$fecha_larga,$fecha,$sql_nuevo,'','Inserción de datos en la tabla archivo');
                         $data = "1";//guardado    

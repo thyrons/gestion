@@ -68,6 +68,20 @@
 	        echo $lista = json_encode($lista);
 	    }
 	}
+	function datos_descarga($conexion, $sql, $tam) {
+	    $lista = array();
+	    $data = 0;
+	    $sql = pg_query($conexion, $sql);	    	    	    
+	    if ($sql) {
+	    	$cont = pg_num_rows($sql);
+	        while ($row = pg_fetch_row($sql)) {
+	            for($i = 0; $i < $tam; $i++){
+	            	$lista[] = $row[$i];	            
+	            }
+	        }	        
+	        return $lista;
+	    }
+	}
 
 	function id ($conexion,$tabla,$id){
 		$contador = 0;
@@ -229,5 +243,25 @@
 	    $sql = pg_query($conexion, $sql);
 	    $total = pg_num_rows($sql);
 	    echo $total;
+	}
+
+	function download_file($archivo,$referencia,$peso,$tipo) {				
+	    if (file_exists($archivo)) {	        
+	        header("Cache-control: private");
+			header("Content-type: $tipo");
+
+			header("Content-Disposition: attachment; filename=\"$referencia\"");
+			header("Content-length: $peso");
+			header("Expires: ".gmdate("D, d M Y H:i:s", mktime(date("H")+2, date("i"), date("s"), date("m"), date("d"), date("Y")))." GMT");
+			header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
+			header("Cache-Control: no-cache, must-revalidate");
+			header("Pragma: no-cache");
+
+	        ob_clean();
+	        flush();
+	        readfile($archivo);
+	        exit;
+	        $data = 0;
+	    }
 	}
 ?>

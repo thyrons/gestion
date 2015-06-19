@@ -41,7 +41,7 @@
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Gestion Documental</li>
-            <li class="active">Bandeja de Entrada</li>
+            <li class="active">Historial</li>
           </ol>
         </section>
 
@@ -56,11 +56,10 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
-                    <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
-                    <li class=""><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>  
-                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>  
-
+                    <li><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
+                    <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>      
+                    <li class="active"><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>   
+                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
@@ -71,7 +70,7 @@
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Bandeja de Entrada</h3>
+                  <h3 class="box-title">Historial</h3>
                   <div class="box-tools pull-right">
                     <div class="has-feedback">
                       <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>
@@ -173,6 +172,7 @@
     <script src="../../plugins/gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
     <script src="../../plugins/moment/moment-with-locales.js" type="text/javascript"></script>
     <script src="inbox.js" type="text/javascript"></script> 
+    
     <script src="../mod_user.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     

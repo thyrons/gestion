@@ -51,7 +51,7 @@
             <!-- left column -->
             <div class="col-md-12">
               <!-- general form elements -->
-              <div class="box box-primary">
+              <div class="box box-primary" id="background_reenvio">
                 <div class="box-header">                  
                 </div><!-- /.box-header -->
                 <!-- form start -->

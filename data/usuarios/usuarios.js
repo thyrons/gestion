@@ -1,5 +1,10 @@
 $(document).on("ready",inicio);
-    var dataTable = jQuery('#tabla_usuarios').DataTable({
+$('#loading').ajaxStart(function() {
+    $(this).show();
+}).ajaxComplete(function() {
+    $(this).hide();
+});
+var dataTable = jQuery('#tabla_usuarios').DataTable({
     "bAutoWidth": false,	
     "scrollY": "200px",
     "scrollX": "100%",
@@ -151,7 +156,7 @@ function inicio(){
 	$("#btn_3").on("click",function (){   
 	    var resp = "";    
 	    resp =atras($("#txt_0").val(),"usuarios","secuencia.php");   
-	    console.log(resp)
+	    //console.log(resp)
 	    if(resp[0] != false){	    	
 	    	$("#txt_0").val(resp[0][0]);
 	    	$("#txt_3").val(resp[0][2]);
@@ -226,7 +231,7 @@ function inicio(){
 	$("#btn_4").on("click",function (){   
 		    var resp = "";    
 		    resp =adelante($("#txt_0").val(),"usuarios","secuencia.php");   
-		    console.log(resp)
+		    //console.log(resp)
 		    if(resp[0] != false){	    	
 		    	$("#txt_0").val(resp[0][0]);
 		    	$("#txt_3").val(resp[0][2]);
@@ -345,7 +350,7 @@ function carga_departamentos(){
 
 function guardar_usuario(){
 	var resp=comprobarCamposRequired("form_usuarios");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_usuarios").on("submit",function (e){				
 			var valores = $("#form_usuarios").serialize();
@@ -422,12 +427,13 @@ function guardar_usuario(){
 
 
 function datos_usuarios(valores,tipo,p){	
+	$("#background_usuario").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');	    			    	
 	$.ajax({				
 		type: "POST",
 		data: valores+"&tipo="+tipo,
 		//contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
 		url: "usuarios.php",			
-	    success: function(data) {	
+	    success: function(data) {		    	
 	    	if( data == 3 ){
 	    		$.gritter.add({							
 					title: 'Datos Enviados..!',							
@@ -437,9 +443,10 @@ function datos_usuarios(valores,tipo,p){
 					time: 1000,									
 					class_name: 'light',						        
 					after_close: function(){
-						limpiar_form(p);		    		
+						limpiar_form(p);							
 					},							
-				});		    				    			    		
+				});		    				
+				loadStop();	    		    			    		
 	    	}else{
 	    		if( data == 1 ){
 	    			$.gritter.add({							
@@ -451,9 +458,10 @@ function datos_usuarios(valores,tipo,p){
 						class_name: 'light',						        
 						after_close: function(){
 							$("#txt_1").val("");
-	    					$("#txt_1").focus();	    			
+	    					$("#txt_1").focus();		    							
 						},							
-					});		    				    			    			    				    			
+					});		    				    
+					loadStop();	        				    			    				    			
 	    		}else{
 	    			if( data == 2){
 	    				$.gritter.add({							
@@ -465,9 +473,10 @@ function datos_usuarios(valores,tipo,p){
 							class_name: 'light',						        
 							after_close: function(){
 								$("#txt_2").val("");
-	    						$("#txt_2").focus();	    			
+	    						$("#txt_2").focus();	    							    			
 							},							
 						});		    				
+						loadStop();	    
 	    			}else{
 	    				$.gritter.add({							
 							title: 'Datos Enviados..!',							
@@ -477,7 +486,8 @@ function datos_usuarios(valores,tipo,p){
 							time: 1000,									
 							class_name: 'light',						        
 							after_close: function(){
-								actualizar_form();	
+								loadStop();	    
+								actualizar_form();									
 							},							
 						});		    					    					    				
 	    			}	    			
@@ -526,4 +536,10 @@ function cargar_tabla(){
             }                            
         }        
     });        
+}
+function loadStart() { 
+  $('#load').show();
+}
+function loadStop() {  
+  $('#load').remove();  
 }

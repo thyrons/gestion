@@ -1,4 +1,9 @@
 $(document).on("ready",inicio);    
+$('#loading').ajaxStart(function() {
+    $(this).show();
+}).ajaxComplete(function() {
+    $(this).hide();
+});
 function inicio (){	
 	$('.chosen-select').chosen({
 		allow_single_deselect:true,
@@ -56,7 +61,8 @@ function inicio (){
  	});
 }
 function cargar_datos_documento(id){
-	//obtener archivo id
+	//obtener archivo id	
+	$("#background_reenvio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
 	$.ajax({        
     	type: "POST",
     	dataType: 'json',        
@@ -124,8 +130,7 @@ function cargar_datos_documento(id){
 			$("#txt_5").trigger("chosen:updated"); 	 
     		$("#txt_6").val(data[5]);    			 
     		$("#txt_6").trigger("chosen:updated"); 
-    		$("#txt_7").val(data[9]);    	    		    		
-			$("#txt_7").trigger("chosen:updated"); 	 					    			
+    		$("#txt_7").val(data[9]);    	    		    								
 		    $.gritter.add({
 		    	title: 'Mensaje del Servidor!',
 		        text: 'Datos cargados correctamente',
@@ -134,12 +139,14 @@ function cargar_datos_documento(id){
 		        class_name: 'dc_ok',						        
 				time: 2000,																					
 				after_close: function(){
-					comprobarCamposRequired('form_reenvio');					
+					comprobarCamposRequired('form_reenvio');										
+					loadStop();                    			
 				},		
-		    });
+		    });		    
 		    if(data[9] == 1){
 				$("#txt_7").attr("disabled",true);	
-				$("#btn_1").attr("disabled",true);					
+				$("#btn_1").attr("disabled",true);						
+				$("#txt_7").trigger("chosen:updated"); 	 					    			
 			}
 		    //$("#btn_1").attr("disabled",false);		
     	},
@@ -177,6 +184,7 @@ function medio_recepcion(){
 	});	      
 }
 function modificar_inbox(id_bitacora){		
+	console.log(data);
 	var resp=comprobarCamposRequired("form_reenvio");	
 	if(resp==true){		
 		$("#form_reenvio").on("submit",function (e){				
@@ -185,7 +193,7 @@ function modificar_inbox(id_bitacora){
 			var archivo = archivos.files;
 		    var archivos = new FormData();    
 		   	var users = $("#txt_1").val();	
-		   	if($("#txt_7").val() == '1'){
+		   	if($("#txt_7").val() == '1' && $("#txt_7").attr("disabled")){
 				$.gritter.add({
 			        title: 'Error al momento de enviar!',
 			        text: 'Un documento finalizado no se puede modificar.',
@@ -194,9 +202,9 @@ function modificar_inbox(id_bitacora){
 			        class_name: 'dc_ok',						        
 					time: 5000,																	
 					after_close: function(){
-						actualizar_form();			            		
+						//actualizar_form();			            		
 					},		   	
-				});
+				});				
 			}else{	    		    		    		   
 				if(users != null){		    			    	
 			   		for(var i = 0; i < archivo.length; i++){
@@ -211,7 +219,8 @@ function modificar_inbox(id_bitacora){
 				    	    processData:false,
 				        	cache:false,        
 					    }).done(function(data){
-					         if( data == 1 ){            				            
+					        if( data == 1 ){   
+					         	$("#background_reenvio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');         				            
 					            $.gritter.add({
 							    	title: 'Mensaje del Servidor!',
 							        text: 'Archivo subido satisfactoriamente.',
@@ -279,10 +288,12 @@ function modificar_inbox(id_bitacora){
 				    	}else{
 					    	alert("El archivo supera las 50 MB permitidas");
 					    	$("#txt_9").val("");
+					    	loadStop();
 					    }
 					}
 		    	}else{
 			    	alert("Seleccione al menos un remitente antes de enviar");
+			    	loadStop();
 			    }	    
 			
 			}
@@ -290,4 +301,10 @@ function modificar_inbox(id_bitacora){
 			$(this).unbind("submit");	
 		});			
 	}
+}
+function loadStart() { 
+  $('#load').show();
+}
+function loadStop() {  
+  $('#load').hide();  
 }

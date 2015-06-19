@@ -246,9 +246,6 @@ function adelante(id,carpeta,archivo){
     });     
     return resp;
 }
-
-
-
 function carga_ubicaciones(pais,provincia,ciudad){
     $.ajax({        
         type: "POST",
@@ -331,7 +328,6 @@ function change_provincia(pais,provincia,ciudad){
         }                   
     });
 }
-
 
 function documentos(fun,txt_1,txt_2){
     if(fun == 0){

@@ -94,7 +94,8 @@ function guardar_envio(){
 		    var archivos = new FormData();    
 		    var users = $("#txt_1").val();		    		    
 		    
-		    if(users != null){		    			    	
+		    if(users != null){	
+		    	$("#background_envio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');	    			    	
 		   		for(var i = 0; i < archivo.length; i++){
 			        archivos.append('archivo'+i,archivo[i]);        			        			        
 			    }	

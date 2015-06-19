@@ -58,6 +58,7 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
                     <li class="active"><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
+                    <li class=""><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>  
                     <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
                   </ul>
                 </div><!-- /.box-body -->
@@ -69,7 +70,7 @@
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Bandeja de Entrada</h3>
+                  <h3 class="box-title">Bandeja de Salida</h3>
                   <div class="box-tools pull-right">
                     <div class="has-feedback">
                       <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>

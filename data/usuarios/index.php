@@ -51,7 +51,7 @@
             <!-- left column -->
             <div class="col-md-12">
               <!-- general form elements -->
-              <div class="box box-primary">
+              <div class="box box-primary" id="background_usuario">
                 <div class="box-header">
                   <h3 class="box-title">Ingreso de Usuarios</h3>
                 </div><!-- /.box-header -->
