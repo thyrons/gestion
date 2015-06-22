@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:INBOX:.</title>
+    <title>.:BÚSQUEDA DE Archivos:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -41,7 +41,7 @@
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Gestion Documental</li>
-            <li class="active">Bandeja de Entrada</li>
+            <li class="active">Buscar Archivos</li>
           </ol>
         </section>
 
@@ -56,14 +56,29 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
+                    <li class=""><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
                     <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
-                    <li class=""><a href=""><i class="fa fa-list-alt"></i> Historial</a></li>  
-                    <li class=""><a href=""><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>  
-
+                    <li class=""><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>  
+                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>  
+                    <li class="active"><a href="buscar_archivos.php"><i class="fa fa-search-minus"></i> Búsqueda de Archivos</a></li>  
+                  </ul>
+                </div><!-- /.box-body -->                
+              </div><!-- /. box -->
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Buscar</h3>
+                </div>
+                <div class="box-body no-padding">
+                  <ul class="nav nav-pills nav-stacked">                                        
+                    <li><input type="text" class="form-control input-sm" id="txt_buscar" placeholder="Buscar"/></li>
+                    <li><input type="checkbox" id="check_buscar" /> <label style="font-size:12px;font-weight:normal;"> Entradas anteriores</label></li>
+                    <li><br /></li>
+                    <li style="text-align:center"><button type="submit" class="btn btn-primary "  id="btn_12"><span class="glyphicon glyphicon-search"></span> Buscar Documento</button>          
+                    </li>  
+                    <li><br /></li>
                   </ul>
                 </div><!-- /.box-body -->
-              </div><!-- /. box -->
+              </div><!-- /.box -->
               <div class="box box-solid">                                
               <!-- en caso de nuevas opciones -->
               </div><!-- /.box -->
@@ -71,7 +86,7 @@
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Bandeja de Entrada</h3>
+                  <h3 class="box-title">Documentos Encontrados</h3>
                   <div class="box-tools pull-right">
                     <div class="has-feedback">
                       <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>

@@ -25,21 +25,73 @@ function datos_login(valores,tipo,p){
 		url: "login.php",			
 	    success: function(data) {	
 	    	if( data == 0 ){
-	    		location.href='../../data/inbox/';
-	    		
+	    		$.gritter.add({			
+		    		title: 'Datos Enviados..!',							
+					text: "Bienvenido",
+					image: '../../dist/img/ok.fw.png',
+					sticky: false, 							
+					time: 2000,									
+					class_name: 'light',						        
+					after_close: function(){
+						location.href='../../data/inbox/';
+					},								    			    		
+				});		    			
 	    	}else{
-	    		if( data == 1 ){
-	    			alert("El usuario no existe...")
-	    			$("#txt_1").val("");
-	    			$("#txt_1").focus();	    			
+	    		if( data == 1 ){	    			
+					$.gritter.add({							    				
+						title: 'Datos Enviados..!',							
+						text: "Este usuario no existe...",
+						image: '../../img/error.png',							
+						sticky: false, 							
+						time: 2000,									
+						class_name: 'light',						        
+						after_close: function(){
+							$("#txt_1").val("");
+	    					$("#txt_1").focus();	    										
+						},							
+					});		    			
 	    		}else{
 	    			if( data == 2 ){
-	    				alert("Clave Incorrecta...")
-	    				$("#txt_2").val("");
-	    				$("#txt_2").focus();	    			
+	    				$.gritter.add({							
+							title: 'Datos Enviados..!',							
+							text: "Clave Incorrecta...",
+							image: '../../img/error.png',							
+							sticky: false, 							
+							time: 2000,									
+							class_name: 'light',						        
+							after_close: function(){
+								$("#txt_2").val("");
+	    						$("#txt_2").focus();	    				    										
+							},							
+						});		    				
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				actualizar_form();	
+	    				if( data == 3 ){
+	    					$.gritter.add({							
+								title: 'Datos Enviados..!',							
+								text: "Este usuario ya esta conectado...",
+								image: '../../dist/img/advertencia.fw.png',							
+								sticky: false, 							
+								time: 2000,									
+								class_name: 'light',						        
+								after_close: function(){
+									$("#txt_1").val("");
+									$("#txt_1").focus();	    				    										
+									$("#txt_2").val("");		    						
+								},							
+							});				    						    				
+		    			}else{
+		    				$.gritter.add({							
+								title: 'Datos Enviados..!',							
+								text: "Error al momento de enviar los datos la página se recargara",
+								image: '../../img/error.png',							
+								sticky: false, 							
+								time: 2000,									
+								class_name: 'light',						        
+								after_close: function(){
+									actualizar_form();	
+								},							
+							});				    					    					
+		    			}	    				
 	    			}
 	    			
 	    		}

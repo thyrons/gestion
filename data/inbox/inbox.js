@@ -15,17 +15,36 @@ var pathArray = window.location.pathname.split( '/' );
 for (i = 0; i < pathArray.length; i++) {    
   pathArray[i];
 }    
-function inicio(){	        
+function inicio(){	          
   totalEnviados();
   total_registro();
-  /*--------------*///obtener el url para cargar enviados,recibos o readMail 
+  /*--------------*///obtener el url para cargar enviados,recibos, readMail, o buscar archivos
   ///////////////////////
-  var id_get = getGET(loc);   
-  if(id_get == undefined){    
-  }else{    
-    cargar_datos_correo(id_get);       
-  }  
-  
+  var id_get = getGET(loc);     
+  if(pathArray[4] == 'enviados.php'){
+    
+  }else{
+    if(pathArray[4] == '' || pathArray[4] == 'index.php'){
+      
+    }else{
+      if(pathArray[4] == 'buscar_archivos.php'){
+        
+      }else{
+        if(pathArray[4] == 'read_mail.php'){
+          if(id_get == undefined){    
+            location.href = "../inbox";
+          }else{    
+            cargar_datos_correo(id_get);       
+          }  
+        }          
+      }
+    }   
+  }   
+  /*-------Buscar documentos texto------*/
+  $("#btn_12").on("click",function(){
+    buscar_archivos($("#txt_buscar").val(),$("#check_buscar").is(":checked"));
+  });
+  /*------------------------------------*/   
   $("button[name$='adelante']").on('click',function(){        
     $("#buscar_tabla").val("");
     inicial =  fin;    
@@ -64,8 +83,8 @@ function inicio(){
       fun_re_ev = 28;
     }else{
       if(pathArray[4] == '' || pathArray[4] == 'index.php'){
-          fun_re_ev = 19;
-        }   
+        fun_re_ev = 19;
+      }   
     }
     $("#tabla_inbox tbody").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
     loadStart();
@@ -86,23 +105,23 @@ function inicio(){
               }else{
                 leido = "";
               } 
-              if(pathArray[4] == 'enviados.php'){                
+              if(pathArray[4] == 'enviados.php'){                                
                 if(data['cuerpo'][i + 10] == ''){
                   adjunto = "<i class=''></i>";            
-                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                              
+                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");            
                 }else{
                   adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i></a>";
-                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                  
+                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 2]+"&id_archivo="+data['cuerpo'][i + 1]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
                 }    
               }else{
                 if(pathArray[4] == '' || pathArray[4] == 'index.php'){                    
                   if(data['cuerpo'][i + 10] == ''){
                     adjunto = "<i class=''></i>";            
-                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                      
+                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
                   }else{
                     adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i></a>";
-                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                      
-                  }   
+                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+                  }                              
                 }   
               }                                                 
             }           
@@ -161,10 +180,10 @@ function cargar_recibidos(){
           }              
           if(data['cuerpo'][i + 10] == ''){
             adjunto = "<i class=''></i>";            
-            $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+            $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
           }else{
             adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i></a>";
-            $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+            $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
           }            
   			}      			
   		}    
@@ -211,11 +230,12 @@ function cargar_enviados(){
           }
           if(data['cuerpo'][i + 10] == ''){
             adjunto = "<i class=''></i>";            
-            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");            
+            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");            
           }else{
             adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i></a>";
-            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
-          }                    
+            $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 2]+"&id_archivo="+data['cuerpo'][i + 1]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+          }
+
         }           
       }    
       var div = Math.floor(registros/2);      
@@ -263,23 +283,23 @@ function atras_adelante(inicio,fin){
               }else{
                 leido = "";
               }       
-              if(pathArray[4] == 'enviados.php'){                
+              if(pathArray[4] == 'enviados.php'){                                
                 if(data['cuerpo'][i + 10] == ''){
                   adjunto = "<i class=''></i>";            
-                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                              
+                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");            
                 }else{
                   adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i></a>";
-                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                  
+                  $("#tabla_inbox tbody").append("<tr><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_envio="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 2]+"&id_archivo="+data['cuerpo'][i + 1]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
                 }    
               }else{
                 if(pathArray[4] == '' || pathArray[4] == 'index.php'){                    
                   if(data['cuerpo'][i + 10] == ''){
                     adjunto = "<i class=''></i>";            
-                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                      
+                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
                   }else{
                     adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i></a>";
-                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='#'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");                      
-                  }   
+                    $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+                  }                                 
                 }   
               }                                       
             }           
@@ -462,11 +482,68 @@ function loadStart() {
 function loadStop() {  
   $('#load').hide();  
 }
-
-function descargar_archivo (id,fn){    
-  //window.location.href="descarga.php?id="+id+"&fn="+fn;
+function descargar_archivo (id,fn){      
   window.open("descarga.php?id="+id+"&fn="+fn,'_blank');  
 }
-function vista_previa(){
-
+function buscar_archivos(text,check){
+  if(text.length > 0){
+    $("#tabla_inbox tbody").html('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');  
+    $.ajax({        
+      type: "POST",
+      dataType: 'json',           
+      url: "../varios.php?tipo=0&id=0&tam=11&fun=34&sub="+check+"&txt="+$("#txt_buscar").val(),        
+      success: function(data, status) {                             
+        if(data['cuerpo'][i + 10] == ''){
+          adjunto = "<i class=''></i>";            
+          $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+        }else{
+          adjunto = "<a onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i></a>";
+          $("#tabla_inbox tbody").append("<tr class="+leido+"><td class='hidden'>"+data['cuerpo'][i]+"</td><td><input type='checkbox' /></td><td class='mailbox-name'><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'>"+data['cuerpo'][i+9]+"</a></td><td class='mailbox-subject'><b>"+data['cuerpo'][i+3]+"</b></td><td class='mailbox-subject'>"+data['cuerpo'][i+4]+"</td><td class='mailbox-attachment'>"+adjunto+"</td><td class='mailbox-date'>"+moment(data['cuerpo'][i + 6], "YYYYMMDD, h:mm:ss").fromNow()+" </td><td style='overflow:visible;'><div class='btn-group'><button type='button' class='btn btn-primary dropdown-toggle'data-toggle='dropdown'><span class='caret'></span><span class='sr-only'>Desplegar menú</span></button><ul class='dropdown-menu  pull-right menu_inbox' role='menu'><li><a href='#'><i class='fa fa-file-text-o'></i>Hoja de Ruta</a></li><li><a href='read_mail.php?id_mail="+data['cuerpo'][i]+"'><i class='fa fa-files-o'></i>Ver Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 1]+",1)'><i class='fa fa-paperclip'></i>Descargar Archivo</a></li><li><a href='#' onclick='return descargar_archivo("+data['cuerpo'][i + 2]+",2)'><i class='fa fa-paperclip'></i>Descargar Última Versión</a></li><li><a href='historial.php?id="+data['cuerpo'][i + 1]+"&id_archivo="+data['cuerpo'][i + 2]+"'><i class='fa fa-search-plus'></i>Historial</a></li></ul></div></td></tr>");
+        }                                                  
+      },
+      error: function (data) {            
+        loadStart();
+      },   
+      beforeSend: function(){
+        loadStart();                
+      },
+    }); 
+  }else{
+    $.gritter.add({                         
+      title: 'Datos Enviados..!',             
+      text: "Indique una palabra antes de continuar....",
+      image: '../../img/error.png',             
+      sticky: false,              
+      time: 2000,                 
+      class_name: 'light',                    
+      after_close: function(){
+          $("#txt_buscar").val("");
+          $("#txt_buscar").focus();                          
+      },              
+    });       
+  }
+  /*
+  if($("#textoBuscar").val()!="")
+  {
+    $.ajax({
+      type: "POST",
+      url: "../procesos/leer.php",  
+        data: "palabra="+$("#textoBuscar").val()+"&subversion="+$("#subversion:checked").val(),
+        dataType: 'json',
+        success: function(response) {
+       for (var i = 0; i < response.length; i=i+6) {
+           $("#tablaNuevo tbody").append( "<tr>" +
+              "<td align=center >" + response[i+0] + "</td>" +
+              "<td align=center>" + response[i+1] + "</td>" +             
+              "<td align=center>" + response[i+2] + "</td>" +                         
+              "<td align=center>" + response[i+3] + "</td>" +  
+              "<td align=center>" + response[i+4] + "</td>" +  
+              "<td align=center>"+'<a target="_blank" class="estilo" href="../procesos/descarga_bitacora.php?id='+response[i+5]+'">Ver</a>'+" "+'<a href="../procesos/descarga_bitacora.php?id='+response[i+5]+'&amp;f=1" class="estilo">Descargar</a>'+"<tr>");                    
+        };          
+        }
+    });   
+  }
+  else{
+    alert("Indique una palabra antes de continuar");    
+  }*/
 }

@@ -109,7 +109,7 @@ div.dataTables_scrollFoot table {
 
 .table tbody tr.active:hover td,
 .table tbody tr.active:hover th {
-	background-color: #0075b0 !important;
+	background-color: #0075b0 !important;	
 }
 
 .table tbody tr.active a {
@@ -174,7 +174,12 @@ div.DTTT_print_info p {
 	line-height: 20px;
 }
 
-
+ .table tbody tr:hover td,
+    .table tbody tr:hover th {
+      /*color: #fff;*/
+      background: rgba(169, 169, 169, 0.32);
+      /*background-color: #E6FF99; */
+    }
 
 /*
  * FixedColumns styles

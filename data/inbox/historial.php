@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:INBOX:.</title>
+    <title>.:HISTORIAL:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -19,12 +19,25 @@
     <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />    
     <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />          
+    <!--<link href="../../plugins/datatables/dataTables.responsive.css" rel="stylesheet" type="text/css" />          -->
     <link href="../../plugins/sistema/cambios.css" rel="stylesheet" type="text/css" /> 
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">   
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/address.css" rel="stylesheet">   
     <link href="../../plugins/jchosen/chosen.min.css" rel="stylesheet" type="text/css" />    
     <link href="../../plugins/gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />    
   </head>
+  <style type="text/css">
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+ 
+    div.container {
+        width: 80%;
+    }
+   
+    
+  </style>
   <body class="skin-blue">
     <div class="wrapper">
       
@@ -58,8 +71,8 @@
                   <ul class="nav nav-pills nav-stacked">
                     <li><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
                     <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>      
-                    <li class="active"><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>   
-                    <li class=""><a href="#"><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
+                    <li class="active"><a href=""><i class="fa fa-list-alt"></i> Historial</a></li>   
+                    <li class=""><a href=""><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                                                                                            
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
@@ -70,63 +83,44 @@
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Historial</h3>
-                  <div class="box-tools pull-right">
-                    <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" id="buscar_tabla" placeholder="Buscar"/>
-                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    </div>
-                  </div><!-- /.box-tools -->
+                  <h3 class="box-title">Historial</h3>                  
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
-                    <div class="btn-group">
-                      
-                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
-                    </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm"  name="refresh_inbox"><i class="fa fa-refresh"></i></button>
-                    <div class="pull-right">
-                      <label name="tot"></label>
-                      <!-- el total de archivos 1-50/200 -->
-                      <div class="btn-group">
-                        <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-chevron-left"></i></button>
-                        <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-chevron-right"></i></button>
-                      </div><!-- /.btn-group -->
-                    </div><!-- /.pull-right -->
+                  <div class="mailbox-controls">                        
                   </div>
                   <div id="tbl">
-                  <div class="table-responsive mailbox-messages" id="">
-                    <table class="table table-hover table-striped" id="tabla_inbox">
-                    <thead>
-                      
-                    </thead>
+                  <div class="table-responsive mailbox-messages" id="">                    
+                    <table id="tabla_historial" class="table hover row-border" cellspacing="0" width="">
+                    <!--<table id="tabla_historial" class="stripe row-border order-column" cellspacing="0" width="100%">-->
+                      <thead>
+                        <th>ID</th>
+                        <th>CÓDIGO</th>
+                        <th>NOMBRE</th>                        
+                        <th>FECHA CAMBIO</th>                        
+                        <th>ASUNTO CAMBIO</th>                        
+                        <th>REFERENCIA</th>                        
+                        <th>PESO</th>                        
+                        <th>TIPO</th>                        
+                        <th>ESTADO</th>                        
+                        <th>id_usuario</th>
+                        <th>USUARIO</th>
+                      </thead>
                       <tbody>                                                
+                      
                       </tbody>
                     </table><!-- /.table -->
                   </div><!-- /.mail-box-messages -->
                   </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer no-padding">
-                  <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>                    
-                    <div class="btn-group">
-                      
-                      <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-reply"></i></button>
-                      <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-share"></i></button>
-                    </div><!-- /.btn-group -->
-                    <button class="btn btn-default btn-sm" name="refresh_inbox"><i class="fa fa-refresh"></i></button>
-                    <div class="pull-right">
-                      <label name="tot"></label>
-                      <div class="btn-group">
-                        <button class="btn btn-default btn-sm" name="atras"><i class="fa fa-chevron-left"></i></button>
-                        <button class="btn btn-default btn-sm" name="adelante"><i class="fa fa-chevron-right"></i></button>                        
-                      </div><!-- /.btn-group -->
-                    </div><!-- /.pull-right -->
-                  </div>
+                  <div class="mailbox-controls">                    
+                    <button type="submit" class="btn btn-primary "  id="btn_11">
+                      <span class="glyphicon glyphicon-print"></span> Imprimir
+                    </button>                    
+                    <a type="button" href="../inbox" class="btn btn-primary" id="btn_2">
+                      <span class="glyphicon glyphicon-chevron-left"></span> Regresar
+                    </a>                                                            
+                  </div>                         
                 </div>
               </div><!-- /. box -->
             </div><!-- /.col -->
@@ -160,6 +154,7 @@
     <script src="../../dist/js/app.min.js" type="text/javascript"></script>    
     <script src="../../plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>        
+    <!--<script src="../../plugins/datatables/dataTables.responsive.js" type="text/javascript"></script>        -->
 
     <script src="../../plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
     <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
@@ -172,6 +167,7 @@
     <script src="../../plugins/gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
     <script src="../../plugins/moment/moment-with-locales.js" type="text/javascript"></script>
     <script src="inbox.js" type="text/javascript"></script> 
+    <script src="historial.js" type="text/javascript"></script> 
     
     <script src="../mod_user.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>

@@ -122,12 +122,17 @@
 			if(base64_encode($clave) == $pass){
 				$resp = '0'; ////ingreso				
 				//session_start();        
-				$_SESSION['id_gestion'] = $id_user;
-				$_SESSION['nombres_gestion'] = $nombres;
-				$_SESSION['usuario_gestion'] = $user;				
-				$_SESSION['fecha_gestion'] = $fecha_login;	
-				$_SESSION['tipo_user'] = $tipo_user;	
-				$_SESSION['departamento'] = $departamento;	
+				if(isset($_SESSION['id_gestion'])){
+					$resp = '3';///session existente
+				}else{
+					$_SESSION['id_gestion'] = $id_user;
+					$_SESSION['nombres_gestion'] = $nombres;
+					$_SESSION['usuario_gestion'] = $user;				
+					$_SESSION['fecha_gestion'] = $fecha_login;	
+					$_SESSION['tipo_user'] = $tipo_user;	
+					$_SESSION['departamento'] = $departamento;	
+				}				
+
 			}else{
 				$resp = '2'; ///clave incorrecta
 			}
@@ -263,5 +268,176 @@
 	        exit;
 	        $data = 0;
 	    }
+	}
+	function buscardor_texto($conexion,$sub,$texto, $tam){
+
+		$lista = array();
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select id_archivo,nombre_archivo,fecha_creacion from archivo order by fecha_creacion asc";							
+		}else{
+			$sql = "select id_archivo,nombre_archivo,fecha_creacion from archivo where fuente_usuario = '".sesion_activa()."' order by fecha_creacion desc";				
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){
+			if($sub == true){
+				$sql_1 = "select bitacora.id_bitacora,bitacora.id_archivo,bitacora.fecha_cambios,fuente_usuario,nombres_usuario,nombre_archivo,asunto_cambio,referencia from archivo, bitacora, usuario where archivo.id_archivo = bitacora.id_archivo and archivo.fuente_usuario = usuario.id_usuario and archivo.id_archivo = '".$row[0]."' order by fecha_cambios desc";
+				$sql_1 = pg_query($conexion, $sql_1);
+				while($row_1 = pg_fetch_row($sql_1)){				
+					$document = 'archivos/'.$row_1[7];                     
+	                $ext = end(explode('.', $document));                 	                	                
+	                $resp=buscar_text($ext,$document);                
+	                if(preg_match("/".$texto."/i", $resp))     
+	                {         
+	                    $lista[]=$row[0];  
+	                    $lista[]=$row[1];                       
+	                    $lista[]=$row[2];                                                    
+	                    $lista[]=$row_1[0];           
+	                    $lista[]=$row_1[4];         
+	                    $lista[]=$row_1[5];         
+	                }
+
+				}
+			}
+		}
+	}
+	function buscar_text($ext,$document){  			
+	    if($ext=='doc'){
+	        doc_to_text($document);
+	         $data= doc_to_text($document);       
+	    }
+	    else{
+	        if($ext=='odt'){            
+	            odt_to_text($document);
+	            $data=odt_to_text($document);
+	        }
+	        else{
+	            if($ext=='docx'){                
+	                docx_to_text($document);
+	                $data=docx_to_text($document);
+	            }
+	            else{
+	                if($ext=='xlsx'){
+	                    xlsx_to_text($document);
+	                     $data=xlsx_to_text($document);
+	                }
+	                else{
+	                    if($ext=='pptx'){
+	                        pptx_to_text($document);
+	                        $data=pptx_to_text($document);
+	                    }
+	                    else{/// si la extension puede ser txt o otras diferentes
+	                        if($ext=='txt'){
+	                            $data = file_get_contents($document);
+	                        }
+	                        else{
+	                            if($ext=='pdf'){
+	                                include 'pdf2text.php';
+	                                $data = pdf2text ($document);                                
+	                            }
+	                            else{
+	                            	echo $document;
+	                                $data = file_get_contents($document);
+	                            }
+	                        }    
+	                    }
+	                }   
+	            }
+	   
+	        }
+	    }
+	    return $data;
+	} 
+	function doc_to_text($input_file){
+	    $file_handle = fopen($input_file, "r"); //open the file
+	    $stream_text = @fread($file_handle, filesize($input_file));
+	    $stream_line = explode(chr(0x0D),$stream_text);
+	    $output_text = "";
+	    foreach($stream_line as $single_line){
+	        $line_pos = strpos($single_line, chr(0x00));
+	        if(($line_pos !== FALSE) || (strlen($single_line)==0)){
+	            $output_text .= "";
+	        }else{
+	            $output_text .= $single_line." ";
+	        }
+	    }
+	    $output_text = preg_replace("/[^a-zA-Z0-9\s\,\.\-\n\r\t@\/\_\(\)]/", "", $output_text);
+	    return $output_text;
+	}
+	function odt_to_text($input_file){
+	    $xml_filename = "content.xml"; //content file name
+	    $zip_handle = new ZipArchive;
+	    $output_text = "";
+	    if(true === $zip_handle->open($input_file)){
+	        if(($xml_index = $zip_handle->locateName($xml_filename)) !== false){
+	            $xml_datas = $zip_handle->getFromIndex($xml_index);
+	            $xml_handle = DOMDocument::loadXML($xml_datas, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+	            $output_text = strip_tags($xml_handle->saveXML());
+	        }else{
+	            $output_text .="";
+	        }
+	        $zip_handle->close();
+	    }else{
+	    $output_text .="";
+	    }
+	    return $output_text;
+	}
+	 
+	function docx_to_text($input_file){
+	    $xml_filename = "word/document.xml"; //content file name
+	    $zip_handle = new ZipArchive;
+	    $output_text = "";
+	    if(true === $zip_handle->open($input_file)){
+	        if(($xml_index = $zip_handle->locateName($xml_filename)) !== false){
+	            $xml_datas = $zip_handle->getFromIndex($xml_index);
+	            $xml_handle = DOMDocument::loadXML($xml_datas, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+	            $output_text = strip_tags($xml_handle->saveXML());
+	        }else{
+	            $output_text .="";
+	        }
+	        $zip_handle->close();
+	    }else{
+	    $output_text .="";
+	    }
+	    return $output_text;
+	}
+	 
+	function pptx_to_text($input_file){
+	    $zip_handle = new ZipArchive;
+	    $output_text = "";
+	    if(true === $zip_handle->open($input_file)){
+	        $slide_number = 1; //loop through slide files
+	        while(($xml_index = $zip_handle->locateName("ppt/slides/slide".$slide_number.".xml")) !== false){
+	            $xml_datas = $zip_handle->getFromIndex($xml_index);
+	            $xml_handle = DOMDocument::loadXML($xml_datas, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+	            $output_text .= strip_tags($xml_handle->saveXML());
+	            $slide_number++;
+	        }
+	        if($slide_number == 1){
+	            $output_text .="";
+	        }
+	        $zip_handle->close();
+	    }else{
+	    $output_text .="";
+	    }
+	    return $output_text;
+	}
+	function xlsx_to_text($input_file){
+	    $xml_filename = "xl/sharedStrings.xml"; //content file name
+	    $zip_handle = new ZipArchive;
+	    $output_text = "";
+	    if(true === $zip_handle->open($input_file)){
+	        if(($xml_index = $zip_handle->locateName($xml_filename)) !== false){
+	            $xml_datas = $zip_handle->getFromIndex($xml_index);
+	            $xml_handle = DOMDocument::loadXML($xml_datas, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+	            $output_text = strip_tags($xml_handle->saveXML());
+	        }else{
+	            $output_text .="";
+	        }
+	        $zip_handle->close();
+	    }else{
+	    $output_text .="";
+	    }
+	    return $output_text;
 	}
 ?>

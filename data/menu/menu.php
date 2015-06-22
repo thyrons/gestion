@@ -47,7 +47,7 @@ function banner(){
                       <a href="#" id="cambiar_clave" class="btn btn-default btn-flat">C. Clave</a>
                     </div>
                     <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4">
-                      <a href="#" class="btn btn-default btn-flat">Salir</a>
+                      <a href="../login/salir_session.php" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
@@ -146,7 +146,11 @@ function menu_lateral(){
             print '<li ';if ($acus[4] == 'enviados.php') {
               print('class="active"');
             }print'>  
-              <a href="enviados.php"><i class="fa fa-mail-reply"></i> Enviados</a></li>
+              <a href="enviados.php"><i class="fa fa-mail-reply"></i> Enviados</a></li>';
+            print '<li ';if ($acus[4] == 'buscar_archivos.php') {
+              print('class="active"');
+            }print'>    
+              <a href="buscar_archivos.php"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
           </ul>
         </li>      
         <li class="treeview">
@@ -154,8 +158,7 @@ function menu_lateral(){
             <i class="fa fa-dashboard"></i> <span>Reportes</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>              
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
+          <ul class="treeview-menu">            
             <li><a href="#"><i class="fa fa-bar-chart-o"></i> Estadisticas</a></li>
             <li><a href="#"><i class="fa fa-book"></i> Reportes</a></li>                  
           </ul>

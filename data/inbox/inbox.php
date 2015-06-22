@@ -44,7 +44,7 @@
     if ($_GET['tipo'] == "m") {
         //sin documento archivo SD    
         ////////////proceso bitacora //////////////
-        $sql = "insert into bitacora values ('".$id_bitacora."','".$id_archivo."','".$fecha."','".$_GET['txt_3']."','".$_SESSION['id_gestion']."','".$_GET['txt_6']."','".$_GET['txt_5']."','".''."','".$_GET['txt_10']."','".$peso."','".$referencia."','".$tipo."','0')";
+        $sql = "insert into bitacora values ('".$id_bitacora."','".$id_archivo."','".$fecha."','".$_GET['txt_3']."','".$_SESSION['id_gestion']."','".$_GET['txt_6']."','".$_GET['txt_5']."','".''."','".$_GET['txt_10']."','".$peso."','".$referencia."','".$tipo."','".$_GET['txt_7']."')";
         $guardar = guardarSql($conexion, $sql);
         if($guardar == 'true'){                
             $sql_nuevo = "select (id_bitacora,id_archivo,fecha_cambios,asunto_cambio,id_usuario,id_tipo_documento,id_medio_recepcion,observaciones,peso,referencia,tipo,estado) from bitacora where id_bitacora = '".$id_bitacora."'";
@@ -98,7 +98,7 @@
                     move_uploaded_file($temporal, $root.$destino);                    
                     
                     ////////////proceso bitacora //////////////
-                    $sql = "insert into bitacora values ('".$id_bitacora."','".$id_archivo."','".$fecha."','".$_GET['txt_3']."','".$_SESSION['id_gestion']."','".$_GET['txt_6']."','".$_GET['txt_5']."','".$bytea."','".$_GET['txt_10']."','".$size."','".$nombre."','".$extension."','0')";
+                    $sql = "insert into bitacora values ('".$id_bitacora."','".$id_archivo."','".$fecha."','".$_GET['txt_3']."','".$_SESSION['id_gestion']."','".$_GET['txt_6']."','".$_GET['txt_5']."','".$bytea."','".$_GET['txt_10']."','".$size."','".$nombre."','".$extension."','".$_GET['txt_7']."')";
                     $guardar = guardarSql($conexion, $sql);
                     if($guardar == 'true'){                
                         $sql_nuevo = "select (id_bitacora,id_archivo,fecha_cambios,asunto_cambio,id_usuario,id_tipo_documento,id_medio_recepcion,observaciones,peso,referencia,tipo,estado) from bitacora where id_bitacora = '".$id_bitacora."'";

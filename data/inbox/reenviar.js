@@ -140,7 +140,7 @@ function cargar_datos_documento(id){
 				time: 2000,																					
 				after_close: function(){
 					comprobarCamposRequired('form_reenvio');										
-					loadStop();                    			
+					loadStop();                    								
 				},		
 		    });		    
 		    if(data[9] == 1){
@@ -202,7 +202,7 @@ function modificar_inbox(id_bitacora){
 			        class_name: 'dc_ok',						        
 					time: 5000,																	
 					after_close: function(){
-						//actualizar_form();			            		
+						actualizar_form();			            		
 					},		   	
 				});				
 			}else{	    		    		    		   
@@ -229,6 +229,7 @@ function modificar_inbox(id_bitacora){
 						    	    class_name: 'dc_ok',						        
 									time: 1000,																	
 									after_close: function(){
+										location.href = "../inbox";
 										actualizar_form();			            		
 									},		
 							    });				            

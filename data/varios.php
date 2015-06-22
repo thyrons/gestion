@@ -269,7 +269,24 @@
 																																		
 																																	}
 																																}else{
-																																	
+																																	if($_GET['fun'] == "33"){//para ciudad con id
+																																		if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																																			$sql = "select bitacora.id_bitacora,codigo_archivo,nombre_archivo,fecha_cambios, asunto_cambio, referencia,peso,tipo,bitacora.estado,bitacora.id_usuario, nombres_usuario from archivo,bitacora,usuario where bitacora.id_archivo = archivo.id_archivo and bitacora.id_usuario = usuario.id_usuario and archivo.id_archivo = '".$_GET['id']."' order by fecha_cambios desc";
+																																			cargarSelect($conexion,$sql,$_GET['tam']);
+																																		}else{
+																																			
+																																		}
+																																	}else{
+																																		if($_GET['fun'] == "34"){//para ciudad con id
+																																			if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																				buscardor_texto($conexion,$_GET['sub'],$_GET['txt'],$_GET['tam']);
+																																			}else{
+																																				
+																																			}
+																																		}else{
+																																			
+																																		}		
+																																	}		
 																																}	
 																															}
 																														}
