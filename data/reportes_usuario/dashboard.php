@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:VISTA ARCHIVO:.</title>
+    <title>.:INBOX:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -40,64 +40,80 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li class="active">Gestion Documental</li>
-            <li class="active">Vista Previa</li>
+            <li class="active">Reportes</li>
+            <li class="active">Estadísticos</li>
           </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
-            <div class="col-md-3">
-              <a href="../envio/index.php" class="btn btn-primary btn-block margin-bottom">Enviar Correo</a>
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Carpetas</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href="../inbox"><i class="fa fa-inbox"></i> Recibidos <span class="label label-primary pull-right" id="total_inbox"></span></a></li>
-                    <li class=""><a href="enviados.php" ><i class="fa fa-envelope-o"></i> Enviados <span class="label label-success pull-right" id="total_enviados"></span></a></li>       
-                    <li class=""><a href="#"><i class="fa fa-list-alt"></i> Historial</a></li>  
-                    <li class="active"><a href=""><i class="fa fa-folder-open-o"></i> Vista Previa</a></li>                                                                                                    
-                    <li class=""><a href="buscar_archivos.php"><i class="fa fa-search-minus"></i> Búsqueda de Archivos</a></li>  
-                  </ul>
-                </div><!-- /.box-body -->
-              </div><!-- /. box -->
-              <div class="box box-solid">                                
-              <!-- en caso de nuevas opciones -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-             <div class="col-md-9">
+            <div class="col-md-6">              
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Vista Documento</h3>
-                  
-                </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                  <div class="mailbox-read-info">
-                    <h3 id="subject"></h3><!--asunto del mensaje-->
-                    <span class="mailbox-read-time pull-right" id="date_mail"></span>
-                    <h5 id="from_mail"></h5>
-                  </div><!-- /.mailbox-read-info -->
-                  
-                  <div class="mailbox-read-message" id="cuerpo_mail" >
-                    
-                  </div><!-- /.mailbox-read-message -->
+                  <h3 class="box-title">Total de Envíos</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="areaChart" height="250"></canvas>
+                  </div>
                 </div><!-- /.box-body -->
-                <div class="box-footer">
-                  <ul class="mailbox-attachments clearfix" id="footer_mail">
-                    
-                  </ul>                   
-                </div><!-- /.box-footer -->
-                <div class="box-footer">                  
-                  <a class="btn btn-primary" id="btn_reenviar"><i class="fa fa-edit"></i> Reenviar</a>
-                  <button class="btn btn-primary"><i class="fa fa-print"></i> Imprimir</button>
-                </div><!-- /.box-footer-->
-              </div><!-- /. box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->  
-        </section>                
+              </div><!-- /.box -->              
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Tipos de Documentos enviados (Mb)</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="areaChart_tipos_doc" height="250"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->              
+            </div><!-- /.col (LEFT) -->
+
+            <div class="col-md-6">              
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Peso Total de envíos (Mb)</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="areaChart_peso" height="250"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->                          
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Estado de los documentos</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <div class="chart">
+                    <canvas id="areaChart_estado" height="250"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->                            
+            </div><!-- /.col (RIGHT) -->
+          </div><!-- /.row -->
+         
+
+        </section><!-- /.content -->
+        
         <!-- /.content -->
       </div><!-- /.content-wrapper -->
       <?php footer(); ?>
@@ -135,52 +151,12 @@
     <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
     <script src="../../plugins/gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
     <script src="../../plugins/moment/moment-with-locales.js" type="text/javascript"></script>
-    <script src="inbox.js" type="text/javascript"></script> 
+    <script src="../../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+
+    <script src="dashboard.js" type="text/javascript"></script>
     <script src="../mod_user.js" type="text/javascript"></script>
-    <script src="../funciones_generales.js" type="text/javascript"></script>
-    
-    <script>
-      $(function () {
-        //Enable iCheck plugin for checkboxes
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"]').iCheck({
-          checkboxClass: 'icheckbox_flat-blue',
-          radioClass: 'iradio_flat-blue'
-        });
+    <script src="../funciones_generales.js" type="text/javascript"></script>        
 
-        //Enable check and uncheck all functionality
-        $(".checkbox-toggle").click(function () {
-          var clicks = $(this).data('clicks');
-          if (clicks) {
-            //Uncheck all checkboxes
-            $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
-          } else {
-            //Check all checkboxes
-            $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
-          }
-          $(this).data("clicks", !clicks);
-        });
-
-        //Handle starring for glyphicon and font awesome
-        $(".mailbox-star").click(function (e) {
-          e.preventDefault();
-          //detect type
-          var $this = $(this).find("a > i");
-          var glyph = $this.hasClass("glyphicon");
-          var fa = $this.hasClass("fa");          
-
-          //Switch states
-          if (glyph) {
-            $this.toggleClass("glyphicon-star");
-            $this.toggleClass("glyphicon-star-empty");
-          }
-
-          if (fa) {
-            $this.toggleClass("fa-star");
-            $this.toggleClass("fa-star-o");
-          }
-        });
-      });
-    </script>
+   
   </body>
 </html>

@@ -279,12 +279,45 @@
 																																	}else{
 																																		if($_GET['fun'] == "34"){//para ciudad con id
 																																			if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
-																																				buscardor_texto($conexion,$_GET['sub'],$_GET['txt'],$_GET['tam']);
+																																				buscador_texto($conexion,$_GET['sub'],$_GET['txt']);
 																																			}else{
 																																				
 																																			}
 																																		}else{
-																																			
+																																			if($_GET['fun'] == "35"){//para ciudad con id
+																																				if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																					total_meses($conexion);
+																																				}else{
+																																					
+																																				}
+																																			}else{
+																																				if($_GET['fun'] == "36"){//para ciudad con id
+																																					if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																						total_meses_kbp($conexion);
+																																					}else{
+																																						
+																																					}
+																																				}else{
+																																					if($_GET['fun'] == "37"){//para ciudad con id
+																																						if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																							total_documentos($conexion);
+																																						}else{
+																																							
+																																						}
+																																					}else{
+																																						if($_GET['fun'] == "38"){//para ciudad con id
+																																							if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																								total_estados($conexion);
+																																							}else{
+																																								
+																																							}
+																																						}else{
+																																							
+																																						}		
+																																					}		
+																																				}		
+																																			}	
+
 																																		}		
 																																	}		
 																																}	

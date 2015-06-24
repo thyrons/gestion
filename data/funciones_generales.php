@@ -1,5 +1,6 @@
 <?php
-	session_start();  
+	session_start();
+	error_reporting(0);  
 	date_default_timezone_set('America/Guayaquil'); 
 	$fecha = date('Y-m-d H:i:s', time());   
 	$fecha_larga = date('His', time());	
@@ -269,37 +270,47 @@
 	        $data = 0;
 	    }
 	}
-	function buscardor_texto($conexion,$sub,$texto, $tam){
-
+	function buscador_texto($conexion,$sub,$texto){
 		$lista = array();
 		$t_user = $_SESSION['tipo_user'];		
 		if($t_user == '1'){
-			$sql = "select id_archivo,nombre_archivo,fecha_creacion from archivo order by fecha_creacion asc";							
+			$sql = "select id_archivo,nombre_archivo,fecha_creacion,estado from archivo order by fecha_creacion asc";										
 		}else{
 			$sql = "select id_archivo,nombre_archivo,fecha_creacion from archivo where fuente_usuario = '".sesion_activa()."' order by fecha_creacion desc";				
 		}
 		$sql = pg_query($conexion, $sql);
 		while($row = pg_fetch_row($sql)){
 			if($sub == true){
-				$sql_1 = "select bitacora.id_bitacora,bitacora.id_archivo,bitacora.fecha_cambios,fuente_usuario,nombres_usuario,nombre_archivo,asunto_cambio,referencia from archivo, bitacora, usuario where archivo.id_archivo = bitacora.id_archivo and archivo.fuente_usuario = usuario.id_usuario and archivo.id_archivo = '".$row[0]."' order by fecha_cambios desc";
-				$sql_1 = pg_query($conexion, $sql_1);
-				while($row_1 = pg_fetch_row($sql_1)){				
-					$document = 'archivos/'.$row_1[7];                     
-	                $ext = end(explode('.', $document));                 	                	                
-	                $resp=buscar_text($ext,$document);                
-	                if(preg_match("/".$texto."/i", $resp))     
-	                {         
-	                    $lista[]=$row[0];  
-	                    $lista[]=$row[1];                       
-	                    $lista[]=$row[2];                                                    
-	                    $lista[]=$row_1[0];           
-	                    $lista[]=$row_1[4];         
-	                    $lista[]=$row_1[5];         
-	                }
+				$sql_1 = "select bitacora.id_bitacora,bitacora.id_archivo,bitacora.fecha_cambios,fuente_usuario,nombres_usuario,nombre_archivo,asunto_cambio,referencia from archivo, bitacora, usuario where archivo.id_archivo = bitacora.id_archivo and archivo.fuente_usuario = usuario.id_usuario and archivo.id_archivo = '".$row[0]."' order by fecha_cambios desc";				
+			}else{
+				$sql_1 = "select bitacora.id_bitacora,bitacora.id_archivo,bitacora.fecha_cambios,fuente_usuario,nombres_usuario,nombre_archivo,asunto_cambio,referencia from archivo, bitacora, usuario where archivo.id_archivo = bitacora.id_archivo and archivo.fuente_usuario = usuario.id_usuario and archivo.id_archivo = '".$row[0]."' order by fecha_cambios desc limit 1";				
+			}
+			$sql_1 = pg_query($conexion, $sql_1);
+			while($row_1 = pg_fetch_row($sql_1)){				
+				if($row_1[7] == ''){
 
+				}
+				else{
+					$document = "archivos/".$row_1[7];                     
+		            $ext = end(explode('.', $document));                 	                	                	            
+		            $resp=buscar_text($ext,$document);      	                      
+		            if(preg_match("/".$texto."/i", $resp))     
+		            {         
+		                $lista[]=$row[0];  
+		                $lista[]=$row[1];                       
+		                $lista[]=$row[2];                                                    
+		                $lista[]=$row_1[0];           
+		                $lista[]=$row_1[4];         
+		                $lista[]=$row_1[5];         
+		                $lista[]=$row_1[7];         
+		                $lista[]=$row_1[6];
+		                $lista[]=$row_1[2];
+		                $lista[]=$row[3];  
+		            }	
 				}
 			}
 		}
+		echo $lista=json_encode($lista);  
 	}
 	function buscar_text($ext,$document){  			
 	    if($ext=='doc'){
@@ -327,16 +338,15 @@
 	                        $data=pptx_to_text($document);
 	                    }
 	                    else{/// si la extension puede ser txt o otras diferentes
-	                        if($ext=='txt'){
-	                            $data = file_get_contents($document);
+	                        if($ext=='txt'){	                        	
+	                            $data = file_get_contents($document);	                            
 	                        }
 	                        else{
 	                            if($ext=='pdf'){
 	                                include 'pdf2text.php';
 	                                $data = pdf2text ($document);                                
 	                            }
-	                            else{
-	                            	echo $document;
+	                            else{	                            	
 	                                $data = file_get_contents($document);
 	                            }
 	                        }    
@@ -422,6 +432,7 @@
 	    }
 	    return $output_text;
 	}
+
 	function xlsx_to_text($input_file){
 	    $xml_filename = "xl/sharedStrings.xml"; //content file name
 	    $zip_handle = new ZipArchive;
@@ -439,5 +450,161 @@
 	    $output_text .="";
 	    }
 	    return $output_text;
+	}
+
+	function total_meses($conexion){
+		$lista = array();
+		$lista[0] = 0;		
+		$lista[1] = 0;
+		$lista[2] = 0;
+		$lista[3] = 0;
+		$lista[4] = 0;
+		$lista[5] = 0;
+		$lista[6] = 0;
+		$lista[7] = 0;
+		$lista[8] = 0;
+		$lista[9] = 0;
+		$lista[10] = 0;
+		$lista[11] = 0;		
+
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select date_part('year', w.fecha_creacion) as anio, date_part('month':: text, w.fecha_creacion) as mes, count(w.id_archivo) as total_mes from archivo w group by date_part('year', w.fecha_creacion), date_part('month'::text, w.fecha_creacion) order by 1,2";
+		}else{
+			$sql = "select date_part('year', w.fecha_creacion) as anio, date_part('month':: text, w.fecha_creacion) as mes, count(w.id_archivo) as total_mes from archivo w where fuente_usuario = '".sesion_activa()."' group by date_part('year', w.fecha_creacion), date_part('month'::text, w.fecha_creacion) order by 1,2";
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){
+			if($row[1] == 1){
+				$lista[0] = $row[2];		
+			}
+			if($row[1] == 2){
+				$lista[1] = $row[2];		
+			}
+			if($row[1] == 3){
+				$lista[2] = $row[2];		
+			}
+			if($row[1] == 4){
+				$lista[3] = $row[2];		
+			}
+			if($row[1] == 5){
+				$lista[4] = $row[2];		
+			}
+			if($row[1] == 6){
+				$lista[5] = $row[2];		
+			}
+			if($row[1] == 7){
+				$lista[6] = $row[2];		
+			}
+			if($row[1] == 8){
+				$lista[7] = $row[2];		
+			}
+			if($row[1] == 9){
+				$lista[8] = $row[2];		
+			}
+			if($row[1] == 10){
+				$lista[9] = $row[2];		
+			}
+			if($row[1] == 11){
+				$lista[10] = $row[2];		
+			}
+			if($row[1] == 12){
+				$lista[11] = $row[2];		
+			}
+		}
+		echo $lista = json_encode($lista);		
+	}
+	function total_meses_kbp($conexion){
+		$lista = array();
+		$lista[0] = 0;		
+		$lista[1] = 0;
+		$lista[2] = 0;
+		$lista[3] = 0;
+		$lista[4] = 0;
+		$lista[5] = 0;
+		$lista[6] = 0;
+		$lista[7] = 0;
+		$lista[8] = 0;
+		$lista[9] = 0;
+		$lista[10] = 0;
+		$lista[11] = 0;		
+
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select date_part('year', w.fecha_creacion) as anio, date_part('month':: text, w.fecha_creacion) as mes, sum(b.peso::float) as total_mes from archivo w, bitacora b where w.id_archivo = b.id_archivo group by date_part('year', w.fecha_creacion), date_part('month'::text, w.fecha_creacion) order by 1,2";
+		}else{
+			$sql = "select date_part('year', w.fecha_creacion) as anio, date_part('month':: text, w.fecha_creacion) as mes, sum(b.peso::float) as total_mes from archivo w, bitacora b where fuente_usuario = '".sesion_activa()."' and w.id_archivo = b.id_archivo group by date_part('year', w.fecha_creacion), date_part('month'::text, w.fecha_creacion) order by 1,2";
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){
+			if($row[1] == 1){
+				$lista[0] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 2){
+				$lista[1] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 3){
+				$lista[2] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 4){
+				$lista[3] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 5){
+				$lista[4] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 6){
+				$lista[5] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 7){
+				$lista[6] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 8){
+				$lista[7] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 9){
+				$lista[8] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 10){
+				$lista[9] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 11){
+				$lista[10] = number_format(($row[2]/1024/1024),2);
+			}
+			if($row[1] == 12){
+				$lista[11] = number_format(($row[2]/1024/1024),2);
+			}
+		}
+		echo $lista = json_encode($lista);		
+	}
+	function total_documentos($conexion){
+		$dep = array();		
+		$lista = array();		
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select sum(b.peso::float) as total_mes, nombre_doc from archivo w, bitacora b, tipo_documento td where w.id_archivo = b.id_archivo and b.id_tipo_documento = td.id_tipo_documento group by nombre_doc order by 1,2";
+		}else{
+			$sql = "select sum(b.peso::float) as total_mes, nombre_doc from archivo w, bitacora b, tipo_documento td where fuente_usuario = '".sesion_activa()."' and w.id_archivo = b.id_archivo and b.id_tipo_documento = td.id_tipo_documento group by nombre_doc order by 1,2";
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){			
+			$dep[] = $row[1];			
+			$lista[] = number_format(($row[0]/1024/1024),2);			
+		}
+		$lista=array("departamento" => $dep, "peso" => $lista);  
+		echo $lista = json_encode($lista);		
+	}
+	function total_estados($conexion){		
+		$lista = array();		
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w group by  w.estado order by estado asc";
+		}else{
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where fuente_usuario = '".sesion_activa()."' group by  w.estado order by estado asc";
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){						
+			$lista[] = $row[0];			
+		}		
+		echo $lista = json_encode($lista);		
 	}
 ?>

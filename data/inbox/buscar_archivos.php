@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>.:BÚSQUEDA DE Archivos:.</title>
+    <title>.:BÚSQUEDA DE ARCHIVOS:.</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="../../web/assets/favicon.ico" rel="Shortcut Icon" />
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">                                        
-                    <li><input type="text" class="form-control input-sm" id="txt_buscar" placeholder="Buscar"/></li>
+                    <li><input type="text" class="form-control input-sm" id="txt_buscar" placeholder="Buscar"/><span class="glyphicon glyphicon-search form-control-feedback"></span></li>
                     <li><input type="checkbox" id="check_buscar" /> <label style="font-size:12px;font-weight:normal;"> Entradas anteriores</label></li>
                     <li><br /></li>
                     <li style="text-align:center"><button type="submit" class="btn btn-primary "  id="btn_12"><span class="glyphicon glyphicon-search"></span> Buscar Documento</button>          

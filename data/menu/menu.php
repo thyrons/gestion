@@ -152,15 +152,24 @@ function menu_lateral(){
             }print'>    
               <a href="buscar_archivos.php"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
           </ul>
-        </li>      
-        <li class="treeview">
-          <a href="#">
+        </li>';      
+        print '<li ';if ($acus[3]=='reportes_usuario') {
+          print('class="treeview active open"');
+        }print'>';                   
+          print '<a href="#">
             <i class="fa fa-dashboard"></i> <span>Reportes</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>              
-          <ul class="treeview-menu">            
-            <li><a href="#"><i class="fa fa-bar-chart-o"></i> Estadisticas</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Reportes</a></li>                  
+          <ul class="treeview-menu">';                        
+            print '<li ';if ($acus[3]=='' || $acus[4]=='index.php') {              
+              print('class="active"');
+            }print'>';  
+            print'<li><a href="../reportes_usuario/dashboard.php"><i class="fa fa-book"></i> Reportes</a></li> ';
+
+            print '<li ';if ($acus[4]=='dashboard.php') {              
+              print('class="active"');
+            }print'>';  
+            print '<a href="../reportes_usuario"><i class="fa fa-bar-chart-o"></i> Estadisticas</a></li>     
           </ul>
         </li>       
 
