@@ -132,7 +132,7 @@
       url: "../varios.php?tipo=0&fun=38",
       dataType: 'json',
       success: function(data) { 
-        console.log(data);
+        
         var PieData = [
           {
             value: parseInt(data[0]),
