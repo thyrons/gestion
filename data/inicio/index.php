@@ -12,6 +12,11 @@
     <link href="../../plugins/icon/ionicons.min.css" rel="stylesheet" type="text/css" />    
     <link href="../../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="../../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- personal plugin -->
+    <link href="../../dist/css/dcanimate.css" rel="stylesheet" type="text/css" />
+    <!-- fin persona plugin -->
+
     <link href="../../plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <link href="../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
@@ -24,6 +29,7 @@
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">   
     <link href="../../plugins/bootstrap-editable/bootstrap3-editable/css/address.css" rel="stylesheet">   
     <link href="../../plugins/gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />    
+
   </head>
   <body class="skin-blue">
     <div class="wrapper">

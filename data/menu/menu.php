@@ -14,7 +14,7 @@ function banner(){
 	print'
 	<header class="main-header">
         <!-- Logo -->
-        <a href="index.php" class="logo"><b></b></a>
+        <a href="index.php" class="logo">UNIANDES</a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -70,9 +70,7 @@ function menu_lateral(){
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">            
-        <div class="pull-left info">
-          <p>SGD</p>              
-        </div>
+          <img src="../../dist/img/avatar2.png" width="100%" class="morph pic">
       </div>          
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
