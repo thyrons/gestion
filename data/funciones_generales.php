@@ -597,14 +597,30 @@
 		$lista = array();		
 		$t_user = $_SESSION['tipo_user'];		
 		if($t_user == '1'){
-			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w group by  w.estado order by estado asc";
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where estado = 0 group by  w.estado order by estado asc";
 		}else{
-			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where fuente_usuario = '".sesion_activa()."' group by  w.estado order by estado asc";
-		}
-		$sql = pg_query($conexion, $sql);
-		while($row = pg_fetch_row($sql)){						
-			$lista[] = $row[0];			
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where fuente_usuario = '".sesion_activa()."' and where estado = 0 group by  w.estado order by estado asc";
 		}		
+		$sql = pg_query($conexion, $sql);
+		if(pg_num_rows($sql)){
+			$row = pg_fetch_row($sql);
+			$lista[] = $row[0];
+		}else{
+			$lista[] = 0;
+		}		
+		if($t_user == '1'){
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where estado = 1 group by  w.estado order by estado asc";
+		}else{
+			$sql = "select count(w.id_archivo) as total_mes, w.estado from archivo as w where fuente_usuario = '".sesion_activa()."' and where estado = 1 group by  w.estado order by estado asc";
+		}		
+		$sql = pg_query($conexion, $sql);
+		if(pg_num_rows($sql)){			
+			$row = pg_fetch_row($sql);
+			$lista[] = $row[0];
+		}else{
+			$lista[] = 0;
+		}
+		
 		echo $lista = json_encode($lista);		
 	}
 ?>

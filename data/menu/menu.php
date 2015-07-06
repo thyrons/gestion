@@ -146,11 +146,11 @@ function menu_lateral(){
             print '<li ';if ($acus[4] == 'enviados.php') {
               print('class="active"');
             }print'>  
-              <a href="enviados.php"><i class="fa fa-mail-reply"></i> Enviados</a></li>';
+              <a href="../inbox/enviados.php"><i class="fa fa-mail-reply"></i> Enviados</a></li>';
             print '<li ';if ($acus[4] == 'buscar_archivos.php') {
               print('class="active"');
             }print'>    
-              <a href="buscar_archivos.php"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
+              <a href="../inbox/buscar_archivos.php"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
           </ul>
         </li>';      
         print '<li ';if ($acus[3]=='reportes_usuario') {
@@ -170,17 +170,24 @@ function menu_lateral(){
             }print'>  
               <a href="../reportes_usuario/dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>            
           </ul>
-        </li>       
+        </li>';       
 
-        <li class="treeview">
+        print '<li ';if ($acus[3]=='usuarios') {
+          print('class="treeview active open"');
+        }print'>                                  
           <a href="#">
             <i class="fa fa-gears"></i> <span>Administración</span>
             <i class="fa fa-angle-left pull-right"></i>
-          </a>              
-          <ul class="treeview-menu">
-            <li><a href="../usuarios"><i class="fa fa-users"></i> Nuevos Usuarios</a></li>                              
-            <li><a href="#"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                            
-            <li><a href="#"><i class="fa fa-bullseye"></i> Restaurar Archivos</a></li>
+          </a>                                
+          <ul class="treeview-menu">';
+            print '<li ';if ($acus[3]=='usuarios') { 
+              print('class="active"');
+            }print'>  
+            <a href="../usuarios"><i class="fa fa-users"></i> Nuevos Usuarios</a></li>';
+            print '<li ';if ($acus[3]=='buscar_archivos') { 
+              print('class="active"');
+            }print'>  
+            <a href="../buscar_archivos"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                                        
             <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>
             <li>
               <a href="#"><i class="fa fa-dashboard"></i>Reportes Generales <i class="fa fa-angle-left pull-right"></i></a>

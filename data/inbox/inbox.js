@@ -401,7 +401,7 @@ function cargar_datos_correo(id){
         dataType: 'json',                      
         url: "../varios.php?tipo=0&id="+id_correo+"&tam=8&fun=20",        
         success: function(data, status) {          
-          console.log(data);
+          //console.log(data);
           data = data;               
           loadStop();                    
           $("#subject").html("");
@@ -414,7 +414,7 @@ function cargar_datos_correo(id){
           $("#date_mail").html(data['cuerpo'][1]);
           if(data['cuerpo'][4] == ''){
           }else{
-            $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');
+            $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" onclick="return descargar_archivo('+data['cuerpo'][7]+',1)" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');
           } 
           $("#btn_reenviar").attr('href','reenviar.php?id='+data['cuerpo'][7]);    ///envio id bitacora           
         }, 
@@ -446,7 +446,7 @@ function cargar_datos_correo(id){
             $("#date_mail").html(data['cuerpo'][1]);
             if(data['cuerpo'][4] == ''){
             }else{
-              $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');                            
+              $("#footer_mail").append('<li><span class="mailbox-attachment-icon"><i class="fa fa-file-archive-o"></i></span><div class="mailbox-attachment-info"><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+data['cuerpo'][4]+'</a><span class="mailbox-attachment-size">'+data['cuerpo'][6]+' Kb<a href="#" onclick="return descargar_archivo('+data['cuerpo'][7]+',1)" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a></span></div></li>');                            
             }
             $("#footer_mail").append('<li class="pull-right"><span class=""><label for="txt_usuarios" class="">Para los Usuarios:</label><select disabled="disabled" class="chosen-select form-control" id="txt_usuarios" name="txt_usuarios" data-placeholder="Tipo de Documento" multiple></select></span></li>');
             $.ajax({        
@@ -487,7 +487,7 @@ function loadStop() {
   $('#load').hide();  
 }
 function descargar_archivo (id,fn){      
-  window.open("descarga.php?id="+id+"&fn="+fn,'_blank');  
+  window.open("descarga.php?id="+id+"&fn="+fn,'_blank');   
 }
 function buscar_archivos(text,check){
   if(text.length > 0){

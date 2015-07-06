@@ -17,7 +17,7 @@
     }
     
     $resp = datos_descarga($conexion,$sql,3);        
-    print_r($resp);
+    //print_r($resp);
     if($resp != ''){
         $ruta = '../archivos/'.$resp[0];                
         download_file($ruta, $resp[0],$resp[1],$resp[2]);
