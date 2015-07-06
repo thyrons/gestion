@@ -454,7 +454,7 @@ function cargar_datos_correo(id){
               dataType: 'json',        
               url: "../varios.php?tipo=0&id="+data['cuerpo'][7]+"&tam=1&fun=32",        
               success: function(data, status) {         
-                console.log(data);
+                //console.log(data);
                   $('#txt_usuarios').html("");           
                   for (var i = 0; i < data.length; i=i+1) {                                                             
                         $("#txt_usuarios").append("<option value ="+data[i]+" selected>"+data[i]+"</option>"); 

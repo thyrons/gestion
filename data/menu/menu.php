@@ -170,7 +170,7 @@ function menu_lateral(){
           </ul>
         </li>';       
 
-        print '<li ';if ($acus[3]=='usuarios') {
+        print '<li ';if ($acus[3]=='usuarios' || $acus[3]=='buscar_archivos' || $acus[3]=='reportes_generales') {
           print('class="treeview active open"');
         }print'>                                  
           <a href="#">
@@ -186,12 +186,18 @@ function menu_lateral(){
               print('class="active"');
             }print'>  
             <a href="../buscar_archivos"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                                        
-            <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>
-            <li>
+            <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>';
+
+            print '<li ';if ($acus[4]=='dashboard.php' || $acus[4]=='generales.php') {
+              print('class="active"');
+            }print'>                               
               <a href="#"><i class="fa fa-dashboard"></i>Reportes Generales <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-bar-chart-o"></i> Estadisticas Generales</a></li>                  
-                <li><a href="#"><i class="fa fa-book"></i> Reportes Generales</a></li>                  
+              <ul class="treeview-menu">';
+                print '<li ';if ($acus[4]=='dashboard.php') { 
+                print('class="active"');
+                }print'>  
+                <a href="../reportes_generales/dashboard.php"><i class="fa fa-bar-chart-o"></i> Estadisticas Generales</a></li>                  
+                <li><a href="../reportes_generales/generales.php"><i class="fa fa-book"></i> Reportes Generales</a></li>                  
               </ul>
             </li>
               
