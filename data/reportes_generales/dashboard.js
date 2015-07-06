@@ -12,7 +12,8 @@
     var areaChartCanvas_estado = $("#areaChart_estado").get(0).getContext("2d");
     var areaChart_estado = new Chart(areaChartCanvas_estado);    
 
-
+    var areaChartCanvas_anio = $("#areaChart_anio").get(0).getContext("2d");
+    var areaChart_anio = new Chart(areaChartCanvas_anio);
     
   
     var areaChartOptions = {
@@ -208,6 +209,32 @@
       }
     }); 
     ////////total de kbs por año
+    $.ajax({        
+      type: "POST",
+      url: "../varios.php?tipo=0&fun=39",
+      dataType: 'json',
+      success: function(data) {        
+        var areaChartData = {
+          labels: data['anio'],
+          datasets: [
+            {
+              label: "Peso Meses de envio",
+              fillColor: "rgba(60,141,188,0.9)",
+              strokeColor: "rgba(60,141,188,0.8)",
+              pointColor: "#3b8bba",
+              pointStrokeColor: "rgba(60,141,188,1)",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(60,141,188,1)",
+              data: data['peso'],
+            },            
+          ]
+        };
+        var barChartData = areaChartData;
+       
+        barChartOptions.datasetFill = false;
+        areaChart_anio.Bar(barChartData, barChartOptions);               
+      }
+    }); 
 
   }
      

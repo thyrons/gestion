@@ -192,7 +192,7 @@ function menu_lateral(){
               print('class="active"');
             }print'>                               
               <a href="#"><i class="fa fa-dashboard"></i>Reportes Generales <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">';
+                <ul class="treeview-menu">';
                 print '<li ';if ($acus[4]=='dashboard.php') { 
                 print('class="active"');
                 }print'>  

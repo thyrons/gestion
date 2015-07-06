@@ -312,7 +312,15 @@
 																																								
 																																							}
 																																						}else{
-																																							
+																																							if($_GET['fun'] == "39"){//para ciudad con id
+																																								if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																																																									
+																																									total_anios($conexion);
+																																								}else{
+																																									
+																																								}
+																																							}else{
+																																										
+																																							}			
 																																						}		
 																																					}		
 																																				}		

@@ -538,40 +538,40 @@
 		$sql = pg_query($conexion, $sql);
 		while($row = pg_fetch_row($sql)){
 			if($row[1] == 1){
-				$lista[0] = number_format(($row[2]/1024/1024),2);
+				$lista[0] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 2){
-				$lista[1] = number_format(($row[2]/1024/1024),2);
+				$lista[1] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 3){
-				$lista[2] = number_format(($row[2]/1024/1024),2);
+				$lista[2] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 4){
-				$lista[3] = number_format(($row[2]/1024/1024),2);
+				$lista[3] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 5){
-				$lista[4] = number_format(($row[2]/1024/1024),2);
+				$lista[4] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 6){
-				$lista[5] = number_format(($row[2]/1024/1024),2);
+				$lista[5] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 7){
-				$lista[6] = number_format(($row[2]/1024/1024),2);
+				$lista[6] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 8){
-				$lista[7] = number_format(($row[2]/1024/1024),2);
+				$lista[7] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 9){
-				$lista[8] = number_format(($row[2]/1024/1024),2);
+				$lista[8] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 10){
-				$lista[9] = number_format(($row[2]/1024/1024),2);
+				$lista[9] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 11){
-				$lista[10] = number_format(($row[2]/1024/1024),2);
+				$lista[10] = number_format(($row[2]/1024/1024),5);
 			}
 			if($row[1] == 12){
-				$lista[11] = number_format(($row[2]/1024/1024),2);
+				$lista[11] = number_format(($row[2]/1024/1024),5);
 			}
 		}
 		echo $lista = json_encode($lista);		
@@ -588,7 +588,7 @@
 		$sql = pg_query($conexion, $sql);
 		while($row = pg_fetch_row($sql)){			
 			$dep[] = $row[1];			
-			$lista[] = number_format(($row[0]/1024/1024),2);			
+			$lista[] = number_format(($row[0]/1024/1024),5);			
 		}
 		$lista=array("departamento" => $dep, "peso" => $lista);  
 		echo $lista = json_encode($lista);		
@@ -621,6 +621,23 @@
 			$lista[] = 0;
 		}
 		
+		echo $lista = json_encode($lista);		
+	}
+	function total_anios($conexion){
+		$dep = array();		
+		$lista = array();		
+		$t_user = $_SESSION['tipo_user'];		
+		if($t_user == '1'){
+			$sql = "select date_part('year', w.fecha_creacion) as anio, sum(b.peso::float) as total_mes from archivo w, bitacora b where w.id_archivo = b.id_archivo group by date_part('year', w.fecha_creacion) order by 1,2";
+		}else{
+			$sql = "select date_part('year', w.fecha_creacion) as anio, sum(b.peso::float) as total_mes from archivo w, bitacora b where w.id_archivo = b.id_archivo group by date_part('year', w.fecha_creacion) order by 1,2";
+		}
+		$sql = pg_query($conexion, $sql);
+		while($row = pg_fetch_row($sql)){			
+			$anio[] = $row[0];			
+			$lista[] = number_format(($row[1]/1024/1024),5);			
+		}
+		$lista=array("anio" => $anio, "peso" => $lista);  
 		echo $lista = json_encode($lista);		
 	}
 ?>
