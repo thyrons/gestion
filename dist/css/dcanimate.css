@@ -25,7 +25,14 @@
   -ms-transition: all 1s ease;
   transition: all 1s ease;
 }
+.sidebar-menu .header{
+  color: #FFF!important;
+  text-align: center;
+  font-size: 17px!important;
+  background: #367FA9!important
 
+
+}
 .grow img:hover {
   width: 400px;
   height: 400px;
