@@ -6,7 +6,7 @@ function footer(){
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Uniandes - Ibarra 2014-2015 Willi Narváez</strong>
       </footer>';
 }
 // banner o cabecera
