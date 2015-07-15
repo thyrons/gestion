@@ -83,13 +83,13 @@
                         <div class="form-group row">
                           <label for="" class="col-md-2 control-label">Reporte Peso</label>
                           <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_1" placeholder="Fecha Inicial">
+                            <input type="text" class="form-control" id="txt_3" placeholder="Fecha Inicial">
                           </div>                            
                           <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_2" placeholder="Fecha Fin">
+                            <input type="text" class="form-control" id="txt_4" placeholder="Fecha Fin">
                           </div>
                           <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_1">
+                            <button type="button" class="btn btn-primary"  id="btn_2">
                               <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
                             </button>        
                           </div>
@@ -99,10 +99,10 @@
                         <div class="form-group row">
                           <label for="" class="col-md-2 control-label">Reporte Por dia</label>
                           <div class="col-md-8">
-                            <input type="text" class="form-control" id="txt_1" placeholder="Fecha Inicial">
+                            <input type="text" class="form-control" id="txt_5" placeholder="Fecha Inicial">
                           </div>                                                      
                           <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_1">
+                            <button type="button" class="btn btn-primary"  id="btn_3">
                               <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
                             </button>        
                           </div>
@@ -116,7 +116,7 @@
                             </select>
                           </div>                                                      
                           <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_1">
+                            <button type="button" class="btn btn-primary"  id="btn_4">
                               <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
                             </button>        
                           </div>
@@ -144,12 +144,44 @@
                             </select>
                           </div>
                           <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_1">
+                            <button type="button" class="btn btn-primary"  id="btn_5">
                               <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
                             </button>        
                           </div>
                         </div>
-                      </div>                                                                                                      
+                      </div>  
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label for="" class="col-md-2 control-label">R. Auditoría Base de datos</label>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" id="txt_6" placeholder="Fecha Inicial">
+                          </div>                            
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" id="txt_7" placeholder="Fecha Fin">
+                          </div>
+                          <div class="col-md-2">
+                            <button type="button" class="btn btn-primary"  id="btn_6">
+                              <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
+                            </button>        
+                          </div>
+                        </div>
+                      </div>                                                                                                     
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label for="" class="col-md-2 control-label">R. Auditroría Sistema</label>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" id="txt_8" placeholder="Fecha Inicial">
+                          </div>                            
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" id="txt_9" placeholder="Fecha Fin">
+                          </div>
+                          <div class="col-md-2">
+                            <button type="button" class="btn btn-primary"  id="btn_7">
+                              <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
+                            </button>        
+                          </div>
+                        </div>
+                      </div> 
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">                    

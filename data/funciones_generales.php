@@ -102,7 +102,9 @@
 		$pass = '';
 		$fecha_login = '';
 		$departamento = '';
-		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user,id_departamento from usuario where usuario = '".$usuario."'";
+		$cargo = '';
+		$depart = '';
+		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user,usuario.id_departamento,nombre_tipo,nombre_departamento from usuario,tipo_usuario,departamento where usuario.id_tipo_user = tipo_usuario.id_tipo_usuario and usuario.id_departamento = departamento.id_departamento and usuario = '".$usuario."'";
 		$sql = pg_query($conexion,$sql);
 		if(pg_num_rows($sql)){			
 			while($row = pg_fetch_row($sql)){
@@ -112,6 +114,8 @@
 				$fecha_login = $row[3];
 				$tipo_user = $row[4];
 				$departamento = $row[5];
+				$cargo = $row[6];
+				$depart = $row[7];
 
 			}
 			$sql_1 = "select id_clave,clave from clave where usuario = '".$id_user."'";			
@@ -132,6 +136,8 @@
 					$_SESSION['fecha_gestion'] = $fecha_login;	
 					$_SESSION['tipo_user'] = $tipo_user;	
 					$_SESSION['departamento'] = $departamento;	
+					$_SESSION['cargo'] = $cargo;	
+					$_SESSION['depart'] = $depart;	
 				}				
 
 			}else{
