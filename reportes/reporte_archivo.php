@@ -37,7 +37,7 @@
             $this->Line(1,30,210,30);            
             $this->SetFont('Arial','B',12);                                                                            
             $this->SetX(50);            
-            $this->Cell(190, 5, utf8_decode("PESO TOTAL POR FECHAS ".$_GET['inicio']." DESDE HASTA ".$_GET['fin'].""),0,1, 'L',0);                                                                                                                            
+            $this->Cell(190, 5, utf8_decode("REPORTE POR TIPOS DE ARCHIVOS " . maxCaracter(strtoupper($_GET['val']),28)),0,1, 'L',0);                                                                                                                            
             $this->SetFont('Amble-Regular','',10);        
             $this->Ln(3);
             $this->SetFillColor(255,255,225);            
@@ -63,9 +63,9 @@
     $temp2=$_GET['fin']." "."23:59:59";
     
     if($_SESSION['tipo_user'] == '1'){
-        $sql = "select archivo.id_archivo,nombre_archivo,codigo_archivo,fecha_creacion,archivo.estado, sum(peso::float) from archivo,bitacora where fecha_creacion between '".$temp1."' and '".$temp2."' and archivo.id_archivo = bitacora.id_archivo group by archivo.id_archivo order by fecha_creacion asc";
+        $sql = "select nombres_usuario,nombre_archivo,fecha_cambios,asunto_cambio,nombre_medio,nombre_doc,archivo.estado from archivo,bitacora,usuario,tipo_documento,medio_recepcion where archivo.id_archivo = bitacora.id_archivo and bitacora.id_tipo_documento =tipo_documento.id_tipo_documento and bitacora.id_medio_recepcion = medio_recepcion.id_medio and bitacora.id_usuario = usuario.id_usuario and bitacora.tipo = '".$_GET['tipo']."'";
     }else{
-        $sql = "select archivo.id_archivo,nombre_archivo,codigo_archivo,fecha_creacion,archivo.estado, sum(peso::float) from archivo,bitacora where fecha_creacion between '".$temp1."' and '".$temp2."' and archivo.id_archivo = bitacora.id_archivo and fuente_usuario = '".$_SESSION['id_gestion']."' group by archivo.id_archivo order by fecha_creacion asc";    
+        $sql = "select nombres_usuario,nombre_archivo,fecha_cambios,asunto_cambio,nombre_medio,nombre_doc,archivo.estado from archivo,bitacora,usuario,tipo_documento,medio_recepcion where archivo.id_archivo = bitacora.id_archivo and bitacora.id_tipo_documento =tipo_documento.id_tipo_documento and bitacora.id_medio_recepcion = medio_recepcion.id_medio and bitacora.id_usuario = usuario.id_usuario and usuario.id_usuario = '".$_SESSION['id_gestion']."' and bitacora.tipo = '".$_GET['tipo']."'";    
     }
     $sql = pg_query($sql);
     $repetido = 0;
@@ -73,30 +73,28 @@
     $pdf->Ln(2);   
     $pdf->SetX(1);
     $pdf->SetFillColor(92, 146, 178);             
-    $pdf->Cell(60, 6, utf8_decode('ARCHIVO'),1,0, 'C',1);                                     
-    $pdf->Cell(45, 6, utf8_decode('CODIGO '),1,0, 'C',1);                                     
-    $pdf->Cell(45, 6, utf8_decode('FECHA CREACION'),1,0, 'C',1);                                                             
-    $pdf->Cell(35, 6, utf8_decode('ESTADO'),1,0, 'C',1); 
-    $pdf->Cell(23, 6, utf8_decode('PESO'),1,1, 'C',1); 
+    $pdf->Cell(40, 6, utf8_decode('USUARIO'),1,0, 'C',1);                                     
+    $pdf->Cell(43, 6, utf8_decode('ARCHIVO'),1,0, 'C',1);                                     
+    $pdf->Cell(25, 6, utf8_decode('FECHA'),1,0, 'C',1);                                                             
+    $pdf->Cell(45, 6, utf8_decode('ASUNTO'),1,0, 'C',1); 
+    $pdf->Cell(34, 6, utf8_decode('MEDIO'),1,0, 'C',1);     
+    $pdf->Cell(20, 6, utf8_decode('ESTADO'),1,1, 'C',1);    
 
     $total = 0;
     while($row=pg_fetch_row($sql)){                                                      
         $pdf->SetX(1); 
-        $pdf->Cell(60, 6, maxCaracter(utf8_decode($row[1]),32),0,0, 'L',0);                                     
-        $pdf->Cell(45, 6, maxCaracter(utf8_decode($row[2]),25),0,0, 'C',0);                                     
-        $pdf->Cell(45, 6, utf8_decode($row[3]),0,0, 'C',0);                                                             
-        if($row[4] == 0){
-            $pdf->Cell(35, 6, utf8_decode('En revisión'),0,0, 'C',0);                
+        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[0]),24),0,0, 'L',0);                                     
+        $pdf->Cell(43, 6, maxCaracter(utf8_decode($row[1]),22),0,0, 'L',0);
+        $pdf->Cell(25, 6, maxCaracter(utf8_decode($row[2]),10),0,0, 'C',0);
+        $pdf->Cell(45, 6, maxCaracter(utf8_decode($row[3]),25),0,0, 'L',0);                        
+        $pdf->Cell(34, 6, maxCaracter(utf8_decode($row[5]),20),0,0, 'L',0);
+        if($row[6] == 0){
+            $pdf->Cell(20, 6, utf8_decode('En revisión'),0,1, 'C',0);                
         }else{
-            $pdf->Cell(35, 6, utf8_decode('Finalizado'),0,0, 'C',0);            
-        }                           
-        $total = $total + ($row[5] / 1024 / 1024);
-        $pdf->Cell(23, 6, maxCaracter(number_format(($total),3,',','.'),10)." Mb",0,1, 'C',0);                      
+            $pdf->Cell(20, 6, utf8_decode('Finalizado'),0,1, 'C',0);            
+        }                                           
     }                       
-    $pdf->Cell(220, 0,"",1,1, 'L',0);                                     
-    $pdf->Cell(151, 6, utf8_decode('TOTAL'),0,0, 'R',0); 
-    $pdf->Cell(58, 6,number_format(($total),5,',','.') . "Mb" ,0,1, 'L',0);     
-
+    $pdf->Cell(220, 0,"",1,1, 'L',0);                                         
     $pdf->Output();
 ?>
 

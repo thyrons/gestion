@@ -152,39 +152,7 @@
                             </button>        
                           </div>
                         </div>
-                      </div>  
-                      <div class="col-md-12">
-                        <div class="form-group row">
-                          <label for="" class="col-md-2 control-label">R. Auditoría Base de datos</label>
-                          <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_6" placeholder="Fecha Inicial">
-                          </div>                            
-                          <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_7" placeholder="Fecha Fin">
-                          </div>
-                          <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_6">
-                              <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
-                            </button>        
-                          </div>
-                        </div>
-                      </div>                                                                                                     
-                      <div class="col-md-12">
-                        <div class="form-group row">
-                          <label for="" class="col-md-2 control-label">R. Auditroría Sistema</label>
-                          <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_8" placeholder="Fecha Inicial">
-                          </div>                            
-                          <div class="col-md-4">
-                            <input type="text" class="form-control" id="txt_9" placeholder="Fecha Fin">
-                          </div>
-                          <div class="col-md-2">
-                            <button type="button" class="btn btn-primary"  id="btn_7">
-                              <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
-                            </button>        
-                          </div>
-                        </div>
-                      </div> 
+                      </div>                                                                                                                                 
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">                    
@@ -230,7 +198,7 @@
     <script src="../mod_user.js" type="text/javascript"></script>
 
     <script src="../../plugins/jchosen/chosen.jquery.js" type="text/javascript"></script>
-    <script src="reportes_generales.js" type="text/javascript"></script>
+    <script src="reportes_usuario.js" type="text/javascript"></script>
     <script src="../funciones_generales.js" type="text/javascript"></script>
     
     

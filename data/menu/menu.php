@@ -70,7 +70,7 @@ function menu_lateral(){
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">            
-          <img src="../../dist/img/avatar2.png" width="100%" class="morph pic">
+          <img src="../../dist/img/avatar2.png" width="100%" height="180px" class="morph pic">
       </div>          
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
@@ -159,10 +159,10 @@ function menu_lateral(){
             <i class="fa fa-angle-left pull-right"></i>
           </a>              
           <ul class="treeview-menu">';                                 
-            print '<li ';if ($acus[3]=='' || $acus[4]=='index.php') {              
+            print '<li ';if ($acus[4]=='usuario.php') {              
               print('class="active"');
             }print'>  
-              <a href="../reportes_usuario/"><i class="fa fa-dashboard"></i> Generales</a></li> '; 
+              <a href="../reportes_usuario/usuario.php"><i class="fa fa-dashboard"></i> Generales</a></li> '; 
             print '<li ';if ($acus[4]=='dashboard.php') { 
               print('class="active"');
             }print'>  
@@ -170,37 +170,44 @@ function menu_lateral(){
           </ul>
         </li>';       
 
-        print '<li ';if ($acus[3]=='usuarios' || $acus[3]=='buscar_archivos' || $acus[3]=='reportes_generales') {
+        print '<li ';if ($acus[3]=='usuarios' || $acus[3]=='buscar_archivos' || $acus[3]=='reportes_generales' || $acus[3]=='permisos') {
           print('class="treeview active open"');
         }print'>                                  
           <a href="#">
             <i class="fa fa-gears"></i> <span>Administración</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>                                
-          <ul class="treeview-menu">';
+          <ul class="treeview-menu">';            
             print '<li ';if ($acus[3]=='usuarios') { 
               print('class="active"');
             }print'>  
             <a href="../usuarios"><i class="fa fa-users"></i> Nuevos Usuarios</a></li>';
+
+            print '<li ';if ($acus[3]=='permisos') {               
+              print('class="active"');
+            }print'>  
+            <a href="../permisos"><i class="fa fa-cogs"></i> Permisos Usuarios</a></li>';
+
             print '<li ';if ($acus[3]=='buscar_archivos') { 
               print('class="active"');
             }print'>  
             <a href="../buscar_archivos"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                                        
-            <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>';
+            
+            <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>';            
 
             print '<li ';if ($acus[4]=='dashboard.php' || $acus[4]=='generales.php') {
               print('class="active"');
             }print'>                               
               <a href="#"><i class="fa fa-dashboard"></i>Reportes Generales <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">';
+              <ul class="treeview-menu">';
                 print '<li ';if ($acus[4]=='dashboard.php') { 
-                print('class="active"');
+                  print('class="active"');
                 }print'>  
                 <a href="../reportes_generales/dashboard.php"><i class="fa fa-bar-chart-o"></i> Estadisticas Generales</a></li>                  
                 <li><a href="../reportes_generales/generales.php"><i class="fa fa-book"></i> Reportes Generales</a></li>                  
               </ul>
             </li>
-              
+
           </ul>
         </li>  
         </ul>

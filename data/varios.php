@@ -319,7 +319,16 @@
 																																									
 																																								}
 																																							}else{
+																																								if($_GET['fun'] == "40"){//para ciudad con id
+																																									if($_GET['tipo'] == "0"){//indica que se carga al inicio de la pagina																																					
+																																										$sql = "select id_aplicacion,estado from accesos where id_usuario = '".$_GET['id']."' order by id_aplicacion asc";
+																																										cargarSelect($conexion,$sql,$_GET['tam']);
+																																									}else{
 																																										
+																																									}
+																																								}else{
+																																											
+																																								}			
 																																							}			
 																																						}		
 																																					}		
