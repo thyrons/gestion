@@ -58,7 +58,7 @@
                 <div class="box-header">                  
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" id="form_envio" class="" method="POST" action="">                
+                <form role="form" id="form_permisos" class="" method="POST" action="">                
                   <div class="box-body">
                     <div class="form-group col-md-12">                      
                       <label for="txt_1" class="">Ususario: </label>                      
@@ -67,61 +67,61 @@
                     </div>
                     <div class="form-group col-md-12">                  
                       <div class="box box-primary">                        
-                        <div class="box-body">                                                    
-                          <div class="form-group col-md-3">
-                            <label>INGRESOS GENERALES</label>
-                            <label class="checks_gestion">
-                              <input type="checkbox" id="ck_1" class="flat-red"  />
-                              Categorías&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            </label>
-                            <label class="checks_gestion">
-                              <input type="checkbox" id="ck_2" class="flat-red"  />
-                              Departamentos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            </label>
-                            <label class="checks_gestion">
-                              <input type="checkbox" id="ck_3" class="flat-red"  />
-                              Medios de Recepción &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            </label>
-                            <label class="checks_gestion">
-                              <input type="checkbox" id="ck_4" class="flat-red"  />
-                              Tipos de Documentos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            </label>
-                            <label class="checks_gestion">                                                        
-                              <input type="checkbox" id="ck_5" class="flat-red"  />
-                              Tipos de usuarios&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                            </label>
-                            <label class="checks_gestion">                                                        
-                              <input type="checkbox" id="ck_6" class="flat-red"  />
-                              Países&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </label>
-                            <label class="checks_gestion">                                                        
-                              <input type="checkbox" id="ck_7" class="flat-red"  />
-                              Provincias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </label>
-                            <label class="checks_gestion">                                                        
-                              <input type="checkbox" id="ck_8" class="flat-red"  />
-                              Ciudades&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </label>
-                          </div>
+                        <div class="box-body">             
                           <div class="form-group col-md-3">                                         
                             <label>GESTIÓN DOCUMENTAL</label>
                             <label class="checks_gestion">
-                              <input type="checkbox" id="ck_9" class="flat-red"  />
+                              <input type="checkbox" id="ck_1" class="flat-red"  />
                               Envío Documentos
                             </label>
                             <label class="checks_gestion">
-                              <input type="checkbox" id="ck_10" class="flat-red"  />
+                              <input type="checkbox" id="ck_2" class="flat-red"  />
                               Documentos Recibidos
                             </label>
                             <label class="checks_gestion">
-                              <input type="checkbox" id="ck_11" class="flat-red"  />
+                              <input type="checkbox" id="ck_3" class="flat-red"  />
                               Documentos Enviados
                             </label>
                             <label class="checks_gestion">
-                              <input type="checkbox" id="ck_12" class="flat-red"  />
+                              <input type="checkbox" id="ck_4" class="flat-red"  />
                               Buscar Palabras
                             </label>
-                          </div>
+                          </div>                                       
+                          <div class="form-group col-md-3">
+                            <label>INGRESOS GENERALES</label>
+                            <label class="checks_gestion">
+                              <input type="checkbox" id="ck_5" class="flat-red"  />
+                              Categorías&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                            </label>
+                            <label class="checks_gestion">
+                              <input type="checkbox" id="ck_6" class="flat-red"  />
+                              Departamentos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                            </label>
+                            <label class="checks_gestion">
+                              <input type="checkbox" id="ck_7" class="flat-red"  />
+                              Medios de Recepción &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                            </label>
+                            <label class="checks_gestion">
+                              <input type="checkbox" id="ck_8" class="flat-red"  />
+                              Tipos de Documentos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                            </label>
+                            <label class="checks_gestion">                                                        
+                              <input type="checkbox" id="ck_9" class="flat-red"  />
+                              Tipos de usuarios&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                            </label>
+                            <label class="checks_gestion">                                                        
+                              <input type="checkbox" id="ck_10" class="flat-red"  />
+                              Países&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <label class="checks_gestion">                                                        
+                              <input type="checkbox" id="ck_11" class="flat-red"  />
+                              Provincias&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <label class="checks_gestion">                                                        
+                              <input type="checkbox" id="ck_12" class="flat-red"  />
+                              Ciudades&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>
+                          </div>                          
                           <div class="form-group col-md-3">                                         
                             <label>REPORTES USUARIOS</label>
                             <label class="checks_gestion">

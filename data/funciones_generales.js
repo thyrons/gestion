@@ -106,7 +106,7 @@ function comprobarCamposRequired(form){
 function actualizar_form(){    
     setTimeout(function() {
       location.reload();
-    }, 2000);
+    }, 1000);
     
 }
 function limpiar_form(e){

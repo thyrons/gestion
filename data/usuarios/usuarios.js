@@ -152,7 +152,7 @@ function inicio(){
         $("#btn_1").attr("disabled", false);
         comprobarCamposRequired("form_usuarios");        
 	});
-	////////////////
+	////////////////	
 	$("#btn_3").on("click",function (){   
 	    var resp = "";    
 	    resp =atras($("#txt_0").val(),"usuarios","secuencia.php");   

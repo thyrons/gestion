@@ -34,6 +34,12 @@ function inicio(){
 	$("#btn_5").on('click',function(){
 		window.open("../../reportes/reporte_archivo.php?tipo="+$("#tipo").val()+"&val="+$("#tipo option:selected").text());
 	});
+	$("#btn_6").on('click',function(){
+		window.open("../../reportes/reporte_auditoria.php?inicio="+$("#txt_6").val()+"&fin="+$("#txt_7").val());
+	});
+	$("#btn_7").on('click',function(){
+		window.open("../../reportes/reporte_base_datos.php?inicio="+$("#txt_8").val()+"&fin="+$("#txt_9").val());
+	});
 
 
 }
