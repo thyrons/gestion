@@ -1,5 +1,10 @@
 <?php 
 session_start();
+
+if (!isset($_SESSION["id_gestion"])) {
+    header("Location: ../login");  
+}
+
 // pie de pagina
 function footer(){
 	print' <footer class="main-footer">
@@ -193,7 +198,7 @@ function menu_lateral(){
             }print'>  
             <a href="../buscar_archivos"><i class="fa fa-search-plus"></i> Buscar Archivos</a></li>                                                        
             
-            <li><a href="#"><i class="fa fa-download"></i> Backup</a></li>';            
+            <li><a href="../backup.php"><i class="fa fa-download"></i> Backup</a></li>';            
 
             print '<li ';if ($acus[4]=='dashboard.php' || $acus[4]=='generales.php') {
               print('class="active"');

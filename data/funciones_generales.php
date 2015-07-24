@@ -86,10 +86,11 @@
 
 	function id ($conexion,$tabla,$id){
 		$contador = 0;
-		$sql = "select max(".$id.") from ".$tabla."";		
+		$sql = "select max(".$id.") from ".$tabla."";						
 		$sql = pg_query($conexion,$sql);
+		
 		$contador = pg_fetch_result($sql, 0);		
-		$contador = $contador + 1;
+		$contador = $contador + 1;		
 		return $contador;
 	}
 
@@ -195,7 +196,7 @@
 	function auditoria_sistema($conexion,$tabla,$id_user,$proceso,$id_registro,$fecha_larga,$fecha,$sql_nuevo,$sql_anterior,$comentario){
 	    $cliente = $_SERVER['REMOTE_ADDR'];
 	    $server = $_SERVER['SERVER_ADDR'];
-	    $id_tabla = id($conexion,'auditoria_sistema','id_sistema');///
+	    $id_tabla = id($conexion,'auditoria_sistema','id_sistema');///	    
 	    if($proceso == 'Insert'){                
 	    	$consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',array[''],$sql_nuevo::text[],'".$id_registro."','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            			        	        
 	        pg_query($consulta);               
@@ -204,7 +205,9 @@
 		        $consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',$sql_anterior::text[],$sql_nuevo::text[],'".$id_registro."','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            			        	          	            
 	            pg_query($consulta);       
 	        }else{            
-	            if($proceso == 'Backup'){        
+	            if($proceso == 'Backup'){  
+	                $consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',array[''],array[''],'','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            			        	          	            	            	
+	            	pg_query($consulta);       
 	            }else{
 	            	if($proceso == 'Login'){        
 	            		$consulta = "insert into auditoria_sistema values ('".$id_tabla."','".$id_user."','".$tabla."','".$proceso."',array[''],array[''],'".$id_registro."','".$cliente."','".$server."','".$fecha."','".$comentario."','0')";                       	            			            		
