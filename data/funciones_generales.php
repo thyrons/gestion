@@ -105,6 +105,7 @@
 		$departamento = '';
 		$cargo = '';
 		$depart = '';
+		$lista = array();
 		$sql = "select id_usuario,nombres_usuario,usuario,fecha,id_tipo_user,usuario.id_departamento,nombre_tipo,nombre_departamento from usuario,tipo_usuario,departamento where usuario.id_tipo_user = tipo_usuario.id_tipo_usuario and usuario.id_departamento = departamento.id_departamento and usuario = '".$usuario."'";
 		$sql = pg_query($conexion,$sql);
 		if(pg_num_rows($sql)){			
@@ -117,7 +118,6 @@
 				$departamento = $row[5];
 				$cargo = $row[6];
 				$depart = $row[7];
-
 			}
 			$sql_1 = "select id_clave,clave from clave where usuario = '".$id_user."'";			
 			$sql_1 = pg_query($conexion,$sql_1);			
@@ -139,6 +139,13 @@
 					$_SESSION['departamento'] = $departamento;	
 					$_SESSION['cargo'] = $cargo;	
 					$_SESSION['depart'] = $depart;	
+
+					$sql_2 = "select estado from accesos where id_usuario = '".$id_user."' order by id_aplicacion asc";
+					$sql_2 = pg_query($conexion,$sql_2);			
+					while($row_2 = pg_fetch_row($sql_2)){
+						$lista[] = $row_2[0];
+					}
+					$_SESSION['accesos'] = $lista;
 				}				
 
 			}else{
@@ -260,7 +267,7 @@
 	    echo $total;
 	}
 
-	function download_file($archivo,$referencia,$peso,$tipo) {				
+	function download_file($archivo,$refermencia,$peso,$tipo) {				
 	    if (file_exists($archivo)) {	        
 	        header("Cache-control: private");
 			header("Content-type: $tipo");
