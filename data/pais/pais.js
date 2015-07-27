@@ -68,22 +68,52 @@ function datos_pais(valores,tipo,p){
 		url: "pais.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
-	    		alert('Datos Agregados Correctamente');			
+	    		$.gritter.add({			
+		    		title: 'Datos Enviados..!',							
+					text: "Datos guardados correctamente",
+					image: '../../dist/img/ok.fw.png',
+					sticky: false, 							
+					time: 1000,									
+					class_name: 'light',						        					
+				});			
 	    		cargar_tabla();
 	    		limpiar_form(p);		    		
 	    	}else{
 	    		if( data == 1 ){
-	    			alert('Este código de País ya existe ingrese otro');	
+	    			$.gritter.add({			
+			    		title: 'Datos Enviados..!',							
+						text: "Este código de País ya existe ingrese otro",
+						image: '../../dist/img/advertencia.fw.png',
+						sticky: false, 							
+						time: 1000,									
+						class_name: 'light',						        					
+					});			    			
 	    			$("#txt_1").val("");
 	    			$("#txt_1").focus();	    			
 	    		}else{
-	    			if( data == 2){
-	    				alert('Este nombre de País ya existe ingrese otro');	
+	    			if( data == 2){	    				
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Este nombre de País ya existe ingrese otro",
+							image: '../../dist/img/advertencia.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        					
+						});		
 	    				$("#txt_2").val("");
 	    				$("#txt_2").focus();	    			
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				actualizar_form();	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Error al momento de enviar los datos la página se recargara",
+							image: '../../dist/img/error.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								actualizar_form();	
+							},								    			    		
+						});	
 	    			}	    			
 	    		}
 	    	}

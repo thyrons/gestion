@@ -172,19 +172,42 @@ function datos_ciudad(valores,tipo,p){
 		url: "ciudad.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
-	    		alert('Datos Agregados Correctamente');			
+	    		$.gritter.add({			
+		    		title: 'Datos Enviados..!',							
+					text: "Datos guardados correctamente",
+					image: '../../dist/img/ok.fw.png',
+					sticky: false, 							
+					time: 1000,									
+					class_name: 'light',						        					
+				});		
 	    		cargar_tabla();
 	    		limpiar_form(p);		    		
 	    	}else{
 	    		if( data == 1 ){	    			
 	    		}else{
 	    			if( data == 2){
-	    				alert('Este nombre de ciudad en esta Provincia ya existe ingrese otro');	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Este nombre de ciudad en esta Provincia ya existe ingrese otro",
+							image: '../../dist/img/advertencia.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        					
+						});				    				
 	    				$("#txt_3").val("");
 	    				$("#txt_3").focus();	    			
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				actualizar_form();	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Error al momento de enviar los datos la página se recargara",
+							image: '../../dist/img/error.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								actualizar_form();	
+							},								    			    		
+						});		
 	    			}	    			
 	    		}
 	    	}

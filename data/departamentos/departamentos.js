@@ -68,22 +68,52 @@ function datos_departamento(valores,tipo,p){
 		url: "departamentos.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
-	    		alert('Datos Agregados Correctamente');			
+	    		$.gritter.add({			
+		    		title: 'Datos Enviados..!',							
+					text: "Datos Agregados Correctamente",
+					image: '../../dist/img/ok.fw.png',
+					sticky: false, 							
+					time: 1000,									
+					class_name: 'light',						        					
+				});		    		
 	    		cargar_tabla();
 	    		limpiar_form(p);		    		
 	    	}else{
 	    		if( data == 1 ){
-	    			alert('Este código de Departamento Administrativo ya existe ingrese otro');	
+	    			$.gritter.add({			
+			    		title: 'Datos Enviados..!',							
+						text: "Este código de Departamento Administrativo ya existe ingrese otro",
+						image: '../../dist/img/advertencia.fw.png',
+						sticky: false, 							
+						time: 1000,									
+						class_name: 'light',						        					
+					});		    		    			
 	    			$("#txt_1").val("");
 	    			$("#txt_1").focus();	    			
 	    		}else{
 	    			if( data == 2){
-	    				alert('Este nombre de Departamento Administrativo ya existe ingrese otro');	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Este nombre de Departamento Administrativo ya existe ingrese otro",
+							image: '../../dist/img/advertencia.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        					
+						});		    		  	    				
 	    				$("#txt_2").val("");
 	    				$("#txt_2").focus();	    			
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				actualizar_form();	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Error al momento de enviar los datos la página se recargara",
+							image: '../../dist/img/error.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								actualizar_form();	
+							},								    			    		
+						});		   	    				
 	    			}	    			
 	    		}
 	    	}

@@ -44,7 +44,7 @@ function cargar_tabla(){
 function guardar_categoria(){
 	var resp=comprobarCamposRequired("form_categoria");
 	console.log(resp)
-	if(resp==true){
+	if(resp==true){		
 		$("#form_categoria").on("submit",function (e){				
 			var valores = $("#form_categoria").serialize();
 			var texto=($("#btn_1").text()).trim();	
@@ -52,7 +52,7 @@ function guardar_categoria(){
 				datos_categoria(valores,"g",e);					
 			}else{				
 				datos_categoria(valores,"m",e);					
-			}
+			}						
 			e.preventDefault();
     		$(this).unbind("submit")
 		});
@@ -68,25 +68,56 @@ function datos_categoria(valores,tipo,p){
 		url: "categorias.php",			
 	    success: function(data) {	
 	    	if( data == 3 ){
-	    		alert('Datos Agregados Correctamente');			
-	    		cargar_tabla();
-	    		limpiar_form(p);		    		
+	    		$.gritter.add({			
+		    		title: 'Datos Enviados..!',							
+					text: "Datos Agregados Correctamente",
+					image: '../../dist/img/ok.fw.png',
+					sticky: false, 							
+					time: 1000,									
+					class_name: 'light',						        					
+				});		   	    		
+				cargar_tabla();
+	    		limpiar_form(p);		    			    		
 	    	}else{
 	    		if( data == 1 ){
-	    			alert('Este código de de categoría ya existe ingrese otra');	
-	    			$("#txt_1").val("");
-	    			$("#txt_1").focus();	    			
+	    			$.gritter.add({			
+			    		title: 'Datos Enviados..!',							
+						text: "Este código de de categoría ya existe ingrese otra",
+						image: '../../dist/img/advertencia.fw.png',
+						sticky: false, 							
+						time: 1000,									
+						class_name: 'light',						        												
+					});		   	    	    			
+					$("#txt_1").val("");
+	    			$("#txt_1").focus();								    			    		
+	    			    			
 	    		}else{
 	    			if( data == 2){
-	    				alert('Este nombre de categoría ya existe ingrese otra');	
-	    				$("#txt_2").val("");
-	    				$("#txt_2").focus();	    			
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Este nombre de categoría ya existe ingrese otra",
+							image: '../../dist/img/advertencia.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        							
+						});		   	  	    					    			
+						$("#txt_2").val("");
+	    				$("#txt_2").focus();				
 	    			}else{
-	    				alert("Error al momento de enviar los datos la página se recargara");	    			
-	    				//actualizar_form();	
+	    				$.gritter.add({			
+				    		title: 'Datos Enviados..!',							
+							text: "Error al momento de enviar los datos la página se recargara",
+							image: '../../dist/img/error.fw.png',
+							sticky: false, 							
+							time: 1000,									
+							class_name: 'light',						        
+							after_close: function(){
+								actualizar_form();	
+							},								    			    		
+						});		   	    					    				
 	    			}	    			
 	    		}
-	    	}
+	    	}	    	
 		}
 	}); 
 }
