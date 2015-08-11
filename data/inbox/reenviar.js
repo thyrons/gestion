@@ -62,6 +62,7 @@ function inicio (){
 }
 function cargar_datos_documento(id){
 	//obtener archivo id	
+	console.log(data);
 	$("#background_reenvio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
 	$.ajax({        
     	type: "POST",
@@ -78,14 +79,29 @@ function cargar_datos_documento(id){
 	$.ajax({        
     	type: "POST",
     	dataType: 'json',        
-    	url: "../varios.php?tipo=0&id="+$("#txt_0").val()+"&tam=2&fun=22",        
+    	url: "../varios.php?tipo=0&id="+$("#txt_0").val()+"&tam=2&fun=16",        
     	success: function(data, status) {      		
-      		$('#txt_1').html("");	        	
-      		for (var i = 0; i < data.length; i=i+2) {            				            		            	        		
-                $("#txt_1").append("<option value ="+data[i]+" selected>"+data[i+1]+"</option>"); 
-      		}	
-      		$("#txt_1").trigger("chosen:updated");                  		      		  	 	
+      		$('#txt_1').html("");	        	      		
+      		for (var i = 0; i < data.length; i=i+2) {                		  				            		            	        		
+                $("#txt_1").append("<option value ="+data[i]+" >"+data[i+1]+"</option>");                 
+      		}
+      		$("#txt_1").trigger("chosen:updated");	  	      		
+      		$.ajax({        
+		    	type: "POST",
+		    	dataType: 'json',        
+		    	url: "../varios.php?tipo=0&id="+$("#txt_0").val()+"&tam=2&fun=22",        
+		    	success: function(data, status) {
+		    		for (var i = 0; i < data.length; i=i+2) {                		  				            		            	        		
+		    			$('#txt_1 > option[value='+data[i]+']').attr('selected', 'selected');
+		    		}
+		    		$("#txt_1").trigger("chosen:updated");	  	      		
+		    	},
+		    	error: function (data) {		        
+		    	},
+		    	async: false,	        
+		  	});			  	
     	},
+
     	error: function (data) {		        
     	},
     	async: false,	        
@@ -184,7 +200,7 @@ function medio_recepcion(){
 	});	      
 }
 function modificar_inbox(id_bitacora){		
-	console.log(data);
+	//console.log(data);
 	var resp=comprobarCamposRequired("form_reenvio");	
 	if(resp==true){		
 		$("#form_reenvio").on("submit",function (e){				

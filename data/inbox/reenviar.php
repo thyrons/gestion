@@ -59,7 +59,7 @@
                   <div class="box-body">
                     <div class="form-group col-md-12">                      
                       <label for="txt_1" class="">Para: </label>                      
-                      <select class="chosen-select form-control" disabled="disabled" id="txt_1" name="txt_1" multiple="" data-placeholder="Indique los usuarios a enviar ">                        
+                      <select class="chosen-select form-control" id="txt_1" name="txt_1" multiple="" data-placeholder="Indique los usuarios a enviar ">                        
                       </select>     
                     </div>                    
                     <div class="form-group col-md-4">                            

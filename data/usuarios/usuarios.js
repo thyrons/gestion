@@ -451,31 +451,33 @@ function datos_usuarios(valores,tipo,p){
 	    		if( data == 1 ){
 	    			$.gritter.add({							
 						title: 'Datos Enviados..!',							
-						text: 'Este código de documento ya existe ingrese otro',	
+						text: 'Este nombre de usuario ya existe ingrese otro',
 						image: '../../img/error.png',							
 						sticky: false, 							
 						time: 1000,									
 						class_name: 'light',						        
 						after_close: function(){
-							$("#txt_1").val("");
-	    					$("#txt_1").focus();		    							
+							
 						},							
-					});		    				    
+					});		
+					$("#txt_13").val("");
+	    			$("#txt_13").focus();		    							    				    
 					loadStop();	        				    			    				    			
 	    		}else{
 	    			if( data == 2){
 	    				$.gritter.add({							
 							title: 'Datos Enviados..!',							
-							text: 'Este nombre de documento ya existe ingrese otro',		    				
+							text: 'Este nombre de usuario ya existe ingrese otro',		    				
 							image: '../../img/error.png',							
 							sticky: false, 							
 							time: 1000,									
 							class_name: 'light',						        
 							after_close: function(){
-								$("#txt_2").val("");
-	    						$("#txt_2").focus();	    							    			
+								
 							},							
-						});		    				
+						});		
+						$("#txt_2").val("");
+	    				$("#txt_2").focus();	    							    			    				
 						loadStop();	    
 	    			}else{
 	    				$.gritter.add({							
