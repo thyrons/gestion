@@ -103,7 +103,7 @@
             },                        
           ]
         };
-        console.log(areaChartData);
+        //console.log(areaChartData);
         areaChart.Line(areaChartData, areaChartOptions);                       
       }
     });    

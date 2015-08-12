@@ -185,6 +185,27 @@
                           </div>
                         </div>
                       </div> 
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label for="" class="col-md-2 control-label">Auditoría por usuario</label>
+                          <div class="col-md-4">
+                            <select class="chosen-select form-control" id="txt_10" name="txt_10" data-placeholder="Buscar usuario ">                        
+                            <option></option>
+                            </select>                                
+                          </div>                            
+                          <div class="col-md-2">
+                            <input type="text" class="form-control" id="txt_11" placeholder="Fecha Fin">
+                          </div>
+                          <div class="col-md-2">
+                            <input type="text" class="form-control" id="txt_12" placeholder="Fecha Fin">
+                          </div>
+                          <div class="col-md-2">
+                            <button type="button" class="btn btn-primary"  id="btn_8">
+                              <span class="glyphicon glyphicon-save"></span> Imprimir Reporte
+                            </button>        
+                          </div>
+                        </div>
+                      </div> 
                     </div>
                   </div><!-- /.box-body -->
                   <div class="box-footer">                    

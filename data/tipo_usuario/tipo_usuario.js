@@ -41,7 +41,7 @@ function cargar_tabla(){
 }
 function guardar_tipo_usuario(){
 	var resp=comprobarCamposRequired("form_tipo_usuario");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_tipo_usuario").on("submit",function (e){				
 			var valores = $("#form_tipo_usuario").serialize();

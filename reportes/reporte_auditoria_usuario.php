@@ -27,17 +27,21 @@
             $this->Cell(190, 8, "UNIANDES IBARRA", 0,1, 'L',0);                                
             $this->SetFont('Amble-Regular','',10);                             
             $this->SetX(50);            
-            $this->Cell(145, 5, "Solicitante: ".maxCaracter(utf8_decode($_SESSION['nombres_gestion']),50),0,1, 'C',0);
+            $this->Cell(145, 5, "Solicitante: ".maxCaracter(utf8_decode($_SESSION['nombres_gestion']),50),0,1, 'C',0);            
 
             $this->SetX(50);            
-            $this->Cell(70, 5, "Cargo: ".maxCaracter(utf8_decode($_SESSION['cargo']),30),0,0, 'R',0);                                
-            $this->Cell(70, 5, "Usuario: ".maxCaracter(utf8_decode($_SESSION['usuario_gestion']),30),0,1, 'L',0);
+            $this->Cell(70, 5, "Cargo: ".maxCaracter(utf8_decode($_SESSION['cargo']),30),0,0, 'R',0);
+            $this->Cell(70, 5, "Usuario: ".maxCaracter(utf8_decode($_SESSION['usuario_gestion']),30),0,1, 'L',0);            
+
             $this->SetDrawColor(0,0,0);
             $this->SetLineWidth(0.4);            
-            $this->Line(1,30,210,30);            
-            $this->SetFont('Arial','B',12);                                                                            
+            $this->Line(1,35,210,35);            
+            $this->SetFont('Arial','B',11);                                                                            
+
             $this->SetX(50);            
-            $this->Cell(190, 5, utf8_decode("AUDITORÍA BASE DE DATOS ".$_GET['inicio']." DESDE HASTA ".$_GET['fin'].""),0,1, 'L',0);                                                                                                                            
+            $this->Cell(145, 5, utf8_decode("AUDITORÍA: ").maxCaracter(utf8_decode($_SESSION['nombres_gestion']),50),0,1, 'C',0);
+            $this->SetX(50);            
+            $this->Cell(130, 5, utf8_decode("DESDE ".$_GET['inicio']." HASTA ".$_GET['fin'].""),0,1, 'C',0);                                                                                                                            
             $this->SetFont('Amble-Regular','',10);        
             $this->Ln(3);
             $this->SetFillColor(255,255,225);            
@@ -62,34 +66,35 @@
     $temp1=$_GET['inicio']." "."00:00:00";
     $temp2=$_GET['fin']." "."23:59:59";
     
-    if($_SESSION['tipo_user'] == '1'){
-        $sql = "select nombre_tabla,operacion,fecha_cambio,usuario,valor_anterior,valor_nuevo from tbl_audit where fecha_cambio between '".$temp1."' and '".$temp2."' order by fecha_cambio";  
-    }else{
-        $sql = "select nombre_tabla,operacion,fecha_cambio,usuario,valor_anterior,valor_nuevo from tbl_audit where fecha_cambio between '".$temp1."' and '".$temp2."' order by fecha_cambio";  
-    }
+  
+    $sql = "select usuario.usuario,tabla,operacion,id_registro,ip_cliente,ip_servidor,fecha_creacion,observacion from auditoria_sistema,usuario where id_usuario = '".$_GET['id']."' and fecha_creacion between '".$temp1."' and '".$temp2."' and auditoria_sistema.usuario::integer = usuario.id_usuario order by fecha_creacion";  
+    
     
     $sql = pg_query($sql);
     $repetido = 0;
 
     $pdf->Ln(2);   
     $pdf->SetX(1);
-    $pdf->SetFillColor(92, 146, 178);             
-    $pdf->Cell(25, 6, utf8_decode('TABLA'),1,0, 'C',1);                                     
+    $pdf->SetFillColor(92, 146, 178);                                                                                       
+    $pdf->Cell(20, 6, utf8_decode('TABLA'),1,0, 'C',1);                                     
     $pdf->Cell(20, 6, utf8_decode('OPERACIÓN'),1,0, 'C',1);                                     
-    $pdf->Cell(35, 6, utf8_decode('FECHA CAMBIO'),1,0, 'C',1);                                                             
-    $pdf->Cell(25, 6, utf8_decode('USUARIO'),1,0, 'C',1); 
-    $pdf->Cell(52, 6, utf8_decode('VALOR ANTERIOR'),1,0, 'C',1);     
-    $pdf->Cell(51, 6, utf8_decode('VALOR NUEVO'),1,1, 'C',1); 
+    $pdf->Cell(20, 6, utf8_decode('REGISTRO'),1,0, 'C',1);                                     
+    $pdf->Cell(23, 6, utf8_decode('IP CLIENTE'),1,0, 'C',1);                                     
+    $pdf->Cell(23, 6, utf8_decode('IP SERVIDOR'),1,0, 'C',1);                                     
+    $pdf->Cell(30, 6, utf8_decode('FECHA CAMBIO'),1,0, 'C',1);                                                                 
+    $pdf->Cell(72, 6, utf8_decode('OBSERVACIÓN'),1,1, 'C',1); 
 
     $total = 0;
     while($row=pg_fetch_row($sql)){                                                      
-        $pdf->SetX(1); 
-        $pdf->Cell(25, 6, maxCaracter(utf8_decode($row[0]),15),0,0, 'C',0);                                     
-        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[1]),22),0,0, 'C',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[2]),19),0,0, 'C',0);
-        $pdf->Cell(25, 6, maxCaracter(utf8_decode($row[3]),25),0,0, 'C',0);                
-        $pdf->Cell(52, 6, maxCaracter(utf8_decode($row[4]),35),0,0, 'L',0);
-        $pdf->Cell(51, 6, maxCaracter(utf8_decode($row[5]),35),0,1, 'L',0);                            
+        $pdf->SetX(1);                                              
+        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[1]),12),0,0, 'C',0);
+        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[2]),12),0,0, 'C',0);
+        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[3]),5),0,0, 'C',0);                
+        $pdf->Cell(23, 6, maxCaracter(utf8_decode($row[4]),30),0,0, 'L',0);
+        $pdf->Cell(23, 6, maxCaracter(utf8_decode($row[5]),30),0,0, 'L',0);
+        $pdf->Cell(30, 6, maxCaracter(utf8_decode($row[6]),19),0,0, 'C',0);
+        $pdf->MultiCell(72, 6, utf8_decode($row[7]),0,'L',0);                            
+        $pdf->Cell(210, 0, "",1,0, 'C',0);
     }                       
     $pdf->Cell(220, 0,"",1,1, 'L',0);                                         
 

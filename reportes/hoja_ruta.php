@@ -37,7 +37,7 @@
             $this->Line(1,30,210,30);            
             $this->SetFont('Arial','B',12);                                                                            
             $this->SetX(50);            
-            $this->Cell(190, 5, utf8_decode("AUDITORÍA BASE DE DATOS ".$_GET['inicio']." DESDE HASTA ".$_GET['fin'].""),0,1, 'L',0);                                                                                                                            
+            $this->Cell(130, 5, utf8_decode("HOJA DE RUTA "),0,1, 'C',0);                                                                                                                            
             $this->SetFont('Amble-Regular','',10);        
             $this->Ln(3);
             $this->SetFillColor(255,255,225);            
@@ -57,42 +57,51 @@
     $pdf->SetFont('Amble-Regular','',10);       
     $pdf->SetFont('Arial','B',9);   
     $pdf->SetX(5);    
-    $pdf->SetFont('Amble-Regular','',8); 
+    $pdf->SetFont('Amble-Regular','',9); 
     
-    $temp1=$_GET['inicio']." "."00:00:00";
-    $temp2=$_GET['fin']." "."23:59:59";
-    
-    if($_SESSION['tipo_user'] == '1'){
-        $sql = "select nombre_tabla,operacion,fecha_cambio,usuario,valor_anterior,valor_nuevo from tbl_audit where fecha_cambio between '".$temp1."' and '".$temp2."' order by fecha_cambio";  
-    }else{
-        $sql = "select nombre_tabla,operacion,fecha_cambio,usuario,valor_anterior,valor_nuevo from tbl_audit where fecha_cambio between '".$temp1."' and '".$temp2."' order by fecha_cambio";  
-    }
-    
+    $sql = "select distinct usuario.id_usuario,nombres_usuario from enviados,usuario where enviados.id_usuario = usuario.id_usuario and id_archivo = '".$_GET['id']."'";    
     $sql = pg_query($sql);
-    $repetido = 0;
 
+
+    $users = '';
     $pdf->Ln(2);   
     $pdf->SetX(1);
     $pdf->SetFillColor(92, 146, 178);             
-    $pdf->Cell(25, 6, utf8_decode('TABLA'),1,0, 'C',1);                                     
-    $pdf->Cell(20, 6, utf8_decode('OPERACIÓN'),1,0, 'C',1);                                     
-    $pdf->Cell(35, 6, utf8_decode('FECHA CAMBIO'),1,0, 'C',1);                                                             
-    $pdf->Cell(25, 6, utf8_decode('USUARIO'),1,0, 'C',1); 
-    $pdf->Cell(52, 6, utf8_decode('VALOR ANTERIOR'),1,0, 'C',1);     
-    $pdf->Cell(51, 6, utf8_decode('VALOR NUEVO'),1,1, 'C',1); 
+    $pdf->Cell(40, 6, utf8_decode('REMITENTES'),1,0, 'C',1);                                             
+    while($row=pg_fetch_row($sql)){                                                              
+        $users = $users . ',' . $row[1];        
+    }   
+    $pdf->MultiCell(168, 6, utf8_decode($users),1,'L',0);                                                
 
-    $total = 0;
+    $pdf->Ln(2);   
+    $pdf->SetX(1);
+    $pdf->Cell(40, 6, utf8_decode('USUARIO'),1,0, 'C',1);                                     
+    $pdf->Cell(50, 6, utf8_decode('DEPARTAMENTO'),1,0, 'C',1);                                             
+    $pdf->Cell(34, 6, utf8_decode('FECHA'),1,0, 'C',1);     
+    $pdf->Cell(21, 6, utf8_decode('ESTADO'),1,0, 'C',1);   
+    $pdf->Cell(63, 6, utf8_decode('OBSERVACIONES'),1,1, 'C',1);
+
+    $sql = "select nombres_usuario,nombre_departamento,asunto_cambio,fecha_cambios,bitacora.estado from bitacora,usuario,departamento where bitacora.id_usuario = usuario.id_usuario and departamento.id_departamento = usuario.id_departamento and bitacora.id_archivo = '".$_GET['id']."'"; 
+
+    $pdf->SetFont('Amble-Regular','',8); 
+    $sql = pg_query($sql);
     while($row=pg_fetch_row($sql)){                                                      
         $pdf->SetX(1); 
-        $pdf->Cell(25, 6, maxCaracter(utf8_decode($row[0]),15),0,0, 'C',0);                                     
-        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[1]),22),0,0, 'C',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[2]),19),0,0, 'C',0);
-        $pdf->Cell(25, 6, maxCaracter(utf8_decode($row[3]),25),0,0, 'C',0);                
-        $pdf->Cell(52, 6, maxCaracter(utf8_decode($row[4]),35),0,0, 'L',0);
-        $pdf->Cell(51, 6, maxCaracter(utf8_decode($row[5]),35),0,1, 'L',0);                            
-    }                       
-    $pdf->Cell(220, 0,"",1,1, 'L',0);                                         
+        $pdf->Cell(40, 6, maxCaracter(utf8_decode($row[0]),25),0,0, 'L',0);      
+        $pdf->Cell(50, 6, maxCaracter(utf8_decode($row[1]),30),0,0, 'L',0);      
+        //$pdf->Cell(63, 6, maxCaracter(utf8_decode($row[2]),34),0,0, 'L',0);      
+        $pdf->Cell(34, 6, maxCaracter(utf8_decode($row[3]),22),0,0, 'C',0);              
+        if($row[4] == '0'){
+            $pdf->Cell(21, 6, maxCaracter(utf8_decode('En Revisión'),15),0,0, 'C',0);          
+        }else{
+            $pdf->Cell(21, 6, maxCaracter(utf8_decode('Finalizado'),15),0,0, 'C',0);      
+        }
+        $pdf->MultiCell(63, 6, utf8_decode($row[2]),0,'L',0);   
+        $pdf->Cell(210, 0, "",1,0, 'C',0);                                             
+        
+        
 
+    }
     $pdf->Output();
 ?>
 

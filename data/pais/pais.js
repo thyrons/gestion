@@ -43,7 +43,7 @@ function cargar_tabla(){
 }
 function guardar_pais(){
 	var resp=comprobarCamposRequired("form_pais");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_pais").on("submit",function (e){				
 			var valores = $("#form_pais").serialize();

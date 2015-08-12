@@ -149,7 +149,7 @@ function change_pais(){
 }
 function guardar_ciudad(){
 	var resp=comprobarCamposRequired("form_ciudad");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_ciudad").on("submit",function (e){				
 			var valores = $("#form_ciudad").serialize();

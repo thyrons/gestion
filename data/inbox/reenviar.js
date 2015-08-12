@@ -62,7 +62,7 @@ function inicio (){
 }
 function cargar_datos_documento(id){
 	//obtener archivo id	
-	console.log(data);
+	//console.log(data);
 	$("#background_reenvio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');
 	$.ajax({        
     	type: "POST",
@@ -225,7 +225,8 @@ function modificar_inbox(id_bitacora){
 				if(users != null){		    			    	
 			   		for(var i = 0; i < archivo.length; i++){
 					    archivos.append('archivo'+i,archivo[i]);        			        			        
-				   	}		    
+				   	}	
+				   	//loadStart();	    
 			    	if(archivo.length == 0){		    
 					    $.ajax({
 					        url:'inbox.php?tipo=m&'+valores+'&dep='+data[19]+'&user='+$("#txt_1").val()+'&id_reenvio='+id_bitacora,
@@ -289,15 +290,45 @@ function modificar_inbox(id_bitacora){
 						        processData:false,
 						        cache:false,        
 					    	}).done(function(data){
-						        if( data == 1 ){            
-						            alert('Archivo subido satisfactoriamente');					            
-						            actualizar_form();
+						        if( data == 1 ){          
+						        	$("#background_reenvio").append('<div id="load" class="loading"><div class="contenedor"><div class="content"><div class="ball"></div><div class="ball1"></div></div></div></div>');         				            
+						        	$.gritter.add({
+								    	title: 'Mensaje del Servidor!',
+								        text: 'Archivo subido satisfactoriamente.',
+								        image: '../../dist/img/ok.fw.png',
+								        sticky: false, 
+							    	    class_name: 'dc_ok',						        
+										time: 1000,																	
+										after_close: function(){
+											location.href = "../inbox";
+											actualizar_form();			            		
+										},		
+								    });								            						            
 						        }else{
 						            if(data == 2){
-						            	alert("Error al momento de enviar los datos la página se recargara");
-					    	        	actualizar_form();
+						            	$.gritter.add({
+								        	title: 'Error al momento de enviar!',
+									        text: 'La página se recargara.',
+									        image: '../../dist/img/error.fw.png',						        
+									        sticky: false, 
+									        class_name: 'dc_ok',						        
+											time: 1000,																	
+											after_close: function(){
+												actualizar_form();			            		
+											},		
+									    });								            	
 					        	    }else{
-					            		alert(data);
+					            		$.gritter.add({
+									        title: 'Errores encontrados!',
+									        text: '' + data,
+									        image: '../../dist/img/advertencia.fw.png',							        
+									        sticky: false, 
+									        class_name: 'dc_ok',						        
+											time: 1000,																	
+											after_close: function(){
+												actualizar_form();			            		
+											},		
+								    	});		
 					            		actualizar_form();
 					            	}
 					        	}

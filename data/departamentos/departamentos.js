@@ -43,7 +43,7 @@ function cargar_tabla(){
 }
 function guardar_departamento(){
 	var resp=comprobarCamposRequired("form_departamentos");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_departamentos").on("submit",function (e){				
 			var valores = $("#form_departamentos").serialize();

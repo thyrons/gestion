@@ -97,7 +97,7 @@ function cargar_pais(){
 }
 function guardar_provincia(){
 	var resp=comprobarCamposRequired("form_provincia");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){
 		$("#form_provincia").on("submit",function (e){				
 			var valores = $("#form_provincia").serialize();

@@ -43,7 +43,7 @@ function cargar_tabla(){
 }
 function guardar_categoria(){
 	var resp=comprobarCamposRequired("form_categoria");
-	console.log(resp)
+	//console.log(resp)
 	if(resp==true){		
 		$("#form_categoria").on("submit",function (e){				
 			var valores = $("#form_categoria").serialize();

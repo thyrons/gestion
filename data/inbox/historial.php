@@ -99,12 +99,12 @@
                         <th>NOMBRE</th>                        
                         <th>FECHA CAMBIO</th>                        
                         <th>ASUNTO CAMBIO</th>                        
-                        <th>REFERENCIA</th>                        
+                        <th>DOC</th>                        
                         <th>PESO</th>                        
                         <th>TIPO</th>                        
                         <th>ESTADO</th>                        
                         <th>id_usuario</th>
-                        <th>USUARIO</th>
+                        <th>USUARIO</th>                        
                       </thead>
                       <tbody>                                                
                       

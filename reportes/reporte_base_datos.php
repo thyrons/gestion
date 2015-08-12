@@ -57,7 +57,7 @@
     $pdf->SetFont('Amble-Regular','',10);       
     $pdf->SetFont('Arial','B',9);   
     $pdf->SetX(5);    
-    $pdf->SetFont('Amble-Regular','',9); 
+    $pdf->SetFont('Amble-Regular','',8); 
     
     $temp1=$_GET['inicio']." "."00:00:00";
     $temp2=$_GET['fin']." "."23:59:59";
@@ -78,9 +78,9 @@
     $pdf->Cell(20, 6, utf8_decode('TABLA'),1,0, 'C',1);                                     
     $pdf->Cell(20, 6, utf8_decode('OPERACIÓN'),1,0, 'C',1);                                     
     $pdf->Cell(20, 6, utf8_decode('REGISTRO'),1,0, 'C',1);                                     
-    $pdf->Cell(20, 6, utf8_decode('IP CLIENTE'),1,0, 'C',1);                                     
-    $pdf->Cell(20, 6, utf8_decode('IP SERVIDOR'),1,0, 'C',1);                                     
-    $pdf->Cell(35, 6, utf8_decode('FECHA CAMBIO'),1,0, 'C',1);                                                                 
+    $pdf->Cell(23, 6, utf8_decode('IP CLIENTE'),1,0, 'C',1);                                     
+    $pdf->Cell(23, 6, utf8_decode('IP SERVIDOR'),1,0, 'C',1);                                     
+    $pdf->Cell(30, 6, utf8_decode('FECHA CAMBIO'),1,0, 'C',1);                                                                 
     $pdf->Cell(47, 6, utf8_decode('OBSERVACIÓN'),1,1, 'C',1); 
 
     $total = 0;
@@ -90,13 +90,11 @@
         $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[1]),15),0,0, 'C',0);
         $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[2]),12),0,0, 'C',0);
         $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[3]),5),0,0, 'C',0);                
-        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[4]),30),0,0, 'L',0);
-        $pdf->Cell(20, 6, maxCaracter(utf8_decode($row[5]),30),0,0, 'L',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[6]),19),0,0, 'L',0);
-        $pdf->Cell(35, 6, maxCaracter(utf8_decode($row[7]),30),0,1, 'L',0);
-        
-            
-        
+        $pdf->Cell(23, 6, maxCaracter(utf8_decode($row[4]),30),0,0, 'L',0);
+        $pdf->Cell(23, 6, maxCaracter(utf8_decode($row[5]),30),0,0, 'L',0);
+        $pdf->Cell(30, 6, maxCaracter(utf8_decode($row[6]),19),0,0, 'C',0);
+        $pdf->MultiCell(47, 4, utf8_decode($row[7]),0,'L',0);                            
+        $pdf->Cell(210, 0, "",1,0, 'C',0);
     }                       
     $pdf->Cell(220, 0,"",1,1, 'L',0);                                         
 
